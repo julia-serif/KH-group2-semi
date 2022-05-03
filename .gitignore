@@ -23,7 +23,3 @@
 hs_err_pid*
 
 /build/
-
-
-# personal setting needed
-src/com/shop/controller/FrontController.java
