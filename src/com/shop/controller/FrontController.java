@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shop.action.Action;
+import com.shop.action.ActionForward;
+
 
 
 public class FrontController extends HttpServlet {
@@ -42,7 +45,7 @@ public class FrontController extends HttpServlet {
 		
 		Properties prop = new Properties();
 		
-		FileInputStream fis = new FileInputStream("./mapping.properties");
+		FileInputStream fis = new FileInputStream("C:\\Users\\wooch\\OneDrive\\바탕 화면\\semi-test\\KH-group2-semi\\src\\main\\java\\com\\shop\\controller\\mapping.properties");
 		
 		prop.load(fis);
 		
