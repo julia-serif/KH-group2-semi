@@ -9,7 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+
+  <servlet>
+  	<servlet-name>FrontController</servlet-name>
+  	<servlet-class>com.shop.controller.FrontController</servlet-class>
+  </servlet>
   
-  <!-- 서블릿 매핑(N:1) -->
-  
+  <servlet-mapping>
+  	<servlet-name>FrontController</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
 </web-app>
