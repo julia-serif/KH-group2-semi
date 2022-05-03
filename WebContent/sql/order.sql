@@ -1,14 +1,18 @@
+--이전 테이블 삭제
+drop table ks_product_order;
+drop table ks_order;
+drop table ks_user;
+drop table ks_seller;
+
+
 create table ks_order(
 	order_no number(10) primary key,					--주문 번호
-	user_id varchar2(30) references ks_user(user_id),	--주문자(회원)
+	user_id varchar2(20) references shop_user(user_id),	--주문자(회원)
 	order_date date,									--주문 날짜
-	payment_date date,									--결제 날짜
 	recipient varchar2(50) not null,					--수령인(이름)
 	recipient_phone varchar2(20),						--수령인 전화번호
-	address1 varchar2(20) not null,						--배송 주소(우편번호)
-	address2 varchar2(50) not null,						--배송 주소(주소)
-	address3 varchar2(50) not null,						--배송 주소(상세주소)
-	seller_id varchar2(30) references ks_seller(seller_id)	--판매자
+	address varchar2(30) not null,						--배송 주소
+	seller_id varchar2(20) references shop_user(user_id)--판매자
 );
 
 create table ks_product_order(
@@ -21,12 +25,3 @@ create table ks_product_order(
 	order_status varchar2(30) not null						--배송 상태
 );
 
-insert into ks_seller values('seller1', '1234', '판매자1');	--테스트용 판매자 계정
-
-insert into ks_user values('user1', '1234', '김모모', null, null, null, null);
-insert into ks_user values('jimin12', '1234', '박지민', null, null, null, null);
-
-insert into ks_order values(1, 'user1', sysdate, sysdate, '김모모', '010-0234-4521'
-	, '12345', '서울시 모모구 경복궁대로 43', '104동 1002호', 'seller1');
-insert into ks_order values(2, 'jimin12', sysdate, sysdate, '박지민', '010-2314-3452'
-	, '03252', '경기도 수원시 지원구 심심로 23', '203동 505호', 'seller1');
