@@ -24,3 +24,6 @@ hs_err_pid*
 
 # personal setting needed
 FrontController.java
+
+/build/
+
