@@ -20,7 +20,6 @@ public class FrontController extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		
-		// 한글 인코딩 처리
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -41,8 +40,9 @@ public class FrontController extends HttpServlet {
 		ActionForward forward = null;
 		
 		Properties prop = new Properties();
-		
-		FileInputStream fis = new FileInputStream("./mapping.properties");
+
+		FileInputStream fis = 
+				new FileInputStream("C:\\Users\\nsims\\git\\KH-group2-semi\\src\\com\\shop\\model\\mapping.properties");
 		
 		prop.load(fis);
 		
@@ -53,6 +53,7 @@ public class FrontController extends HttpServlet {
 			StringTokenizer st = new StringTokenizer(value, "|");
 			String url_1 = st.nextToken();  // "execute"
 			String url_2 = st.nextToken();  // "패키지명.클래스명"
+
 			
 			try {
 				Class url = Class.forName(url_2);
@@ -63,6 +64,7 @@ public class FrontController extends HttpServlet {
 				forward = action.execute(request, response);
 				
 			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else {  // value 값이 "execute" 가 아닌 경우

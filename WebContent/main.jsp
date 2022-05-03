@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div align="center">
+	   <hr width="65%" color="gray">
+	      <h3>쇼핑몰 메인 페이지</h3>
+	   <hr width="65%" color="gray">
+	   <br>
+	   
+	   <a href="<%=request.getContextPath() %>/seller_list.do">[상품관리]</a>
+	   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+	   <a href="<%=request.getContextPath() %>/admin_login.do">[주문관리]</a>
+	   
+	</div>
 </body>
 </html>
