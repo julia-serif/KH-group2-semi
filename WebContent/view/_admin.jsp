@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
+=======
+    pageEncoding="UTF-8"%>
+>>>>>>> 13dca13c916d9ea2dd070dc26f6c6a7a81e3c77d
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>관리자 페이지</title>
 <style type="text/css">
 body{
@@ -33,5 +38,11 @@ border: 1px solid black;
 	</div>
 	
 	<div class="section">본문</div>
+=======
+<title>Insert title here</title>
+</head>
+<body>
+<h1>관리자</h1>
+>>>>>>> 13dca13c916d9ea2dd070dc26f6c6a7a81e3c77d
 </body>
 </html>
