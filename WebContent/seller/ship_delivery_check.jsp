@@ -7,21 +7,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매 실적 관리</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<jsp:include page="../include/seller_order_manage_top.jsp" />
+	<jsp:include page="../include/seller_ship_manage_top2.jsp" />
 	
 	<div align="center">
-		<h3>판매 실적 관리</h3>
+		<br>
 		<table border="1" cellspacing="0" width="800">
 			<tr>
-				<th>주문 번호</th>
 				<th>상품주문번호</th>
-				<th>상품명</th>
-				<th>주문 수량</th>
-				<th>주문 금액</th>
-				<th>주문 날짜</th>
+				<th>상품번호</th>
+				<th>수량</th>
+				<th>금액</th>
+				<th>주문자</th>
+				<th>배송주소</th>
+				<th>주문날짜</th>
+				<th>배송상태</th>
 			</tr>
 			
 			<c:set var="list" value="${productList }" />
@@ -34,7 +37,7 @@
 			</c:if>
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="6" align="center">목록이 없습니다.</td>
+					<td colspan="8" align="center">목록이 없습니다.</td>
 				</tr>
 			</c:if>
 		</table>

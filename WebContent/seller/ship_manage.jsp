@@ -8,24 +8,37 @@
 <head>
 <meta charset="UTF-8">
 <title>배송 관리</title>
+<script type="text/javascript">
+	
+	function new_order_list(){
+		
+		$.ajax({
+			success: function(data) {
+				
+			},
+			error: function(data) {
+				alert("통신 오류가 발생하였습니다.");
+			}
+		});
+	}
+	
+	function delivery_check(){
+		
+		$.ajax({
+			success: function(data) {
+				
+			},
+			error: function(data) {
+				alert("통신 오류가 발생하였습니다.");
+			}
+		});
+	}
+
+</script>
 </head>
 <body>
-	<div align="center">
-		<h3>배송 관리</h3>
-		<table border="1" cellspacing="0" width="800">
-			<tr>
-				<th>여기에 컬럼들 들어가야 함</th>
-			</tr>
-			
-			<c:set var="list" value="${productList }" />
-			<c:if test="${!empty list }">
-				<c:forEach items="${list }" var="dto">
-					<tr>
-						<td>여기에 DB에서 받은 list 떠야 함</td>
-					</tr>
-				</c:forEach>
-			</c:if>
-		</table>
-	</div>
+	<jsp:include page="../include/seller_order_manage_top.jsp" />
+	<jsp:include page="../include/seller_ship_manage_top2.jsp" />
+	
 </body>
 </html>
