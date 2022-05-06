@@ -42,7 +42,7 @@ public class SignInOkAction implements Action {
 					out.println("</script>");
 				}
 			}else if(dto.getUser_grade().equals("관리자")) {
-				forward.setPath("view/_admin.jsp");
+				forward.setPath("admin/admin_main.jsp");
 			}else if(dto.getUser_grade().equals("구매자")){
 				forward.setPath("view/_custommer.jsp");
 			}else {
