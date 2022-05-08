@@ -32,16 +32,16 @@
 
 	<div align="center">
 		<hr width="65%">
-		<h2>${param.seller_id}님 주문 관리 페이지</h2>
+		<h2>${sessionScope.user_name}님 주문 관리 페이지</h2>
 		
 		<ul id="seller_navigation">
 			<li>
-				<a href="<%=request.getContextPath()%>/seller_ship_manage.do?seller_id
-				=${param.seller_id}" id="subtitle">[배송 관리]</a>
+				<a href="<%=request.getContextPath()%>/seller_ship_manage.do"
+				 id="subtitle">[배송 관리]</a>
 			</li>
 			<li>
-				<a href="<%=request.getContextPath()%>/seller_sales_perform.do?seller_id
-				=${param.seller_id}" id="subtitle">[판매 실적 확인]</a>
+				<a href="<%=request.getContextPath()%>/seller_sales_perform.do"
+				 id="subtitle">[판매 실적 확인]</a>
 			</li>
 		</ul>
 		

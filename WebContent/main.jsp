@@ -28,9 +28,5 @@
 			</div>
 		</div>
 	</div>
-
-		<h3>판매자 로그인</h3>
-		<form method="post" action="<%=request.getContextPath()%>/seller_order_manage.do">
-		</form>
 </body>
 </html>

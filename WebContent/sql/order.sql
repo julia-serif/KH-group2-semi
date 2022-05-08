@@ -25,3 +25,5 @@ create table ks_product_order(
 	seller_id varchar2(20) references shop_user(user_id)	--판매자
 );
 
+insert into shop_user values(user_seq.nextval,'seller1','1234','김판매',27,'010-1311-2341'
+,'kim@naver.com','서울시 마포구',0,'판매자',1,sysdate);

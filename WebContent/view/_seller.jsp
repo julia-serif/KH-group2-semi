@@ -7,10 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
-<h1>판매자 페이지 연결</h1>
-=======
-<h1>판매자</h1>
->>>>>>> 13dca13c916d9ea2dd070dc26f6c6a7a81e3c77d
+
+	<div align="center">
+		<h1>판매자 페이지</h1>
+		<a href="<%=request.getContextPath() %>/seller_order_manage.do">주문 관리</a>
+		&nbsp;&nbsp;&nbsp;
+		<a>상품 관리</a>
+	</div>
+
 </body>
 </html>
