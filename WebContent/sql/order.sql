@@ -26,4 +26,4 @@ create table ks_product_order(
 );
 
 insert into shop_user values(user_seq.nextval,'seller1','1234','김판매',27,'010-1311-2341'
-,'kim@naver.com','서울시 마포구',0,'판매자',1,sysdate);
+,'kim@naver.com','서울시 마포구',0,'판매자',1,sysdate); --관리자 승인 받은 판매자, 테스트용
