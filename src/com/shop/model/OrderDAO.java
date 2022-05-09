@@ -79,43 +79,43 @@ public class OrderDAO {
 		
 	}  // closeConn() 메서드 end
 	
-	public List<OrderDTO> getProductList(String seller_id) {
-		
-		List<OrderDTO> list = new ArrayList<OrderDTO>();
-		
-		try {
-			openConn();
-			
-			sql = "select * from ks_order where seller_id = ?"
-					+ "order by order_no desc";
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, seller_id);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				OrderDTO dto = new OrderDTO();
-				
-				dto.setOrder_no(rs.getInt("order_no"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setOrder_date(rs.getString("order_date"));
-				dto.setPayment_date(rs.getString("payment_date"));
-				dto.setRecipient(rs.getString("recipient"));
-				dto.setRecipient_phone(rs.getString("recipient_phone"));
-				dto.setAddress1(rs.getString("address1"));
-				dto.setAddress2(rs.getString("address2"));
-				dto.setAddress3(rs.getString("address3"));
-				dto.setSeller_id(rs.getString("seller_id"));
-				
-				list.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		
-		return list;
-	}
+//	public List<OrderDTO> getProductList(String seller_id) {
+//		
+//		List<OrderDTO> list = new ArrayList<OrderDTO>();
+//		
+//		try {
+//			openConn();
+//			
+//			sql = "select * from ks_order where seller_id = ?"
+//					+ "order by order_no desc";
+//			
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, seller_id);
+//			rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				OrderDTO dto = new OrderDTO();
+//				
+//				dto.setOrder_no(rs.getInt("order_no"));
+//				dto.setUser_id(rs.getString("user_id"));
+//				dto.setOrder_date(rs.getString("order_date"));
+//				dto.setPayment_date(rs.getString("payment_date"));
+//				dto.setRecipient(rs.getString("recipient"));
+//				dto.setRecipient_phone(rs.getString("recipient_phone"));
+//				dto.setAddress1(rs.getString("address1"));
+//				dto.setAddress2(rs.getString("address2"));
+//				dto.setAddress3(rs.getString("address3"));
+//				dto.setSeller_id(rs.getString("seller_id"));
+//				
+//				list.add(dto);
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			closeConn(rs, pstmt, con);
+//		}
+//		
+//		return list;
+//	}
 }
