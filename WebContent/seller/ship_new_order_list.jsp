@@ -17,6 +17,7 @@
 		<br>
 		<table border="1" cellspacing="0" width="800">
 			<tr>
+				<th>주문번호</th>
 				<th>상품주문번호</th>
 				<th>상품번호</th>
 				<th>수량</th>
@@ -37,7 +38,7 @@
 			</c:if>
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="8" align="center">목록이 없습니다.</td>
+					<td colspan="9" align="center">목록이 없습니다.</td>
 				</tr>
 			</c:if>
 		</table>

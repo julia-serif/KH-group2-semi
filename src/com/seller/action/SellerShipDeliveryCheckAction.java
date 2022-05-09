@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.OrderDAO;
-import com.shop.model.OrderDTO;
+import com.shop.model.ProductOrderDAO;
+import com.shop.model.ProductOrderDTO;
 
 public class SellerShipDeliveryCheckAction implements Action {
 
@@ -19,9 +19,9 @@ public class SellerShipDeliveryCheckAction implements Action {
 
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		
-		OrderDAO dao = OrderDAO.getInstance();
+		ProductOrderDAO dao = ProductOrderDAO.getInstance();
 		
-		List<OrderDTO> list = dao.getProductList(user_id);
+		List<ProductOrderDTO> list = dao.getProductList(user_id);
 		
 		request.setAttribute("productList", list);
 		
