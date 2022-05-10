@@ -17,18 +17,19 @@
 </head>
 <body>
 
-
 	<div align="center">
 	
 	   <ul>
 	      
-	      <li> <a href="<%=request.getContextPath() %>/admin_cart_input.do">판매 상품 목록</a>
-
-	      <li> <a href="<%=request.getContextPath() %>/admin_cart_list.do">판매 상품 등록</a>
+	      <li> <a href="<%=request.getContextPath() %>/sell_cart_input.do">카테고리 등록</a>
 	      
-	      <li> <a href="<%=request.getContextPath() %>/admin_cart_list.do">판매 상품 관리(수정)</a>
+	      <li> <a href="<%=request.getContextPath() %>/sell_cart_list.do">카테고리 목록</a>
+	         
+	      <li> <a href="<%=request.getContextPath() %>/sellProLIst.do">판매 상품 목록</a>
 
-	      <li> <a href="<%=request.getContextPath() %>/admin_product_input.do">상품 문의 관리</a>
+	      <li> <a href="<%=request.getContextPath() %>/sellProPinput.do">판매 상품 등록</a>
+	      
+	      <li> <a href="<%=request.getContextPath() %>/sellProQues.do">상품 문의 관리</a>
 	   
 	   </ul>
 	

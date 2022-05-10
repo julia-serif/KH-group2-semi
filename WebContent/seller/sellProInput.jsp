@@ -29,7 +29,7 @@
 	            <td>
 	               <select name="p_category">
 	                  <c:if test="${empty list }">
-	                     <option value="">:::카테고리 코드 없음:::</option>
+	                     <option value="">:::카테고리:::</option>
 	                  </c:if>
 	                  
 	                  <c:if test="${!empty list }">
