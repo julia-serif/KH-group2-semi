@@ -1,4 +1,4 @@
-package com.shop.model;
+package com.seller.model;
 
 public class ProductOrderDTO {
 	// 주문 테이블과 상품주문테이블을 조인한 view_product_order_list의 컬럼과 동일하게 멤버변수 구성

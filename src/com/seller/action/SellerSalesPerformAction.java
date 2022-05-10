@@ -6,10 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seller.model.SalesPerformanceDAO;
+import com.seller.model.SalesPerformanceDTO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.ProductOrderDAO;
-import com.shop.model.ProductOrderDTO;
 
 public class SellerSalesPerformAction implements Action {
 
@@ -19,9 +19,9 @@ public class SellerSalesPerformAction implements Action {
 
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		
-		ProductOrderDAO dao = ProductOrderDAO.getInstance();
+		SalesPerformanceDAO dao = SalesPerformanceDAO.getInstance();
 		
-		List<ProductOrderDTO> list = dao.getProductList(user_id);
+		List<SalesPerformanceDTO> list = dao.getProductList(user_id);
 		
 		request.setAttribute("productList", list);
 		

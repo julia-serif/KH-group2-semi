@@ -6,10 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seller.model.ProductOrderDAO;
+import com.seller.model.ProductOrderDTO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.ProductOrderDAO;
-import com.shop.model.ProductOrderDTO;
 
 public class SellerShipNewOrderListAction implements Action {
 
