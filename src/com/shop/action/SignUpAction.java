@@ -13,11 +13,15 @@ public class SignUpAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
+		int user_age;
 		String user_id=request.getParameter("id").trim();//1
 		String user_pwd=request.getParameter("pwd").trim();//2
 		String user_name=request.getParameter("name").trim();//3
-		int user_age=Integer.parseInt(request.getParameter("age").trim());//4
+		if(request.getParameter("age")=="") {
+			user_age=-100;
+		}else {
+			user_age=Integer.parseInt(request.getParameter("age").trim());//4
+		}
 			String phone1=request.getParameter("phone1").trim();
 			String phone2=request.getParameter("phone2").trim();
 			String phone3=request.getParameter("phone3").trim();
@@ -45,13 +49,28 @@ public class SignUpAction implements Action {
 		ActionForward forward = new ActionForward();
 		PrintWriter out = response.getWriter();
 		
-		if(check>0) {
+			if(check>0) {
 			System.out.println("가입완료");
 			forward.setRedirect(false);  
 			forward.setPath("main.jsp");
-			}else {//실패 처리 해야함
+			}else if(check==-1) {
 				out.println("<script>");
-				out.println("alert('회원가입 실패')");
+				out.println("alert('ID가 중복되었습니다.')");
+				out.println("history.back()");
+				out.println("</script>");
+			}else if(check==-2) {
+				out.println("<script>");
+				out.println("alert('phone 번호가 중복되었습니다.')");
+				out.println("history.back()");
+				out.println("</script>");
+			}else if(check==-3) {
+				out.println("<script>");
+				out.println("alert('email이 중복되었습니다.')");
+				out.println("history.back()");
+				out.println("</script>");
+			}else if(check==-4) {
+				out.println("<script>");
+				out.println("alert('빈란이 존재합니다.')");
 				out.println("history.back()");
 				out.println("</script>");
 			}

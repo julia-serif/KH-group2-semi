@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+th{
+	text-align: center;
+	font-size: 17px;
+	font-family: 명조;
+}
+
+td{
+	text-align:center;
+	font-size: 15px;
+	font-family: 명조;
+}
+
+a{
+	text-decoration: none;
+}
+a:link {
+  color : red;
+}
+a:visited {
+  color : #00ff00;
+}
+a:hover {
+  color : blue;
+}
+.center{
+	text-align: center;
+}
+
+.arti{
+margin-left: 250px;
+background-color: rgb(241, 248, 244);
+}
+
+body, html,table {
+background-color: rgb(241, 248, 244);
+}
+
+
+

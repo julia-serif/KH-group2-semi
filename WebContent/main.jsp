@@ -6,27 +6,25 @@
 <meta charset="UTF-8">
 <title>쇼핑몰</title>
 
-<link rel="stylesheet" href="./css/mainpage2.css">
+<link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
 	<div id="container">
 
-		<div id="logo">쇼핑몰</div>
-
-		<div id="signup">
-			<a href="view/sign_in.jsp">로그인</a>
-		</div>
-
 		<div id="main">
 			<div id="intro">
-				<p>환영합니다.</p>
+				<h2>Shopping<br> Mall</h2>
 			</div>
+            <div id="intro2">
+                <h5>Semi Project 2조</h5>
+            </div>
 
 			<div id="start">
-				<a href="view/sign_in.jsp">시작하기 ></a>
+				<a href="view/sign_in.jsp">Start ></a>
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>

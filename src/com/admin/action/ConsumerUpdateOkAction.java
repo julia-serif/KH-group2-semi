@@ -10,30 +10,34 @@ import javax.servlet.http.HttpServletResponse;
 import com.shop.action.Action;
 import com.shop.action.ActionForward;
 import com.shop.model.AdminDAO;
+import com.shop.model.UserDTO;
 
-public class SellerApproveOkAction implements Action {
+public class ConsumerUpdateOkAction implements Action {
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
-		int user_no = Integer.parseInt(request.getParameter("user_no").trim());
-		AdminDAO dao = AdminDAO.getInstance();
-
-		int check = dao.approve(user_no);
+		int user_mileage=Integer.parseInt(request.getParameter("user_mileage").trim());
+		int user_no=Integer.parseInt(request.getParameter("user_no").trim());
+		UserDTO dto= new UserDTO();
+		dto.setUser_no(user_no);
+		dto.setUser_mileage(user_mileage);
 		
+		AdminDAO dao= AdminDAO.getInstance();
+		int check= dao.updateUser(dto);
+	
 		ActionForward forward = new ActionForward();
 		PrintWriter out = response.getWriter();
 		
-		if (check > 0) {
+		if(check > 0) {
 			forward.setRedirect(true);
-			forward.setPath("admin_seller_approve.do");
-
-		} else {
+			forward.setPath("admin_manage_consumer.do");
+		}else {
 			out.println("<script>");
-			out.println("alert('제품 정보 수정 실패~~~')");
+			out.println("alert('마일리지 수정 실패~~~')");
 			out.println("history.back()");
 			out.println("</script>");
 		}
-
+		
 		return forward;
 	}
 

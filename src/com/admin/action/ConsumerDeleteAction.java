@@ -1,6 +1,7 @@
 package com.admin.action;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.action.Action;
 import com.shop.action.ActionForward;
-import com.shop.model.UserDAO;
+import com.shop.model.AdminDAO;
 
 public class ConsumerDeleteAction implements Action {
 
@@ -16,7 +17,7 @@ public class ConsumerDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		int user_no = Integer.parseInt(request.getParameter("user_no").trim());
-		UserDAO dao = UserDAO.getInstance();
+		AdminDAO dao = AdminDAO.getInstance();
 
 		int check = dao.deleteuser(user_no);
 	
@@ -24,8 +25,8 @@ public class ConsumerDeleteAction implements Action {
 		PrintWriter out = response.getWriter();
 		
 		if (check > 0) {
-			forward.setRedirect(false);
-			forward.setPath("admin/admin_user_list_consumer.jsp");
+			forward.setRedirect(true);
+			forward.setPath("admin_manage_consumer.do");
 
 		} else {
 			out.println("<script>");

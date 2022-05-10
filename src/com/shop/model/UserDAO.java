@@ -69,41 +69,7 @@ public class UserDAO {
 
 	} // closeConn() 메서드 end
 
-	public List<UserDTO> getUserList() {
-		List<UserDTO> list = new ArrayList<UserDTO>();
-
-		try {
-			openConn();
-			sql = "select * from shop_user";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				UserDTO dto = new UserDTO();
-				dto.setUser_no(rs.getInt("user_no"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setUser_pwd(rs.getString("user_pwd"));
-				dto.setUser_name(rs.getString("user_name"));
-				dto.setUser_age(rs.getInt("user_age"));
-				dto.setUser_phone(rs.getString("user_phone"));
-				dto.setUser_email(rs.getString("user_email"));
-				dto.setUser_addr(rs.getString("user_addr"));
-				dto.setUser_mileage(rs.getInt("user_mileage"));
-				dto.setUser_grade(rs.getString("user_grade"));
-				dto.setUser_level(rs.getInt("user_level"));
-				dto.setUser_date(rs.getString("regdate"));
-				list.add(dto);
-
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-
-	public int signup(UserDTO dto) {
+	public int signup(UserDTO dto) { //회원가입 메소드
 		int result = 0, count = 0;
 		try {
 			openConn();
@@ -113,12 +79,43 @@ public class UserDAO {
 			if (rs.next()) {
 				count = rs.getInt(1) + 1;
 			}
+			sql="select user_id,user_phone, user_email from shop_user";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				String id=rs.getString(1);
+				String phone=rs.getString(2);
+				String email=rs.getString(3);
+				//회원가입 데이터중에 테이블의 유티크 컬럼에 중복이 발생하는 경우
+				if(id.equals(dto.getUser_id())) {//아이디가 중복이면 -1;
+					result=-1;
+					break;
+				}else if (phone.equals(dto.getUser_phone())) {//폰번호가 중복이면 -2;
+					result=-2;
+					break;
+				}else if(email.equals(dto.getUser_email())) {//이메일이 중복이면 -3;
+					result=-3;
+					break;
+				}	
+			}
+			if(dto.getUser_id().equals("")||
+				dto.getUser_pwd().equals("")||
+				dto.getUser_name().equals("")||
+				dto.getUser_email().equals("")||
+				dto.getUser_addr().equals("")||
+				dto.getUser_age()==-100
+				){
+				result=-4;//회원가입 폼에 빈칸이 존재하는 경우 -4;
+			}
+					
+			if(result==0) {// 정상 가입
 			sql = "insert into shop_user " + " values(?, ?, ?, ?, ?, ?, ?, ?,default,?,?,sysdate)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getUser_id());
 			pstmt.setString(3, dto.getUser_pwd());
 			pstmt.setString(4, dto.getUser_name());
+			System.out.println(dto.getUser_age());
 			pstmt.setInt(5, dto.getUser_age());
 			pstmt.setString(6, dto.getUser_phone());
 			pstmt.setString(7, dto.getUser_email());
@@ -130,8 +127,7 @@ public class UserDAO {
 				pstmt.setInt(10, 1);
 			}
 			result = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
+			}} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -167,17 +163,17 @@ public class UserDAO {
 		}
 		return result;
 	}
-	public String Overlap(String id) {
+	
+	public String Overlap(String id) {//회원가입 창에서 아이디가 DB의 데이터와 중복되는지 검사하는 메소드
 		String result="사용 가능합니다.";
 		try {
 			openConn();
-			sql="select*from shop_user where id =?";
+			sql="select*from shop_user where user_id =?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
-			
 			if(rs.next()) {// true인 경우 중복인 경우
-				result="중복입니다.";
+				result="해당 아이디는 중복된 아이디입니다.";
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -222,13 +218,12 @@ public class UserDAO {
 		}
 		return dto;
 	}
-
-	public List<UserDTO> getSellerList() {
+	public List<UserDTO> getUserList() {
 		List<UserDTO> list = new ArrayList<UserDTO>();
 
 		try {
 			openConn();
-			sql = "select * from shop_user where user_grade='판매자' and user_level=1 ";
+			sql = "select * from shop_user order by user_no";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -255,121 +250,5 @@ public class UserDAO {
 			closeConn(rs, pstmt, con);
 		}
 		return list;
-	}
-
-	public List<UserDTO> getConsumerList() {
-		List<UserDTO> list = new ArrayList<UserDTO>();
-
-		try {
-			openConn();
-			sql = "select * from shop_user where user_grade='구매자'";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				UserDTO dto = new UserDTO();
-				dto.setUser_no(rs.getInt("user_no"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setUser_pwd(rs.getString("user_pwd"));
-				dto.setUser_name(rs.getString("user_name"));
-				dto.setUser_age(rs.getInt("user_age"));
-				dto.setUser_phone(rs.getString("user_phone"));
-				dto.setUser_email(rs.getString("user_email"));
-				dto.setUser_addr(rs.getString("user_addr"));
-				dto.setUser_mileage(rs.getInt("user_mileage"));
-				dto.setUser_grade(rs.getString("user_grade"));
-				dto.setUser_level(rs.getInt("user_level"));
-				dto.setUser_date(rs.getString("regdate"));
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-
-	public List<UserDTO> getApproveList() {
-		List<UserDTO> list = new ArrayList<UserDTO>();
-
-		try {
-			openConn();
-			sql = "select * from shop_user where user_grade='판매자' and user_level=0 ";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				UserDTO dto = new UserDTO();
-				dto.setUser_no(rs.getInt("user_no"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setUser_pwd(rs.getString("user_pwd"));
-				dto.setUser_name(rs.getString("user_name"));
-				dto.setUser_age(rs.getInt("user_age"));
-				dto.setUser_phone(rs.getString("user_phone"));
-				dto.setUser_email(rs.getString("user_email"));
-				dto.setUser_addr(rs.getString("user_addr"));
-				dto.setUser_mileage(rs.getInt("user_mileage"));
-				dto.setUser_grade(rs.getString("user_grade"));
-				dto.setUser_level(rs.getInt("user_level"));
-				dto.setUser_date(rs.getString("regdate"));
-				list.add(dto);
-
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return list;
-	}
-
-	public int approve(int num) {
-		int result = 0;
-		try {
-			openConn();
-			sql = "update shop_user set user_level=1 where user_no=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			System.out.println("@@@@@@1");
-			result = pstmt.executeUpdate();
-			System.out.println("@@@@@@2");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return result;
-	}
-
-	public int deleteuser(int num) {
-		int result = 0;
-
-		try {
-			openConn();
-
-			sql = "delete from shop_user where user_no = ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setInt(1, num);
-
-			result = pstmt.executeUpdate();
-
-			sql = "update shop_user set user_no = user_no - 1 where user_no > ?";
-
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setInt(1, num);
-
-			pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return result;
 	}
 }
