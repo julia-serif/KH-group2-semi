@@ -1,19 +1,33 @@
-
+<%@page import="com.shop.model.Ks_ProductDTO"%>
+<%@page import="com.shop.model.Ks_ProductDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.shop.model.Shop_UserDTO"%>
+<%@page import="com.shop.model.Shop_UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../CSS/top.css">
 </head>
 <body>
-
- 	<div align="center">
+<!-- 로그인 후 -->
+ <div class="container">
+ 	<c:set var="dto" value="${userid }"/>
  	<input type="hidden" name="userid" value="${userid }"> 
- 	 	<table border="1" cellspacing="0">
+ 	<input type="hidden" name="userpwd" value="${userpwd }"> 
+ 	<input type="hidden" name="username" value="${username }"> 
+ 	<input type="hidden" name="userage" value="${userage }"> 
+ 	<input type="hidden" name="userphone" value="${userphone }"> 
+ 	<input type="hidden" name="user_mileage" value="${user_mileage }"> 
+  	
+ 	 	<table class="top_line col-12">
  	 	 	<tr>
  	 	 	 	<td colspan="5" align="right">
  	 	 	 	<a href="#">${username }님 </a>
@@ -46,19 +60,23 @@
  	 	 	    </div>
  	 	 	 	</td>
  	 	 	 	<td>
- 	 	 	 	 <img src="image/쿠팡로고.png" width="300" height="100">
+ 	 	 	 	<a href="<%=request.getContextPath() %>/home.do">
+ 	 	 	 	<img src="image/쿠팡로고.png" width="250" height="100"></a> 
  	 	 	 	</td>
  	 	 	 	<td>
  	 	 	 	 	<form method="post" 
  	 	 	 	 	   action="<%=request.getContextPath() %>/search.do">
+ 	 	 	 	 	 <div class="search1">
  	 	 	 	 	 	<select name="find_field">
  	 	 	 	 	 	 	<option value="all">전체</option>
- 	 	 	 	 	 	 	<option value="food">식품</option>
- 	 	 	 	 	 	 	<option value="#">악기</option>
- 	 	 	 	 	 	 	<option value="#">도서</option>
+ 	 	 	 	 	 	 	<option value="name">식품</option>
+ 	 	 	 	 	 	 	<option value="name">악기</option>
+ 	 	 	 	 	 	 	<option value="name">도서</option>
  	 	 	 	 	 	</select>
- 	 	 	 	 	 	<input type="text" name="find_name"> 	 	
- 	 	 				<input type="submit" value="검색">	 	 	 	 	 	
+ 	 	 	 	 	 	<input type="text" name="find_name"
+ 	 	 	 	 	 	 placeholder="찾고 싶은 물건을 검색해보세요!"> 	 	
+ 	 	 				<input type="submit" value="검색">	
+ 	 	 			</div> 	 	 	 	 	
  	 	 	 	 	</form>
  	 	 	 	</td>
  	 	 	 	<td>
@@ -66,15 +84,17 @@
  	 	 	 	  	<button class="dropbtn">
  	 	 	 	  	 <span class="drop_icon"></span>
  	 	 	 	  	 마이페이지
- 	 	 	 	  	</button>
+ 	 	 	 	  	</button> 	 	 	  	
  	 	 	 	  	<div class="dropdown_content">
  	 	 	 	  	  <a href="<%=request.getContextPath()%>/order_list.do">주문목록</a>
+ 	 	 	 	  	 
  	 	 	 	  	  <a href="<%=request.getContextPath()%>/user_data.do">회원정보</a>
  	 	 	 	  	</div>
  	 	 	    </div>	
- 	 	 	    <a href="<%=request.getContextPath()%>/">장바구니</a>
- 	 	 	 	</td>
+ 	 	 	    </td>
+ 	 	 	   <td><a href="<%=request.getContextPath()%>/">장바구니</a></td>
  	 	 	</tr>
+ 	 	 	
  	 	</table>
  	</div>
 
