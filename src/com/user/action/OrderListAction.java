@@ -23,7 +23,7 @@ public class OrderListAction implements Action {
 		
 		HttpSession session = request.getSession();
 		
-		String userid = (String)request.getAttribute("userid");
+		String userid = (String)session.getAttribute("userid");
 		
 		Ks_CartDAO dao = Ks_CartDAO.getInstance();
 		

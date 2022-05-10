@@ -17,11 +17,12 @@ public class FoodAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 저장된 카테고리를 가져와 뷰페이지로 이동하는 비즈니스 로직
 		
+		
 		Ks_ProductDAO dao = Ks_ProductDAO.getInstance();
 		
-		Ks_ProductDTO dto = dao.getKsProductCode();
+		List<Ks_ProductDTO> list = dao.getKsProductList();
 		
-		request.setAttribute("productCode", dto);
+		request.setAttribute("productCode", list);
 		
 		ActionForward forward = new ActionForward();
 		

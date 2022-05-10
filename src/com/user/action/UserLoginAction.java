@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_UserDAO;
-import com.shop.model.Ks_UserDTO;
+import com.shop.model.Shop_UserDAO;
+import com.shop.model.Shop_UserDTO;
 
 public class UserLoginAction implements Action {
 
@@ -21,7 +21,7 @@ public class UserLoginAction implements Action {
 		String user_id = request.getParameter("user_id");
 		String user_pwd = request.getParameter("user_pwd");
 		
-		Ks_UserDAO dao = Ks_UserDAO.getInstance();
+		Shop_UserDAO dao = Shop_UserDAO.getInstance();
 		
 		int check = dao.getUserCheck(user_id,user_pwd);
 		
@@ -32,13 +32,19 @@ public class UserLoginAction implements Action {
 		HttpSession session = request.getSession();
 		
 		if(check > 0) {
-			Ks_UserDTO dto = dao.getKs_User(user_id);
+			Shop_UserDTO dto = dao.getUserId(user_id);
 			
 			session.setAttribute("userid", dto.getUser_id());
+			session.setAttribute("userpwd", dto.getUser_pwd());
 			session.setAttribute("username", dto.getUser_name());
-			
+			session.setAttribute("userage", dto.getUser_age());
+			session.setAttribute("userphone", dto.getUser_phone());
+			session.setAttribute("useremail", dto.getUser_email());
+			session.setAttribute("user_addr", dto.getUser_addr());
+			session.setAttribute("user_mileage", dto.getUser_mileage());
+		
 			forward.setRedirect(true);
-			forward.setPath("user_main.do");
+			forward.setPath("usermain.do");
 			
 		}else if(check == -1) {
 			// 비밀번호가 틀린경우

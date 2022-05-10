@@ -11,26 +11,28 @@ import com.shop.controller.ActionForward;
 import com.shop.model.Shop_UserDAO;
 import com.shop.model.Shop_UserDTO;
 
-public class UserDataAction implements Action {
+public class UpdataAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// get방식으로 넘어온 아이디에 해당하는 유저의 정보를 가져오는 비즈니스 로직
-				
-		String userid = request.getParameter("userid");
+		// get방식으로 넘어온 회원번호에 해당하는 회원의 정보를
+		// DB에서 조회하여 수정 폼 페이지로 이동하는 비즈니스 로직
+		
+		HttpSession session = request.getSession();
+		
+		String userId = (String)session.getAttribute("userid");
 		
 		Shop_UserDAO dao = Shop_UserDAO.getInstance();
 		
-		Shop_UserDTO dto = dao.getUserId(userid);
+		Shop_UserDTO dto = dao.getUserId(userId);
 		
-		request.setAttribute("userupdate", dto);
+		request.setAttribute("updata", dto);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("user/user_updata.jsp");
-		
+		forward.setPath("user/user_updata_ok.jsp");
 		
 		return forward;
 	}

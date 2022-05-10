@@ -11,27 +11,26 @@ import com.shop.controller.ActionForward;
 import com.shop.model.Ks_ProductDAO;
 import com.shop.model.Ks_ProductDTO;
 
-public class SearchAction implements Action {
+public class CategoryCodeAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 검색 폼 창에서 넘어온 검색어를 가지고 
-		// DB에서 검색어에 해당하는 모든 게시물을 반환하여 뷰페이지로 이동하는 비즈니스 로직
+		// get방식으로 넘어온 카테고리 코드에 해당하는 제품 리스트를
+		// DB에서 조회하여 view page로 이동시키는 비지니스 로직
 		
-		String find_field = request.getParameter("find_field").trim();
-		String find_name = request.getParameter("find_name").trim();
+		String code = request.getParameter("code").trim();
 		
 		Ks_ProductDAO dao = Ks_ProductDAO.getInstance();
 		
-		List<Ks_ProductDTO> list = dao.getSearchProduct(find_field,find_name);
+		List<Ks_ProductDTO> list =  dao.getProductCode(code);
 		
-		request.setAttribute("searchlist", list);
+		request.setAttribute("code", list);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("user/search.jsp");
+		forward.setPath("user/categorycode.jsp");
 		
 		return forward;
 	}

@@ -25,7 +25,7 @@ public class AskAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
-		forward.setRedirect(true);
+		forward.setRedirect(false);
 		
 		forward.setPath("user/ask.jsp");
 		
