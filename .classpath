@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="com/admin/action/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/Julia/git/KH-group2-semi/WebContent/WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Julia/git/KH-group2-semi/WebContent/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Julia/git/KH-group2-semi/WebContent/WEB-INF/lib/standard.jar"/>
