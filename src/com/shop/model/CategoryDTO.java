@@ -4,13 +4,8 @@ public class CategoryDTO {
 
 	private int category_no;
 	private String category_code;
-<<<<<<< HEAD
  	private String category_name;
- 	
-=======
-	private String category_name;
-	
->>>>>>> 1b549eeb6af7162fe16915cfdaf85c32a38f1eaf
+
 	public int getCategory_no() {
 		return category_no;
 	}
@@ -29,13 +24,5 @@ public class CategoryDTO {
 	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
 	}
-<<<<<<< HEAD
- 	
- 	
 
-=======
-	
-	
-	
->>>>>>> 1b549eeb6af7162fe16915cfdaf85c32a38f1eaf
 }
