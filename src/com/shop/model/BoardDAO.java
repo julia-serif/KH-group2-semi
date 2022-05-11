@@ -332,7 +332,7 @@ public class BoardDAO {
 	}	// deleteBbs() 메서드 end
 	
 	
-	// qna_board 테이블에서 답변 글의 step을 하나 증가시키는 메서드
+	// jsp_bbs 테이블에서 답변 글의 step을 하나 증가시키는 메서드
 	public void replyUpdate(int group, int step) {
 		
 		
@@ -361,7 +361,7 @@ public class BoardDAO {
 	}	// replyUpdate() 메서드 end
 	
 	
-	// qna_board 테이블의 게시글 원글에 답변글을 추가하는 메서드
+	// jsp_bbs 테이블의 게시글 원글에 답변글을 추가하는 메서드
 	public int replyBbs(BoardDTO dto) {
 		
 		int result = 0, count = 0;

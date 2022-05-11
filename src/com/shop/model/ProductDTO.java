@@ -1,19 +1,26 @@
 package com.shop.model;
 
 public class ProductDTO {
+
+	private int pno;				//상품번호
+	private String pname;				//상품명
+	private String pcode;				//카테고리 코드
+	private String pcompany;			//제조사
+	private String pimage;				//상품이미지
+	private int pqty;				//상품 수량
+	private int price;				//가격
+	private String pspec;				//스펙
+	private String pcontents;			//설명
+	private int point;				//포인트
+	private String pinputdate;			//입고일
+	private String pseller;				//판매자
 	
-	private int pno;
-	private String pname;
-	private String pcode;
-	private String pcompany;
-	private String pimage;
-	private int pqty;
-	private int price;
-	private String pspec;
-	private String pcontents;
-	private int point;
-	private String pinputdate;
-	
+	public String getPseller() {
+		return pseller;
+	}
+	public void setPseller(String pseller) {
+		this.pseller = pseller;
+	}
 	public int getPno() {
 		return pno;
 	}
@@ -80,6 +87,6 @@ public class ProductDTO {
 	public void setPinputdate(String pinputdate) {
 		this.pinputdate = pinputdate;
 	}
-
 	
-}
+	
+}	
