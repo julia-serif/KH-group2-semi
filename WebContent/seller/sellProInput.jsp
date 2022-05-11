@@ -27,7 +27,7 @@
 	         <tr>
 	            <th>카테고리 코드</th>
 	            <td>
-	               <select name="p_category">
+	               <select name="ks_category">
 	                  <c:if test="${empty list }">
 	                     <option value="">:::카테고리:::</option>
 	                  </c:if>
