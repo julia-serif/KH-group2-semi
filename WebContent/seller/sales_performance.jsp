@@ -10,6 +10,8 @@
 <title>판매 실적 관리</title>
 </head>
 <body>
+	<jsp:include page="../include/seller_order_manage_top.jsp" />
+	
 	<div align="center">
 		<h3>판매 실적 관리</h3>
 		<table border="1" cellspacing="0" width="800">
@@ -17,8 +19,9 @@
 				<th>주문 번호</th>
 				<th>상품주문번호</th>
 				<th>상품명</th>
-				<th>주문 금액</th>
 				<th>주문 수량</th>
+				<th>주문 금액</th>
+				<th>주문 날짜</th>
 			</tr>
 			
 			<c:set var="list" value="${productList }" />
@@ -29,10 +32,12 @@
 					</tr>
 				</c:forEach>
 			</c:if>
+			<c:if test="${empty list }">
+				<tr>
+					<td colspan="6" align="center">목록이 없습니다.</td>
+				</tr>
+			</c:if>
 		</table>
-		<c:if test="${empty list }">
-			<h3>안됐답니다</h3>
-		</c:if>
 	</div>
 </body>
 </html>

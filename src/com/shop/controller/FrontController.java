@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 public class FrontController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -45,7 +46,6 @@ public class FrontController extends HttpServlet {
 		FileInputStream fis = 
 				new FileInputStream("C:\\Users\\nsims\\git\\KH-group2-semi\\src\\com\\shop\\controller\\mapping.properties");
 
-		
 		prop.load(fis);
 		
 		String value = prop.getProperty(command);

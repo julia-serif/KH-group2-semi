@@ -1,4 +1,4 @@
-package com.shop.model;
+package com.seller.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class OrderDAO {
+public class ProductOrderDAO {
 	
 	Connection con = null;             // DB 연결하는 객체.
 	PreparedStatement pstmt = null;    // DB에 SQL문을 전송하는 객체.
@@ -21,15 +21,14 @@ public class OrderDAO {
 	
 	
 	// DAO 객체를 싱글톤 방식으로 생성
-	private static OrderDAO instance = null;
+	private static ProductOrderDAO instance = null;
 	
-	
-	private OrderDAO() {   }
+	private ProductOrderDAO() {   }
 		
-	public static OrderDAO getInstance() {
+	public static ProductOrderDAO getInstance() {
 		
 		if(instance == null) {
-			instance = new OrderDAO();
+			instance = new ProductOrderDAO();
 		}
 		return instance;
 		
@@ -79,33 +78,33 @@ public class OrderDAO {
 		
 	}  // closeConn() 메서드 end
 	
-	public List<OrderDTO> getProductList(String seller_id) {
+	public List<ProductOrderDTO> getProductList(String seller_id) {
 		
-		List<OrderDTO> list = new ArrayList<OrderDTO>();
+		List<ProductOrderDTO> list = new ArrayList<ProductOrderDTO>();
 		
 		try {
 			openConn();
 			
-			sql = "select * from ks_order where seller_id = ?"
-					+ "order by order_no desc";
+			sql = "select * from view_product_order_list where seller_id = ?"
+					+ "order by order_no desc, product_order_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, seller_id);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				OrderDTO dto = new OrderDTO();
+				ProductOrderDTO dto = new ProductOrderDTO();
 				
-				dto.setOrder_no(rs.getInt("order_no"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setOrder_date(rs.getString("order_date"));
-				dto.setPayment_date(rs.getString("payment_date"));
-				dto.setRecipient(rs.getString("recipient"));
-				dto.setRecipient_phone(rs.getString("recipient_phone"));
-				dto.setAddress1(rs.getString("address1"));
-				dto.setAddress2(rs.getString("address2"));
-				dto.setAddress3(rs.getString("address3"));
 				dto.setSeller_id(rs.getString("seller_id"));
+				dto.setOrder_no(rs.getString("order_no"));
+				dto.setProduct_order_no(rs.getInt("product_order_no"));
+				dto.setProduct_no(rs.getInt("product_no"));
+				dto.setProduct_quantity(rs.getInt("product_quantity"));
+				dto.setProduct_price(rs.getInt("product_price"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setAddress(rs.getString("address"));
+				dto.setOrder_date(rs.getString("order_date"));
+				dto.setOrder_status(rs.getString("order_status"));
 				
 				list.add(dto);
 			}

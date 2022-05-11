@@ -6,29 +6,29 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seller.model.ProductOrderDAO;
+import com.seller.model.ProductOrderDTO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.OrderDAO;
-import com.shop.model.OrderDTO;
 
-public class SellerShipManageAction implements Action {
+public class SellerShipNewOrderListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 판매자의 id에 해당하는 주문 목록을 조회하여 배송 조회 페이지로 이동시키는 비지니스 로직.
+		// 판매자의 id에 해당하는 주문 목록을 조회하여 신규 주문 확인 페이지로 이동시키는 비지니스 로직.
 
-		String seller_id = request.getParameter("seller_id").trim();
+		String user_id = (String) request.getSession().getAttribute("user_id");
 		
-		OrderDAO dao = OrderDAO.getInstance();
+		ProductOrderDAO dao = ProductOrderDAO.getInstance();
 		
-		List<OrderDTO> list = dao.getProductList(seller_id);
+		List<ProductOrderDTO> list = dao.getProductList(user_id);
 		
 		request.setAttribute("productList", list);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("seller/ship_manage.jsp");
+		forward.setPath("seller/ship_new_order_list.jsp");
 		
 		return forward;
 	}

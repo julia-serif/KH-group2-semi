@@ -11,14 +11,7 @@
 </head>
 <body>
 
-	<div align="center">
-		<h3>${param.seller_id}님 주문 관리 페이지</h3>
-		<a href="<%=request.getContextPath()%>/seller_ship_manage.do?seller_id
-		=${param.seller_id}">배송 관리</a>
-		&nbsp;&nbsp;&nbsp;
-		<a href="<%=request.getContextPath()%>/seller_sales_perform.do?seller_id
-		=${param.seller_id}">판매 실적 확인</a>
-	</div>
+	<jsp:include page="../include/seller_order_manage_top.jsp" />
 
 </body>
 </html>

@@ -1,27 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>쇼핑몰</title>
+
+<link rel="stylesheet" href="./css/mainpage2.css">
 </head>
+
 <body>
-	<div align="center">
-		<h3>판매자 로그인</h3>
-		<form method="post" action="<%=request.getContextPath()%>/seller_order_manage.do">
-			<table border="1" cellspacing="0" width="350">
-				<tr>
-					<th>판매자 아이디</th>
-					<td> <input name="seller_id"> </td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="로그인">
-					</td>
-			</table>
-		</form>
+	<div id="container">
+
+		<div id="logo">쇼핑몰</div>
+
+		<div id="signup">
+			<a href="view/sign_in.jsp">로그인</a>
+		</div>
+
+		<div id="main">
+			<div id="intro">
+				<p>환영합니다.</p>
+			</div>
+
+			<div id="start">
+				<a href="view/sign_in.jsp">시작하기 ></a>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
