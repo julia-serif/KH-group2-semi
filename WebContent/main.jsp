@@ -24,7 +24,7 @@
 			</div>
 
 			<div id="start">
-				<a href="view/sign_in.jsp">시작하기> </a>
+				<a href="view/sign_in.jsp">시작하기>  </a>
 			</div>
 		</div>
 	</div>
