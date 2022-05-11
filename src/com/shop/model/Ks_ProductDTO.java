@@ -82,8 +82,5 @@ public class Ks_ProductDTO {
 		this.pinputdate = pinputdate;
 	}
 	
-	
-	
-	
-	
+
 }

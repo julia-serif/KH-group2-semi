@@ -6,12 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>판매자 승대 대기 페이지</title>
+<link rel="stylesheet" href="./css/admin.css">
+<link href="./css/admin_sidebar.css" rel="stylesheet">
+
+
 </head>
 <body>
-
-	<div align="center">
+	<%@ include file="admin_main_sidebar.jsp"%>
+	<div class="arti" align="center">
 
 		<h2>판매자 가입 승인 대기 목록</h2>
+		<br>
+		<br>
 		<table border="1" cellspacing="0" width="80%">
 			<tr>
 				<th>이름</th>
@@ -20,7 +26,7 @@
 				<th>이메일</th>
 				<th>주소</th>
 				<th>나이</th>
-				<th>가입일</th>
+				<th>가입 신청일</th>
 				<th>승인상태</th>
 			</tr>
 
@@ -36,7 +42,8 @@
 						<td>${dto.getUser_age() }</td>
 						<td>${dto.getUser_date() }</td>
 						<td><a
-							href="<%=request.getContextPath() %>/admin_seller_approve_ok.do?user_no=${dto.getUser_no() }">보류</a>
+							onclick="if(confirm('해당 회원의 가입을 승인하겠습니까?')){location.href='admin_seller_approve_ok.do?user_no=${dto.getUser_no() }'}
+							else{return;}">[승인하기]</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -51,6 +58,7 @@
 			</c:if>
 
 		</table>
+		<br> <a href="javascript:history.back();">뒤로가기</a>
 	</div>
 </body>
 </html>

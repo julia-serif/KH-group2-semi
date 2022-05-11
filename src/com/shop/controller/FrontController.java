@@ -42,7 +42,6 @@ public class FrontController extends HttpServlet {
 		
 		Properties prop = new Properties();
 
-
 		FileInputStream fis = 
 				new FileInputStream("C:\\Users\\Julia\\git\\KH-group2-semi\\src\\com\\shop\\controller\\mapping.properties");
 

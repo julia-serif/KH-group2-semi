@@ -22,9 +22,11 @@ html, body {
 	background-color: rgb(241, 248, 244);
 }
 body {
-	padding-top: 200px;
+	padding-top: 250px;
 }
-
+.bot{
+width: 100px;
+}
 
 
 </style>
@@ -38,7 +40,7 @@ body {
 			<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<div class="panel panel-success">
 					<div class="panel-heading">
-						<div class="panel-title">oo쇼핑몰에 오신 것을 환영합니다!</div>
+						<div class="panel-title">로그인</div>
 					</div>
 					<div class="panel-body">
 						<form id="login-form" method="post"
@@ -58,9 +60,9 @@ body {
 
 						</form>
 						<div>
-							<button onclick="location.href='./sign_up.jsp'"
-								>회원가입</button>
-									<button onclick="location.href='../main.jsp'"
+							<button class="bot" onclick="location.href='./sign_up.jsp'"
+								>회원가입</button>&nbsp;&nbsp;
+									<button class="bot" onclick="location.href='../main.jsp'"
 								>홈으로</button>
 						</div>
 

@@ -15,13 +15,16 @@ public class IdCheckAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html; charset=UTF-8");
+		
 		PrintWriter out =response.getWriter();
-		String user_id=request.getParameter("id");
+		ActionForward forward = new ActionForward();
+		
+		String user_id=request.getParameter("id").trim();
 		UserDAO dao= UserDAO.getInstance();
 		String res=dao.Overlap(user_id);
-		
-		out.println(res);
-		return null;
+		out.write(res);
+		System.out.println("@@@@@@@@@@@"+res);
+		return forward;
 	}
 
 }

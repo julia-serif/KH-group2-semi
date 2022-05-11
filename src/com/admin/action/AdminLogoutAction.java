@@ -1,27 +1,27 @@
-package com.shop.action;
+package com.admin.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.UserDAO;
-import com.shop.model.UserDTO;
 
-public class SelectList implements Action {
+public class AdminLogoutAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		UserDAO dao= UserDAO.getInstance();
-		List<UserDTO> list =dao.getUserList();
-		request.setAttribute("List", list);
+		HttpSession session = request.getSession();
+		
+		session.invalidate();  // 현재 사용중인 세션을 만료시키는 메서드
 		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);  
-		forward.setPath("view/select.jsp");
+		
+		forward.setRedirect(false);
+		
+		forward.setPath("main.jsp");
 		
 		return forward;
 	}

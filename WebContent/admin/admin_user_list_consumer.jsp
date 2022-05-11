@@ -8,12 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>소비자 관리 페이지</title>
+<link rel="stylesheet" href="./css/admin.css">
+<link href="./css/admin_sidebar.css" rel="stylesheet">
+
 </head>
 <body>
+	<%@ include file="admin_main_sidebar.jsp"%>
 
-	<div align="center">
-
-		<h2>소비자 리스트</h2>
+	<div class="arti" align="center">
+		<h2>소비자 목록</h2>
+		<br>
+		<br>
 		<table border="1" cellspacing="0" width="80%">
 			<tr>
 				<th>이름</th>
@@ -37,13 +42,15 @@
 						<td>${dto.getUser_email() }</td>
 						<td>${dto.getUser_addr() }</td>
 						<td>${dto.getUser_age() }</td>
-						<td><fmt:formatNumber value="${dto.getUser_mileage() }" />원
-						</td>
+						<td><a
+							href="<%=request.getContextPath()%>/update_user_mileage.do?user_no=${dto.getUser_no() }">
+								<fmt:formatNumber value="${dto.getUser_mileage() }" />원
+						</a></td>
 						<td>${dto.getUser_date().substring(0,10) }</td>
-						<td>
-							<a href="<%=request.getContextPath() %>
-		               		/admin_seller_delete.do?user_no=${dto.getUser_no() }">[탈퇴]</a>
-	               		</td>
+						<td><a
+							onclick="if(confirm('해당 회원을 탈퇴 처리시키겠습니까?')){location.href='admin_consumer_delete.do?user_no=${dto.getUser_no() }'}
+							else{return;}">[탈퇴처리]</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -57,6 +64,7 @@
 			</c:if>
 
 		</table>
+		<br> <a href="javascript:history.back();">뒤로가기</a>
 	</div>
 </body>
 </html>
