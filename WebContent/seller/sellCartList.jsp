@@ -47,7 +47,7 @@
 	      <c:if test="${!empty list }">
 	         <c:forEach items="${list }" var="dto">
 	            <tr>
-	               <td> ${dto.getCategory_num() } </td>
+	               <td> ${dto.getCategory_no() } </td>
 	               <td> ${dto.getCategory_code() } </td>
 	               <td> ${dto.getCategory_name() } </td>
 	               <td> <input type="button" value="삭제"
@@ -59,7 +59,7 @@
 	      <c:if test="${empty list }">
 	         <tr>
 	            <td colspan="4" align="center">
-	               <h3>검색된 카테고리 목록이 없습니다.....</h3>
+	               <h3>검색된 카테고리 목록이 없습니다</h3>
 	            </td>
 	         </tr>
 	      </c:if>

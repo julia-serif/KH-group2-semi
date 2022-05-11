@@ -14,13 +14,13 @@
 
 	
 	<div align="center">
-	   <hr width="65%" color="blue">
+	   <hr width="65%" color="gray">
 	      <h3>상품 등록 폼 페이지</h3>
-	   <hr width="65%" color="blue">
+	   <hr width="65%" color="gray">
 	   <br>
 	   
 	   <form method="post" enctype="multipart/form-data"
-	      action="<%=request.getContextPath() %>/seller_product_input_ok.do">
+	      action="<%=request.getContextPath() %>/sell_product_input_ok.do">
 	   
 	      <table border="1" cellspacing="0" width="400">
 	         <c:set var="list" value="${categoryList }" />
@@ -29,7 +29,7 @@
 	            <td>
 	               <select name="ks_category">
 	                  <c:if test="${empty list }">
-	                     <option value="">:::카테고리:::</option>
+	                     <option value="">카테고리</option>
 	                  </c:if>
 	                  
 	                  <c:if test="${!empty list }">

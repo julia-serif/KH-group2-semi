@@ -1,4 +1,4 @@
-package com.shop.model;
+package com.seller.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -138,7 +138,7 @@ public class CategoryDAO {
 		try {
 			openConn();
 			
-			sql = "select * from shop_category "
+			sql = "select * from ks_category "
 					+ " order by category_no desc";
 			
 			pstmt = con.prepareStatement(sql);
@@ -180,7 +180,7 @@ public class CategoryDAO {
 		try {
 			openConn();
 			
-			sql = "delete from shop_category where category_no = ?";
+			sql = "delete from ks_category where category_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -188,7 +188,7 @@ public class CategoryDAO {
 			
 			result = pstmt.executeUpdate();
 			
-			sql = "update shop_category set category_no = category_no - 1 "
+			sql = "update ks_category set category_no = category_no - 1 "
 					+ " where category_no > ?";
 			
 			pstmt = con.prepareStatement(sql);

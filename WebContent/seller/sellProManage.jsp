@@ -25,11 +25,11 @@
 	      
 	      <li> <a href="<%=request.getContextPath() %>/sell_cart_list.do">카테고리 목록</a>
 	         
-	      <li> <a href="<%=request.getContextPath() %>/sellProLIst.do">판매 상품 목록</a>
+	      <li> <a href="<%=request.getContextPath() %>/sell_pr_lIst.do">판매 상품 목록</a>
 
-	      <li> <a href="<%=request.getContextPath() %>/sellProPinput.do">판매 상품 등록</a>
-	      
-	      <li> <a href="<%=request.getContextPath() %>/sellProQues.do">상품 문의 관리</a>
+	      <li> <a href="<%=request.getContextPath() %>/sell_pro_input.do">판매 상품 등록</a>
+	   
+	      <li> <a href="<%=request.getContextPath() %>/sell_pro_ques.do">상품 문의 관리</a>
 	   
 	   </ul>
 	

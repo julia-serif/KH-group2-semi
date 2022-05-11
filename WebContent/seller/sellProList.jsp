@@ -21,13 +21,13 @@
 
 	
 	<div align="center">
-	   <hr width="65%" color="red">
+	   <hr width="65%" color="gray">
 	      <h3>Seller Product 전체 리스트 페이지</h3>
-	   <hr width="65%" color="red">
+	   <hr width="65%" color="gray">
 	   <br>
 	   
 	   <table border="1" cellspacing="0" width="65%">
-	      <tr bgcolor="#ffcc00">
+	      <tr bgcolor="lightgray">
 	         <th>제품번호</th> <th>카테고리 코드</th> <th>제품이름</th>
 	         <th>이 미 지</th> <th>제품 가격</th> <th>수 량</th>
 	         <th>제 조 사</th> <th>제품 입고일</th> <th>수 정&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;삭 제

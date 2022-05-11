@@ -6,9 +6,9 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seller.model.CategoryDAO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.CategoryDAO;
 
 public class SellCartInputOkAction implements Action {
 

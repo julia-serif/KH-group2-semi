@@ -1,4 +1,4 @@
-package com.shop.model;
+package com.seller.model;
 
 public class CategoryDTO {
 
