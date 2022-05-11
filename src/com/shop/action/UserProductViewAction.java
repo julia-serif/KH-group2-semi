@@ -34,6 +34,7 @@ public class UserProductViewAction implements Action {
 		List<BoardDTO> list = dao1.getBbsList(product_no);
 		
 		request.setAttribute("List", list);
+		request.setAttribute("pno", product_no);
 		
 		ActionForward forward = new ActionForward();
 		

@@ -22,7 +22,7 @@
 	  background-color: #4CAF50; /* Green */
 	  border: none;
 	  color: white;
-	  padding: 15px 32px;
+	  padding: 15px 20px;
 	  text-align: center;
 	  text-decoration: none;
 	  display: inline-block;
@@ -33,6 +33,7 @@
 	
 	.btn-group .button:hover {
 	  background-color: #3e8e41;
+	  clear: both;
 	}
 
 </style>
@@ -90,9 +91,9 @@
 				<tr class="btn-group">
 					<td colspan="2" align="right">
 						<input type="reset" value="다시작성" class="button">&nbsp;&nbsp;&nbsp;
-						<input type="submit" value="문의하기" class="button" style="clear: both">
+						<input type="submit" value="문의하기" class="button">
 					</td>
-				</tr>
+				</tr >
 		
 			</table>
 		

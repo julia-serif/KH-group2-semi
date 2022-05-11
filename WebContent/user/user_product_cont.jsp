@@ -12,7 +12,27 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="js/paging.js"></script>
+<style type="text/css">
 
+	#bbs_list {
+	  border-collapse: collapse;
+	  width: 50%;
+	}
+	
+	#bbs_list th, td {
+	  text-align: left;
+	  padding: 8px;
+	}
+	
+	#bbs_list tr:nth-child(even){background-color: white;}
+	
+	#bbs_list th {
+	  background-color: skyblue;
+	  color: white;
+	}
+	
+
+</style>
 <link rel="stylesheet" href="css/product_cont.css" type="text/css">
 </head>
 <body>
@@ -81,7 +101,7 @@
 								
 								<tr>
 									<td align="left">
-										<a href="javascript:goCart()">
+										<a href="#">
 											<img src="<%=request.getContextPath() %>/uploadfile/1.PNG"
 												border="0">
 										</a>								
@@ -139,13 +159,11 @@
 				</tr>
 			</c:if>
 			
-			
-			
-			<tr>
+			<tr id="qna">
 				<td colspan="3" align="right">
 					<input type="button" value="문의하기"
-						onclick="location.href='bbs_write.do?pno=${dto.getPno() }'">
-				</td>			
+						onclick="location.href='bbs_write.do?pno=${pno }'">
+				</td>
 			</tr>
 			
 		</table>
