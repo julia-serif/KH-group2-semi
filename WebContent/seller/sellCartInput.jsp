@@ -11,7 +11,7 @@
 	
 	<div align="center">
 	   <hr width="65%" color="marmoon">
-	      <h3>카테고리 등록 폼 페이지</h3>
+	      <h3>카테고리 등록</h3>
 	   <hr width="65%" color="marmoon">
 	   <br>
 	   

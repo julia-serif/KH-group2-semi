@@ -14,8 +14,7 @@ public class SellCartInputOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 카테고리 등록 폼 페이지에서 넘어온 데이터들을
-		// DB에 저장하는 비지니스 로직.
+		// 카테고리 등록 폼 페이지에서 넘어온 데이터
 		
 		String cart_code = request.getParameter("cart_code").trim();
 		
@@ -37,7 +36,7 @@ public class SellCartInputOkAction implements Action {
 			
 		}else {
 			out.println("<script>");
-			out.println("alert('카테고리 등록 실패~~~')");
+			out.println("alert('카테고리 등록 실패')");
 			out.println("history.back()");
 			out.println("</script>");
 		}
