@@ -11,7 +11,7 @@ import com.shop.controller.ActionForward;
 import com.shop.model.productDAO;
 import com.shop.model.productDTO;
 
-public class sellerProductInputAction implements Action {
+public class SellerProductInputAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
