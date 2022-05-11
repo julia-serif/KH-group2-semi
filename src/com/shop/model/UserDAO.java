@@ -251,4 +251,83 @@ public class UserDAO {
 		}
 		return list;
 	}
+	
+		//회원인지 확인
+	public int userCheck(String id, String pwd) {
+		
+		int result = 0;
+		try {
+			
+			openConn();
+			
+			sql = "select * from shop_user where user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(pwd.equals(rs.getString("user_pwd"))) {
+					//회원인 경우
+					result = 1;
+				}else {
+					//비밀번호가 틀린경우, 아이디는 있음
+					result = -1;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}//userCheck() end
+
+	//id에 해당하는 회원의 정보를 조회하는 메소드
+	public UserDTO getMember(String id) {
+		
+		UserDTO dto = new UserDTO();
+		
+		
+		try {
+			openConn();
+			
+			sql = "select * from shop_user where user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_pwd(rs.getString("user_pwd"));
+				dto.setUser_name(rs.getString("user_name"));
+				dto.setUser_email(rs.getString("user_email"));
+				dto.setUser_addr(rs.getString("user_addr"));
+				dto.setUser_phone(rs.getString("user_phone"));
+				dto.setUser_mileage(rs.getInt("user_mileage"));
+				dto.setUser_age(rs.getInt("user_age"));
+				dto.setUser_grade(rs.getString("user_grade"));
+				dto.setUser_no(rs.getInt("user_no"));
+				dto.setUser_level(rs.getInt("user_level"));
+				dto.setRegdate(rs.getString("regdate"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return dto;
+		
+	}//getMember() end
+	
 }
