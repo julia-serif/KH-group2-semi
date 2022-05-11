@@ -45,9 +45,12 @@ public class FrontController extends HttpServlet {
 
 		FileInputStream fis = 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				new FileInputStream("C:\\Users\\Julia\\git\\KH-group2-semi\\src\\com\\shop\\controller\\mapping.properties");
 
 =======
+=======
+>>>>>>> 28e142edc15046037b1d242403d22f1980660153
 				new FileInputStream("C:\\NCS\\workspace(jsp)\\KH-group2-semi\\src\\com\\shop\\controller\\mapping.properties");
 		
 >>>>>>> 28e142edc15046037b1d242403d22f1980660153
