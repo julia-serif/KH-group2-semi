@@ -136,16 +136,15 @@ public class Ks_ProductDAO {
 			
 			sql = "select * from ks_product where pcode = ?";
 			
-			pstmt.setString(1, code);
-			
 			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, code);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				
-				Ks_ProductDTO dto = new Ks_ProductDTO();
-				
+           Ks_ProductDTO dto = new Ks_ProductDTO();
+           
 				dto.setPno(rs.getInt("pno"));
 				dto.setPname(rs.getString("pname"));
 				dto.setPcode(rs.getString("pcode"));
@@ -159,6 +158,7 @@ public class Ks_ProductDAO {
 				dto.setPinputdate(rs.getString("pinputdate"));
 				
 				list.add(dto);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -431,4 +431,9 @@ public class Ks_ProductDAO {
     	return dto;
     	
     } // getOrderOk() 메서드 end
+    
+
+    
+    
+    
 }

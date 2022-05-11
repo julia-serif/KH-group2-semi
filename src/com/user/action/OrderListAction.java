@@ -21,7 +21,7 @@ public class OrderListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// DB에서 주문 목록을 가져와 뷰페이지로 이동하는 비즈니스 로직
 		
-		HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
 		
 		String userid = (String)session.getAttribute("userid");
 		
