@@ -11,6 +11,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.sun.org.apache.bcel.internal.generic.DLOAD;
+
+
 public class ProductDAO {
 	
 	Connection con = null;
@@ -18,12 +21,13 @@ public class ProductDAO {
 	ResultSet rs = null;
 	
 	String sql = null;
-	
-	
+
+
 	private static ProductDAO instance;    //instance는 참조변수
 	
 	private ProductDAO() { }
 	
+
 	public static ProductDAO getInstance() {
 		
 		if(instance == null) {
@@ -53,10 +57,11 @@ public class ProductDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		} //context.javax.naming 사용
 
-	}// openConn end
-	
+	}	// openconn() end
+
 	//DB에 연결된 자원을 종료시키는 메소드
 	public void closeConn(ResultSet rs, PreparedStatement pstmt, Connection con) {
 		
@@ -78,9 +83,11 @@ public class ProductDAO {
 				e.printStackTrace();
 			}
 	} //closeConn() end
+
 	
 	
 	// ks_product 테이블에 상품을 등록(추가)하는 메서드.
+
 	public int insertProduct(ProductDTO dto) {
 		 
 		 int result = 0, count = 0;
@@ -88,9 +95,10 @@ public class ProductDAO {
 		 try {
 			openConn();
 
-			
-			sql = "select max(pno) from ks_product";
-			
+			 
+			sql="select max(pno) from ks_product";
+			 
+
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -100,6 +108,7 @@ public class ProductDAO {
 				
 			}
 			
+
 			sql = "insert into ks_product "
 					+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?)";
 
@@ -205,6 +214,7 @@ public class ProductDAO {
 				dto.setPoint(rs.getInt("point"));
 				dto.setPinputdate(rs.getString("pinputdate"));
 				dto.setPseller(rs.getString("pseller"));
+
 				
 			}
 		} catch (SQLException e) {
@@ -218,6 +228,7 @@ public class ProductDAO {
 		
 	
 	}//productContent() end
+
 
 	//결제된 상품 재고 차감
 	public void productQty(int[] pnum, int[] qty) {
@@ -268,14 +279,16 @@ public class ProductDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
 		}
+
 		
 		return count;
 
 	}	// getProductCount() 메서드 end
 	
+
 }
+
+
 
 
