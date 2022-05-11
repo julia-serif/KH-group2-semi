@@ -15,8 +15,11 @@
 	$(function() {
 		
 		
-		let image1 = '<a href="#"><img src="upload/book1.jpg" width="500" height="450"></a>'
-		let image2 = '<a href="#"><img src="upload/book2.jpg" width="500" height="450"></a>'
+		let image1 = '<img src="upload/book13.jpg" width="408" height="600">'
+		let image2 = '<img src="upload/book23.jpg" width="408" height="600">'
+		let image3 = '<img src="upload/book3.jpg" width="408" height="600">'
+		let image4 = '<img src="upload/book4.jpg" width="408" height="600">'
+		let image5 = '<img src="upload/book5.jpg" width="408" height="600">'
 		
 		$("#first_thum").mouseover(function() {
 
@@ -37,7 +40,7 @@
 		$("#third_thum").mouseover(function() {
 
 			$("#main_image").text('');
-			$("#main_image").append(image1);
+			$("#main_image").append(image3);
 			$("#main_image").show();
 			
 		});
@@ -45,7 +48,7 @@
 		$("#fourth_thum").mouseover(function() {
 
 			$("#main_image").text('');
-			$("#main_image").append(image2);
+			$("#main_image").append(image4);
 			$("#main_image").show();
 			
 		});
@@ -53,18 +56,11 @@
 		$("#fifth_thum").mouseover(function() {
 
 			$("#main_image").text('');
-			$("#main_image").append(image1);
+			$("#main_image").append(image5);
 			$("#main_image").show();
 			
 		});
 	
-		$("#sixth_thum").mouseover(function() {
-
-			$("#main_image").text('');
-			$("#main_image").append(image2);
-			$("#main_image").show();
-			
-		});
 		
 		
 	});
@@ -98,38 +94,34 @@
 			<table>
 			<tr>
 			<td id="main_image">
-				
+				<img src="upload/book13.jpg" width="408" height="600">
 			</td>
 			<td>
+			
 			<ul class="main_thumbnails">  
 				<li id="first_thum">
-					<a href="">
-						<img src="upload/book1.jpg" width="180" height="60">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=1">
+						<img src="upload/book13.jpg" width="100" height="150">
 					</a>
 				</li>
 				<li id="second_thum">
-					<a href="#">
-						<img src="upload/book2.jpg" width="180" height="60">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=2">
+						<img src="upload/book23.jpg" width="100" height="150">
 					</a>
 				</li>
 				<li id="third_thum">
-					<a href="#">
-						<img src="upload/book1.jpg" width="180" height="60">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=3">
+						<img src="upload/book3.jpg" width="100" height="150">
 					</a>
 				</li>
 				<li id="fourth_thum">
-					<a href="#">
-						<img src="upload/book2.jpg" width="180" height="60">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=4">
+						<img src="upload/book4.jpg" width="100" height="150">
 					</a>
 				</li>
 				<li id="fifth_thum">
-					<a href="#">
-						<img src="upload/book1.jpg" width="180" height="60">
-					</a>
-				</li>
-				<li id="sixth_thum">
-					<a href="#">
-						<img src="upload/book2.jpg" width="180" height="60">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=5">
+						<img src="upload/book5.jpg" width="100" height="150">
 					</a>
 				</li>
 			</ul>
@@ -147,16 +139,21 @@
 				<tr>
 					<c:forEach items="${list }" var="dto">
 					<c:set var="count" value="${count + 1 }"/>
-						<td align="center">
-							<a href="<%=request.getContextPath() %>/user_product_view.do?pnum=${dto.getPnum() }">
+						<td align="center" width="200" height="300">
+							<a href="<%=request.getContextPath() %>/user_product_view.do?pno=${dto.getPno() }">
 								<img src="<%=request.getContextPath() %>/upload/${dto.getPimage() }"
-									width="120" height="120" border="0">
+									width="150" height="220" border="0">
 							</a>
 							<br>
-							${dto.getPname() } <br>
+							<c:if test="${dto.getPname().length() <= 12 }">
+								<br>${dto.getPname() }<br>
+							</c:if>
+							<c:if test="${dto.getPname().length() >= 12 }">
+								<br>${dto.getPname().substring(0,11) }...<br>								
+							</c:if>
 							<fmt:formatNumber value="${dto.getPrice() }"/>원<br>
 						</td>
-					<c:if test="${count % 4 == 0 }">
+					<c:if test="${count % 5 == 0 }">
 				</tr>
 				<tr>
 					</c:if>
@@ -167,8 +164,29 @@
 				
     		</table>
     		
-    		<a href="<%=request.getContextPath() %>/admin_product_input.do">상품등록</a>
     		
+   		<c:if test="${page > block }">
+			<a href="user_main.do?page=1">◀◀</a>
+			<a href="user_main.do?page=${startBlock - 1 }">◀</a>
+		</c:if>
+		
+		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+			
+			<c:if test="${i == page }">
+				<b><a href="user_main.do?page=${i }">[${i }]</a></b>
+			</c:if>
+			
+			<c:if test="${i != page }">
+				<a href="user_main.do?page=${i }">[${i }]</a>
+			</c:if>
+			
+		</c:forEach>
+		
+		<c:if test="${endBlock < allPage }">
+			<a href="user_main.do?page=${endBlock + 1 }">▶</a>
+			<a href="user_main.do?page=${allPage }">▶▶</a>
+		</c:if>	
+
     	</c:if>
 	
 	</div>

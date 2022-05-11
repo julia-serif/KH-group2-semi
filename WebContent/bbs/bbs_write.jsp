@@ -12,21 +12,43 @@
 		line-height: 20px;
 		height: 25px;
 	}
+	
+	#writer {
+		line-height: 20px;
+		height: 25px;
+	}
+	
+	.btn-group .button {
+	  background-color: #4CAF50; /* Green */
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  cursor: pointer;
+	  float: right;
+	}
+	
+	.btn-group .button:hover {
+	  background-color: #3e8e41;
+	}
 
 </style>
 </head>
 <body>
 
 	<div align="center">
-		<hr width="30%" color="marmoon">
 			<h2>상품 관련 Q & A</h2>
-		<hr width="30%" color="marmoon">
 		<br>
 		
-		<!-- 로그인 한 상태로 작성하니까 작성자를 DB에서 가져와서 hidden으로 넘김 -->
+		
 		<form method="post"
 			action="<%=request.getContextPath() %>/bbs_write_ok.do">
 			
+			
+			<input type="hidden" name="pno" value="${pno }">
 			<table border="0" cellspacing="0" width="600">
 				<tr>
 					<td>
@@ -42,6 +64,18 @@
 				
 				<tr>
 					<td>
+						<span>작성자</span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<input id="writer" name="writer" size="50" maxlength="30">
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
 						<span>내  용</span>
 					</td>
 				</tr>
@@ -52,10 +86,11 @@
 					</td>
 				</tr>
 				
-				<tr>
+				
+				<tr class="btn-group">
 					<td colspan="2" align="right">
-						<input type="reset" value="CANCLE">&nbsp;&nbsp;&nbsp;
-						<input type="submit" value="WRITE">
+						<input type="reset" value="다시작성" class="button">&nbsp;&nbsp;&nbsp;
+						<input type="submit" value="문의하기" class="button" style="clear: both">
 					</td>
 				</tr>
 		

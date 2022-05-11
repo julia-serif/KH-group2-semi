@@ -99,8 +99,8 @@ public class ProductDAO {
 
 			openConn();
 			
-			sql = "select * from shop_product "
-					+ " order by pnum desc";
+			sql = "select * from ks_product "
+					+ " order by Pno desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -110,9 +110,9 @@ public class ProductDAO {
 				
 				ProductDTO dto = new ProductDTO();
 				
-				dto.setPnum(rs.getInt("pnum"));
+				dto.setPno(rs.getInt("pno"));
 				dto.setPname(rs.getString("pname"));
-				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPcode(rs.getString("pcode"));
 				dto.setPcompany(rs.getString("pcompany"));
 				dto.setPimage(rs.getString("pimage"));
 				dto.setPqty(rs.getInt("pqty"));
@@ -137,7 +137,7 @@ public class ProductDAO {
 	}	// getProductList() 메서드 end
 	
 	
-	// shop_product 테이블에 상품을 등록(추가)하는 메서드.
+	// ks_product 테이블에 상품을 등록(추가)하는 메서드.
 	public int insertProduct(ProductDTO dto) {
 		
 		int result = 0, count = 0;
@@ -146,7 +146,7 @@ public class ProductDAO {
 
 			openConn();
 			
-			sql = "select max(pnum) from shop_product";
+			sql = "select max(pno) from ks_product";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -156,14 +156,14 @@ public class ProductDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into shop_product "
+			sql = "insert into ks_product "
 					+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate)";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, count);
 			pstmt.setString(2, dto.getPname());
-			pstmt.setString(3, dto.getPcategory_fk());
+			pstmt.setString(3, dto.getPcode());
 			pstmt.setString(4, dto.getPcompany());
 			pstmt.setString(5, dto.getPimage());
 			pstmt.setInt(6, dto.getPqty());
@@ -196,7 +196,7 @@ public class ProductDAO {
 			
 			openConn();
 			
-			sql = "select * from shop_product where pnum = ?";
+			sql = "select * from ks_product where pno = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -206,9 +206,9 @@ public class ProductDAO {
 			
 			if(rs.next()) {
 				
-				dto.setPnum(rs.getInt("pnum"));
+				dto.setPno(rs.getInt("pno"));
 				dto.setPname(rs.getString("pname"));
-				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPcode(rs.getString("pcode"));
 				dto.setPcompany(rs.getString("pcompany"));
 				dto.setPimage(rs.getString("pimage"));
 				dto.setPqty(rs.getInt("pqty"));
@@ -230,6 +230,36 @@ public class ProductDAO {
 		return dto;
 		
 	}	// productContent() 메서드 end
+
+
+	public int getProductCount() {
+		
+		int count = 0;
+		
+		try {
+			
+			openConn();
+			
+			sql = "select count(*) from ks_product";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+
+	}	// getProductCount() 메서드 end
 	
 	
 	

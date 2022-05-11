@@ -11,48 +11,44 @@ import com.shop.controller.ActionForward;
 import com.shop.model.BoardDAO;
 import com.shop.model.BoardDTO;
 
-public class BbsWriteOkAction implements Action {
+public class BbsUpdateOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		String bbs_title = request.getParameter("title").trim();
+		String bbs_cont = request.getParameter("content").trim();
 		
-		String board_title = request.getParameter("title").trim();
-		String board_cont = request.getParameter("content").trim();
-		String board_writer = request.getParameter("writer").trim();
-		int pno = 
-				Integer.parseInt(request.getParameter("pno").trim());
+		int bbs_no = 
+				Integer.parseInt(request.getParameter("bbs_no").trim());
+		
 		
 		BoardDTO dto = new BoardDTO();
 		
-		dto.setBoard_title(board_title);
-		dto.setBoard_cont(board_cont);
-		dto.setBoard_writer(board_writer);
-		dto.setBoard_product(pno);
+		dto.setBoard_no(bbs_no);
+		dto.setBoard_title(bbs_title);
+		dto.setBoard_cont(bbs_cont);
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
-		int check = dao.insertBoard(dto);
-		
-		PrintWriter out = response.getWriter();
+		int check = dao.updateBbs(dto);
 		
 		ActionForward forward = new ActionForward();
 		
+		PrintWriter out = response.getWriter();
+		
 		if(check > 0) {
-			out.println("<script>");
-			out.println("alert('게시물 추가 성공')");
-			out.println("</script>");
 			forward.setRedirect(true);
-			forward.setPath("user_product_view.do?pno=" + pno);
+			forward.setPath("bbs_content.do?no="+bbs_no);
+		
 		}else {
 			out.println("<script>");
-			out.println("alert('게시물 추가 실패')");
+			out.println("alert('게시물 수정 실패')");
 			out.println("history.back()");
 			out.println("</script>");
-			
 		}
 		
 		return forward;
-		
 	}
 
 }

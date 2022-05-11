@@ -10,16 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/paging.js"></script>
 
-	function goCart() {
-		
-		document.form.action="<%=request.getContextPath() %>/user_cart_add.do";
-		
-		document.form.submit();
-	}
-
-</script>
 <link rel="stylesheet" href="css/product_cont.css" type="text/css">
 </head>
 <body>
@@ -30,6 +23,7 @@
 	
 		<c:set var="dto" value="${pCont }"/>
 		<c:if test="${!empty dto }">
+			
 			
 			<table border="0" cellspacing="0" width="800">
 				<tr>
@@ -68,7 +62,7 @@
 								<tr>
 									<td>${dto.getPcontents() }</td>
 								</tr>
-																								
+								
 								<tr>
 									<td colspan="2" align="center" height="20"></td>
 								</tr>
@@ -109,21 +103,22 @@
 			<br><br><br>
 			
 			
+			
 			<table border="1" cellspacing="0" width="650" id="bbs_list">
 			<tr>
-				<th>번호</th> <th>제목</th> <th>작성자</th> <th>작성일자</th>
+				<th>제목</th> <th>작성자</th> <th>작성일자</th>
 			</tr>
 			
 			<c:set var="list" value="${List }"/>
 			<c:if test="${!empty list }">
 				<c:forEach items="${list }" var="dto">
 					<tr align="center">
-						<td>${dto.getBoard_no() }</td>
+						
 						<td>
 							<%-- 답변인 경우 --%>
 							<c:if test="${dto.getBoard_indent() != 0 }">
 								<c:forEach begin="1" end="${dto.getBoard_indent() }">
-									☞
+									↳
 								</c:forEach>
 							</c:if>
 							<a href="<%=request.getContextPath() %>/bbs_content.do?no=${dto.getBoard_no() }">
@@ -138,70 +133,54 @@
 			
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="5" align="center">
+					<td colspan="3" align="center">
 						<h3>검색된 게시물이 없습니다.</h3>
 					</td>
 				</tr>
 			</c:if>
-						
+			
+			
+			
 			<tr>
-				<td colspan="5" align="right">
-					<input type="button" value="글 쓰기"
-						onclick="location.href='bbs_write.do'">
+				<td colspan="3" align="right">
+					<input type="button" value="문의하기"
+						onclick="location.href='bbs_write.do?pno=${dto.getPno() }'">
 				</td>			
 			</tr>
 			
 		</table>
 		
 		
-			<c:if test="${page > block }">
-				<a href="user_bbs_list.do?page=1">◀◀</a>
-				<a href="user_bbs_list.do?page=${startBlock - 1 }">◀</a>
-			</c:if>
-			
-			<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
-				
-				<c:if test="${i == page }">
-					<b><a href="user_bbs_list.do?page=${i }">[${i }]</a></b>
-				</c:if>
-				
-				<c:if test="${i != page }">
-					<a href="user_bbs_list.do?page=${i }">[${i }]</a>
-				</c:if>
-				
-			</c:forEach>
-			
-			<c:if test="${endBlock < allPage }">
-				<a href="user_bbs_list.do?page=${endBlock + 1 }">▶</a>
-				<a href="user_bbs_list.do?page=${allPage }">▶▶</a>
-			</c:if>
-	
-		
 		<br> <br>
 		
+		<input type="button" value="목록으로"
+	            	onclick="location.href='user_main.do'">
+	            
 		
 		<ul class="qna">
             <li>
                 <input type="checkbox" id="qna_1">
-                <label for="qna_1">FAQ1</label>
+                <label for="qna_1">상품 취소/반품</label>
                 <div>
-                    <p>질문1</p>
+                    <p>구매한 상품의 취소/반품은 마이페이지 구매내역에서 신청 </p>
+                    <p>가능합니다. 상품문의 및 후기게시판을 통해 취소나 환불, </p>
+                    <p>반품 등은 처리되지 않습니다.</p>
                 </div>
             </li>
             <li>
                 <input type="checkbox" id="qna_2">
-                <label for="qna_2">FQA2</label>
+                <label for="qna_2">교환/환불 및 배송등 상품 자체와 관련 없는 문의</label>
                 <div>
-                    <p>질문2</p>
-                    
+                    <p>가격, 판매자, 교환/환불 및 배송 등 해당 상품 자체와 관련 </p>
+                    <p>없는 문의는 고객센터 내 1:1 문의하기를 이용해주세요.</p>
                 </div>
             </li>
             <li>
                 <input type="checkbox" id="qna_3">
-                <label for="qna_3">FAQ3</label>
+                <label for="qna_3">배송 소요일</label>
                 <div>
-                    <p>질문3</p>
-                   
+                    <p>배송을 시작한 상품이 고객님들께 도착하는 시간은 약 2~3일 </p>
+                    <p>정도 소요됩니다. </p>
                 </div>
             </li>
             <li>

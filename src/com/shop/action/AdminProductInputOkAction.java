@@ -21,7 +21,7 @@ public class AdminProductInputOkAction implements Action {
 		
 		// 첨부파일이 저장될 위치(경로)를 설정.
 		String saveFolder = 
-				"C:\\NCS\\workspace(jsp)\\KH-grou2-semi\\WebContent\\upload";
+				"C:\\NCS\\workspace(jsp)\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\KH-group2-semi\\upload";
 		// 첨부파일 용량(크기) 제한 - 파일 업로드 최대 크기
 		int fileSize =  10 * 1024 * 1024; // 10MB
 		
@@ -54,7 +54,7 @@ public class AdminProductInputOkAction implements Action {
 		
 		
 		dto.setPname(p_name);
-		dto.setPcategory_fk(p_category);
+		dto.setPcode(p_category);
 		dto.setPcompany(p_company);
 		dto.setPimage(p_image);
 		dto.setPqty(p_qty);

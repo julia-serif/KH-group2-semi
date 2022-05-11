@@ -11,7 +11,14 @@ public class BoardDTO {
 	private int board_group;
 	private int board_step;
 	private int board_indent;
+	private int board_product;
 	
+	public int getBoard_product() {
+		return board_product;
+	}
+	public void setBoard_product(int board_product) {
+		this.board_product = board_product;
+	}
 	public int getBoard_no() {
 		return board_no;
 	}

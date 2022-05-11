@@ -2,9 +2,9 @@ package com.shop.model;
 
 public class ProductDTO {
 	
-	private int pnum;
+	private int pno;
 	private String pname;
-	private String pcategory_fk;
+	private String pcode;
 	private String pcompany;
 	private String pimage;
 	private int pqty;
@@ -14,11 +14,11 @@ public class ProductDTO {
 	private int point;
 	private String pinputdate;
 	
-	public int getPnum() {
-		return pnum;
+	public int getPno() {
+		return pno;
 	}
-	public void setPnum(int pnum) {
-		this.pnum = pnum;
+	public void setPno(int pno) {
+		this.pno = pno;
 	}
 	public String getPname() {
 		return pname;
@@ -26,11 +26,11 @@ public class ProductDTO {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public String getPcategory_fk() {
-		return pcategory_fk;
+	public String getPcode() {
+		return pcode;
 	}
-	public void setPcategory_fk(String pcategory_fk) {
-		this.pcategory_fk = pcategory_fk;
+	public void setPcode(String pcode) {
+		this.pcode = pcode;
 	}
 	public String getPcompany() {
 		return pcompany;

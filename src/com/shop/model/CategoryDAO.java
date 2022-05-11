@@ -98,8 +98,8 @@ public class CategoryDAO {
 
 			openConn();
 			
-			sql = "select max(category_num) "
-					+ " from shop_category";
+			sql = "select max(category_no) "
+					+ " from ks_category";
 
 			pstmt = con.prepareStatement(sql);
 			
@@ -109,7 +109,7 @@ public class CategoryDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
-			sql = "insert into shop_category "
+			sql = "insert into ks_category "
 					+ " values(?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
@@ -141,7 +141,7 @@ public class CategoryDAO {
 			
 			openConn();
 			
-			sql = "select * from shop_category order by category_num desc";
+			sql = "select * from ks_category order by category_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -151,7 +151,7 @@ public class CategoryDAO {
 				
 				CategoryDTO dto = new CategoryDTO();
 				
-				dto.setCategory_num(rs.getInt("category_num"));
+				dto.setCategory_no(rs.getInt("category_no"));
 				dto.setCategory_code(rs.getString("category_code"));
 				dto.setCategory_name(rs.getString("category_name"));
 				

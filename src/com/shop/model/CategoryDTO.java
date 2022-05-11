@@ -2,15 +2,15 @@ package com.shop.model;
 
 public class CategoryDTO {
 
-	private int category_num;
+	private int category_no;
 	private String category_code;
 	private String category_name;
 	
-	public int getCategory_num() {
-		return category_num;
+	public int getCategory_no() {
+		return category_no;
 	}
-	public void setCategory_num(int category_num) {
-		this.category_num = category_num;
+	public void setCategory_no(int category_no) {
+		this.category_no = category_no;
 	}
 	public String getCategory_code() {
 		return category_code;
