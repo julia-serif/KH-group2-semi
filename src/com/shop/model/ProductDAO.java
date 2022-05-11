@@ -53,7 +53,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}               //context.javax.naming 사용
+		} //context.javax.naming 사용
 
 	}// openConn end
 	
