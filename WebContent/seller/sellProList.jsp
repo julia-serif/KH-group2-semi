@@ -56,7 +56,7 @@
 	      <c:if test="${empty list }">
 	         <tr>
 	            <td colspan="9" align="center">
-	               <h3>검색된 제품 리스트가 없습니다.....</h3>
+	               <h3>검색된 제품 리스트가 없습니다</h3>
 	            </td>
 	         </tr>
 	      </c:if>
