@@ -18,7 +18,7 @@
 </head>
 <body>
 
- 	<jsp:include page="../inculde/top.jsp"/>
+ 	<jsp:include page="../include/top.jsp"/>
  	
 <div class="container">
   <div class="row">

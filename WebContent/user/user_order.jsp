@@ -339,7 +339,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 </head>
 <body>
-	<jsp:include page="../include/user_top.jsp"/>
+	<jsp:include page="../include/top.jsp"/>
 	
 	<form method="post">
 	<c:set var="list" value="${cartList }"/>

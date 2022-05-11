@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<jsp:include page="../include/user_top.jsp"/>
+	<jsp:include page="../include/top.jsp"/>
 	
 		
 	<div align="center">

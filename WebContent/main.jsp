@@ -25,6 +25,13 @@
 			</div>
 		</div>
 	</div>
+</head>
+<body>
+
+	<h2>김지호</h2>
+	<a href="<%=request.getContextPath() %>/user_main.do">메인</a>
+	<a href="<%=request.getContextPath() %>/admin_car_input.do">카테고리</a>
+	<a href="<%=request.getContextPath() %>/admin_product_input.do">상품등록</a>
 	
 </body>
 </html>

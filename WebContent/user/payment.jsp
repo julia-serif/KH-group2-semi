@@ -18,7 +18,7 @@
 </head>
 <body>
 
- 	<jsp:include page="../inculde/top.jsp"/>
+ 	<jsp:include page="../include/top.jsp"/>
 <c:set var="user" value="${userid }"/>
   <main class="mt-3">
  	 <div class="container">

@@ -27,3 +27,7 @@ public class SellerDTO {
 	
 	
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b549eeb6af7162fe16915cfdaf85c32a38f1eaf

@@ -293,7 +293,7 @@ function setTotalInfo() {
 </head>
 <body>
 	
-	<jsp:include page="../include/user_top.jsp"/>
+	<jsp:include page="../include/top.jsp"/>
 	<form method="post" name="frm">
 	
 	<table style="border-bottom: 0"  width="1000" align="center" id="cTable"> 

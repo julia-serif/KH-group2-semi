@@ -14,7 +14,7 @@
 </head>
 <body>
 
- 	<jsp:include page="../inculde/top.jsp"/>
+ 	<jsp:include page="../include/top.jsp"/>
  <c:set var="dto" value="${orderOk }"/>
  <c:if test="${!empty dto }">
   <main class="mt-3">

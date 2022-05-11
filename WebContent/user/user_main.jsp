@@ -1,52 +1,197 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="CSS/top.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+		
+		
+		let image1 = '<img src="upload/book13.jpg" width="408" height="600">'
+		let image2 = '<img src="upload/book23.jpg" width="408" height="600">'
+		let image3 = '<img src="upload/book3.jpg" width="408" height="600">'
+		let image4 = '<img src="upload/book4.jpg" width="408" height="600">'
+		let image5 = '<img src="upload/book5.jpg" width="408" height="600">'
+		
+		$("#first_thum").mouseover(function() {
+
+			$("#main_image").text('');
+			$("#main_image").append(image1);
+			$("#main_image").show();
+			
+		});
+		
+		$("#second_thum").mouseover(function() {
+
+			$("#main_image").text('');
+			$("#main_image").append(image2);
+			$("#main_image").show();
+			
+		});
+		
+		$("#third_thum").mouseover(function() {
+
+			$("#main_image").text('');
+			$("#main_image").append(image3);
+			$("#main_image").show();
+			
+		});
+		
+		$("#fourth_thum").mouseover(function() {
+
+			$("#main_image").text('');
+			$("#main_image").append(image4);
+			$("#main_image").show();
+			
+		});
+		
+		$("#fifth_thum").mouseover(function() {
+
+			$("#main_image").text('');
+			$("#main_image").append(image5);
+			$("#main_image").show();
+			
+		});
+	
+		
+		
+	});
+	
+
+
+</script>
+<style type="text/css">
+	
+	.main_thumbnails{
+		list-style: none;
+	}
+	
+</style>
 </head>
 <body>
 
- 	<jsp:include page="../inculde/top.jsp"/>
+	<div align="center">
+				
+		<c:set var="list" value="${productList }"/>
+		<c:if test="${empty list }">
+			<span>제품 목록이 없습니다.</span> <br>
+			<a href="<%=request.getContextPath() %>/admin_product_input.do">상품등록</a>
+			
+		</c:if>
+				
+		<c:if test="${!empty list }">
 
- <main class="mt-3">
- 	 <div class="container">
- 	   <div class="row">
- 	    <div class="col-12">
- 	      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-	  <div class="carousel-indicators">
-	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-	  </div>
-	  <div class="carousel-inner">
-	    <div class="carousel-item active">
-	      <img src="https://image7.coupangcdn.com/image/ccm/banner/1d2d9f01882432f845041744c603d042.jpg" class="d-block w-100">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="https://image8.coupangcdn.com/image/ccm/banner/5d10a4e96a508d22b13daa6658e13043.png" class="d-block w-100">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="https://static.coupangcdn.com/qa/cmg_paperboy/image/1651816088094/220509_C1_%EB%B7%B0%ED%8B%B0%EB%A1%9C%EB%93%9C%EC%83%B5_SMD-17271_PC.jpg" class="d-block w-100">
-	    </div>
-	  </div>
-	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Previous</span>
-	  </button>
-	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	    <span class="visually-hidden">Next</span>
-	  </button>
-	</div>
-	 </div>
-	 </div>
-	 </div>
-	 </main>
+				<h3>Koupang 제품 추천</h3>
+			
+			<table>
+			<tr>
+			<td id="main_image">
+				<img src="upload/book13.jpg" width="408" height="600">
+			</td>
+			<td>
+			
+			<ul class="main_thumbnails">  
+				<li id="first_thum">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=1">
+						<img src="upload/book13.jpg" width="100" height="150">
+					</a>
+				</li>
+				<li id="second_thum">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=2">
+						<img src="upload/book23.jpg" width="100" height="150">
+					</a>
+				</li>
+				<li id="third_thum">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=3">
+						<img src="upload/book3.jpg" width="100" height="150">
+					</a>
+				</li>
+				<li id="fourth_thum">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=4">
+						<img src="upload/book4.jpg" width="100" height="150">
+					</a>
+				</li>
+				<li id="fifth_thum">
+					<a href="<%=request.getContextPath() %>/user_product_view.do?pno=5">
+						<img src="upload/book5.jpg" width="100" height="150">
+					</a>
+				</li>
+			</ul>
+			</td>
+			
+			</tr>
+			</table>
+		
+
+				<h3>Koupang 제품 목록</h3>
+
+			<br>
+			
+			<table border="1" cellspacing="0">
+				<tr>
+					<c:forEach items="${list }" var="dto">
+					<c:set var="count" value="${count + 1 }"/>
+						<td align="center" width="200" height="300">
+							<a href="<%=request.getContextPath() %>/user_product_view.do?pno=${dto.getPno() }">
+								<img src="<%=request.getContextPath() %>/upload/${dto.getPimage() }"
+									width="150" height="220" border="0">
+							</a>
+							<br>
+							<c:if test="${dto.getPname().length() <= 12 }">
+								<br>${dto.getPname() }<br>
+							</c:if>
+							<c:if test="${dto.getPname().length() >= 12 }">
+								<br>${dto.getPname().substring(0,11) }...<br>								
+							</c:if>
+							<fmt:formatNumber value="${dto.getPrice() }"/>원<br>
+						</td>
+					<c:if test="${count % 5 == 0 }">
+				</tr>
+				<tr>
+					</c:if>
+					</c:forEach>
+					
+					
+				</tr>
+				
+    		</table>
+    		
+    		
+   		<c:if test="${page > block }">
+			<a href="user_main.do?page=1">◀◀</a>
+			<a href="user_main.do?page=${startBlock - 1 }">◀</a>
+		</c:if>
+		
+		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
+			
+			<c:if test="${i == page }">
+				<b><a href="user_main.do?page=${i }">[${i }]</a></b>
+			</c:if>
+			
+			<c:if test="${i != page }">
+				<a href="user_main.do?page=${i }">[${i }]</a>
+			</c:if>
+			
+		</c:forEach>
+		
+		<c:if test="${endBlock < allPage }">
+			<a href="user_main.do?page=${endBlock + 1 }">▶</a>
+			<a href="user_main.do?page=${allPage }">▶▶</a>
+		</c:if>	
+
+    	</c:if>
 	
-	</body>
-	</html>
+	</div>
+
+
+</body>
+
+</html>

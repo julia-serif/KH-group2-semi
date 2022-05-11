@@ -11,7 +11,7 @@
 </head>
 <body>
 
- 	<jsp:include page="inculde/top_main.jsp"/>
+ 	<jsp:include page="include/top_main.jsp"/>
 
  <main class="mt-3">
  	 <div class="container">

@@ -18,11 +18,16 @@ public class BbsWriteOkAction implements Action {
 		
 		String board_title = request.getParameter("title").trim();
 		String board_cont = request.getParameter("content").trim();
+		String board_writer = request.getParameter("writer").trim();
+		int pno = 
+				Integer.parseInt(request.getParameter("pno").trim());
 		
 		BoardDTO dto = new BoardDTO();
 		
 		dto.setBoard_title(board_title);
 		dto.setBoard_cont(board_cont);
+		dto.setBoard_writer(board_writer);
+		dto.setBoard_product(pno);
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		
@@ -37,7 +42,7 @@ public class BbsWriteOkAction implements Action {
 			out.println("alert('게시물 추가 성공')");
 			out.println("</script>");
 			forward.setRedirect(true);
-			forward.setPath("user_product_view.do");
+			forward.setPath("user_product_view.do?pno=" + pno);
 		}else {
 			out.println("<script>");
 			out.println("alert('게시물 추가 실패')");

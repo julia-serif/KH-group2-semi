@@ -83,7 +83,7 @@
 					<tr>
 						<th>상품소개</th>
 						<td>
-							<textarea rows="7" cols="30" name="p_content"></textarea>
+							<textarea cols="30" name="p_content"></textarea>
 						</td>
 					</tr>
 					

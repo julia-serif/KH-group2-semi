@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.productDAO;
-import com.shop.model.productDTO;
+import com.shop.model.ProductDAO;
+import com.shop.model.ProductDTO;
 
 public class SellerProductInputAction implements Action {
 
@@ -18,9 +18,9 @@ public class SellerProductInputAction implements Action {
 		// 카테고리 코드 전체 리스트를 DB에서 조회하여
 		// 상품 등록 폼 페이지(view page)로 이동시키는 비지니스 로직.
 		
-		productDAO dao = productDAO.getInstance();
+		ProductDAO dao = ProductDAO.getInstance();
 		
-		List<productDTO> list = dao.getProductList();
+		List<ProductDTO> list = dao.getProductList();
 		
 		request.setAttribute("productList", list);
 		
