@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+#total{
+	margin: auto;
+	width: 1100px;
+}
+
+#side{
+	width: 20%;
+	height: 300px;
+	float: left;
+	text-align: left;
+}
+#side a{
+	text-decoration: none;
+}
+#middle{
+	width: 80%;
+	height: 500px;
+	float: right;
+	background-size: 100% 100%;
+	text-align: center;
+}
+
+
+.img_check a{
+	text-decoration: none;	
+	text-align: center;
+}
+.img_check img{
+	width: 100px;
+	height: 100px;
+	vertical-align: top;
+}
+.img_check a p{
+	display: block;
+}
+
+-- 카드 스타일
+.card{
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.card a{
+	text-decoration: none;
+}

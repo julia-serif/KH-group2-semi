@@ -10,7 +10,7 @@ public class Ks_CartDTO {
 	private int cart_price;
 	private String cart_pspec;
 	private String cart_pimage;
-	
+	private String cart_seller;
 	
 	public int getCart_no() {
 		return cart_no;
@@ -59,6 +59,12 @@ public class Ks_CartDTO {
 	}
 	public void setCart_pimage(String cart_pimage) {
 		this.cart_pimage = cart_pimage;
+	}
+	public String getCart_seller() {
+		return cart_seller;
+	}
+	public void setCart_seller(String cart_seller) {
+		this.cart_seller = cart_seller;
 	}
 	
 	

@@ -91,7 +91,7 @@ public class Ks_ProductDAO {
 			
 			sql = "select * from ks_product order by pno desc";
 			
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);			
 			
 			rs = pstmt.executeQuery();
 			
@@ -126,9 +126,9 @@ public class Ks_ProductDAO {
 	
 	
 	// 코드번호에 해당하는 리스트를 보여주는 메서드 
-    public Ks_ProductDTO getKsProductCode(){
-		
-		Ks_ProductDTO dto = new Ks_ProductDTO();
+    public List<Ks_ProductDTO> getProductCode(String code){
+    	
+		List<Ks_ProductDTO> list = new ArrayList<Ks_ProductDTO>();
 		
 		try {
 
@@ -138,10 +138,13 @@ public class Ks_ProductDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
+			pstmt.setString(1, code);
+			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				
+			while(rs.next()) {
+           Ks_ProductDTO dto = new Ks_ProductDTO();
+           
 				dto.setPno(rs.getInt("pno"));
 				dto.setPname(rs.getString("pname"));
 				dto.setPcode(rs.getString("pcode"));
@@ -152,7 +155,10 @@ public class Ks_ProductDAO {
 				dto.setPspec(rs.getString("pspec"));
 				dto.setPcontents(rs.getString("pcontents"));
 				dto.setPoint(rs.getInt("point"));
-				dto.setPinputdate(rs.getString("pinputdate"));				
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+				list.add(dto);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -161,9 +167,9 @@ public class Ks_ProductDAO {
 			closeConn(rs, pstmt, con);
 		}
 		
-		return dto;
+		return list;
 		
-	} // getKsProductCode() 메서드 end
+	} // getProductCode() 메서드 end
     
     
     // 검색 관련 조회하는 메서드
@@ -171,8 +177,8 @@ public class Ks_ProductDAO {
     	
     	List<Ks_ProductDTO> list = new ArrayList<Ks_ProductDTO>();
     	
-    	if(field.equals("pname")) {   // 이름으로 검색
-    	try {
+    	if(field.equals("name")) {   // 이름으로 검색
+    	 try {
 
         	openConn();
         	
@@ -205,10 +211,46 @@ public class Ks_ProductDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}}else if(field.equals("all")) {
+			try {
+
+	        	openConn();
+	        	
+	        	sql = "select * from ks_product "
+	        			+ "where pname like ? or pcompany like ? or pcontents like ?";				
+				
+	        	pstmt = con.prepareStatement(sql);	  
+	        	
+	        	pstmt.setString(1, "%"+name+"%");
+	        	pstmt.setString(2, "%"+name+"%");
+	        	pstmt.setString(3, "%"+name+"%");
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					
+					Ks_ProductDTO dto = new Ks_ProductDTO();
+					
+					dto.setPno(rs.getInt("pno"));
+					dto.setPname(rs.getString("pname"));
+					dto.setPcode(rs.getString("pcode"));
+					dto.setPcompany(rs.getString("pcompany"));
+					dto.setPimage(rs.getString("pimage"));
+					dto.setPqty(rs.getInt("pqty"));
+					dto.setPrice(rs.getInt("price"));
+					dto.setPspec(rs.getString("pspec"));
+					dto.setPcontents(rs.getString("pcontents"));
+					dto.setPoint(rs.getInt("point"));
+					dto.setPinputdate(rs.getString("pinputdate"));	
+					
+					list.add(dto);
+				}} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 		}finally {
 			closeConn(rs, pstmt, con);
+              	}
 		}
-    	}
     	return list;
     } // getSearchProduct() 메서드 end
     
@@ -299,4 +341,99 @@ public class Ks_ProductDAO {
 		
     } // getProductList() 메서드 end
 	
+   
+    // 이름에 해당하는 제품을 검색하는 메서드
+    public List<Ks_ProductDTO> getCategoryName(String name){
+    	
+    	List<Ks_ProductDTO> catelist =  new ArrayList<Ks_ProductDTO>();
+    	
+    	try {
+
+        	openConn();
+        	
+        	sql = "select * from ks_product "
+        			+ "where pname like ? order by pno desc";
+        	
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Ks_ProductDTO dto = new Ks_ProductDTO();
+				
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcode(rs.getString("pcode"));
+				dto.setPcompany(rs.getString("pcompany"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPspec(rs.getString("pspec"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setPoint(rs.getInt("point"));
+				dto.setPinputdate(rs.getString("pinputdate"));	
+				
+				catelist.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+    	
+    	return catelist;
+    	
+    } // getCategoryName() 메서드 end
+    
+    
+    // 해당 번호에 해당하는 상품 리스트를 불러오는 메서드
+    public Ks_ProductDTO getOrderOk(int no) {
+    	
+    	Ks_ProductDTO dto = new Ks_ProductDTO();
+    	
+    	try {
+
+        	openConn();
+        	
+        	sql = "select * from ks_product where pno = ? ";
+        	
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setPno(rs.getInt("pno"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcode(rs.getString("pcode"));
+				dto.setPcompany(rs.getString("pcompany"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPspec(rs.getString("pspec"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setPoint(rs.getInt("point"));
+				dto.setPinputdate(rs.getString("pinputdate"));	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+    	
+    	return dto;
+    	
+    } // getOrderOk() 메서드 end
+    
+
+    
+    
+    
 }

@@ -80,7 +80,40 @@ public class Ks_CategoryDAO {
 	} // closeConn() 메서드 end
 	
 	
-	
+	// 카테고리 테이블에 있는 전체 리스트를 조회하는 메서드
+	public List<Ks_CategoryDTO> getCategoryList(){
+		
+		List<Ks_CategoryDTO> list = new ArrayList<Ks_CategoryDTO>();
+		
+		try {
+
+			openConn();
+			
+			sql = "select * from ks_category order by category_no";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Ks_CategoryDTO dto = new Ks_CategoryDTO();
+				
+				dto.setCategory_no(rs.getInt("category_no"));
+				dto.setCategory_code(rs.getString("category_code"));
+				dto.setCategory_name(rs.getString("category_name"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	} // getCategoryList() 메서드 end
 	
 	
 }
