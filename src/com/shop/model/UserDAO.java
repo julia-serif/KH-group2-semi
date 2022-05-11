@@ -251,41 +251,7 @@ public class UserDAO {
 		}
 		return list;
 	}
-	
-		//회원인지 확인
-	public int userCheck(String id, String pwd) {
-		
-		int result = 0;
-		try {
-			
-			openConn();
-			
-			sql = "select * from shop_user where user_id = ?";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				if(pwd.equals(rs.getString("user_pwd"))) {
-					//회원인 경우
-					result = 1;
-				}else {
-					//비밀번호가 틀린경우, 아이디는 있음
-					result = -1;
-				}
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		return result;
-	}//userCheck() end
+
 
 	//id에 해당하는 회원의 정보를 조회하는 메소드
 	public UserDTO getMember(String id) {
@@ -317,7 +283,7 @@ public class UserDAO {
 				dto.setUser_grade(rs.getString("user_grade"));
 				dto.setUser_no(rs.getInt("user_no"));
 				dto.setUser_level(rs.getInt("user_level"));
-				dto.setRegdate(rs.getString("regdate"));
+				dto.setUser_date(rs.getString("regdate"));
 				
 			}
 		} catch (SQLException e) {
