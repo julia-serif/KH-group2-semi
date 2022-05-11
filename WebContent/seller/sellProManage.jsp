@@ -25,7 +25,7 @@
 	      
 	      <li> <a href="<%=request.getContextPath() %>/sell_cart_list.do">카테고리 목록</a>
 	         
-	      <li> <a href="<%=request.getContextPath() %>/sell_pr_lIst.do">판매 상품 목록</a>
+	      <li> <a href="<%=request.getContextPath() %>/sell_pro_list.do">판매 상품 목록</a>
 
 	      <li> <a href="<%=request.getContextPath() %>/sell_pro_input.do">판매 상품 등록</a>
 	   

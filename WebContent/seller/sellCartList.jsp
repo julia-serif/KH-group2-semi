@@ -37,7 +37,7 @@
 	   <br>
 	   
 	   <table border="1" cellspacing="0" width="500">
-	      <tr bgcolor="#eeffee">
+	      <tr bgcolor="lightgray">
 	         <th>카테고리 번호</th> <th>카테고리 코드</th>
 	         <th>카테고리 이름</th> <th>카테고리 삭제</th>
 	      </tr>
