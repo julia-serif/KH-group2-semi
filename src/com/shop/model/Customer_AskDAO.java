@@ -88,7 +88,7 @@ public class Customer_AskDAO {
 
 			openConn();
 			
-			sql = "select * from customer_ask";
+			sql = "select * from customer_ask order by cs_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -101,7 +101,6 @@ public class Customer_AskDAO {
 				dto.setCs_writer(rs.getString("cs_writer"));
 				dto.setCs_title(rs.getString("cs_title"));
 				dto.setCs_cont(rs.getString("cs_cont"));
-				dto.setCs_image(rs.getString("cs_image"));
 				dto.setCs_date(rs.getString("cs_date"));
 				dto.setCs_update(rs.getString("cs_update"));
 				
@@ -118,6 +117,47 @@ public class Customer_AskDAO {
 		
 	} // getAskList() 메서드 end
 	
-	
+	// 검색 관련 메서드
+	public List<Customer_AskDTO> getSearchList(String field,String name){
+		
+		List<Customer_AskDTO> list = new ArrayList<Customer_AskDTO>();
+		
+		if(field.equals("title")) {
+		 try {
+
+			openConn();
+			
+			sql = "select * from customer_ask "
+					+ "where cs_title like ? order by cs_no desc ";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, "%"+name+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Customer_AskDTO dto = new Customer_AskDTO();
+				
+				dto.setCs_no(rs.getInt("cs_no"));
+				dto.setCs_writer(rs.getString("cs_writer"));
+				dto.setCs_title(rs.getString("cs_title"));
+				dto.setCs_cont(rs.getString("cs_cont"));
+				dto.setCs_date(rs.getString("cs_date"));
+				dto.setCs_update(rs.getString("cs_update"));
+				
+				list.add(dto);
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+				
+		}
+		return list;	
+	} // getSearchList() 메서드 end
 	
 }

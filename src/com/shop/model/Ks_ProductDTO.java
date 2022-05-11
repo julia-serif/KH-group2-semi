@@ -15,7 +15,6 @@ public class Ks_ProductDTO {
 	private String pinputdate;
 	
 	
-	
 	public int getPno() {
 		return pno;
 	}
@@ -82,6 +81,9 @@ public class Ks_ProductDTO {
 	public void setPinputdate(String pinputdate) {
 		this.pinputdate = pinputdate;
 	}
+	
+	
+	
 	
 	
 }
