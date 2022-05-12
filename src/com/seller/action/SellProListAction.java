@@ -8,31 +8,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.productDAO;
-import com.shop.model.productDTO;
+import com.seller.model.ProductDAO;
+import com.seller.model.ProductDTO;
 
-public class SellerProductInputAction implements Action {
+public class SellProListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// 카테고리 코드 전체 리스트를 DB에서 조회하여
-		// 상품 등록 폼 페이지(view page)로 이동시키는 비지니스 로직.
+		// 상품 둥록 폼 페이지를 통해서 DB에 저장된 전체 상품 목록을 조회하여
+		// 상품 목록 페이지(view page)로 이동시키는 비지니스 로직.
 		
-		productDAO dao = productDAO.getInstance();
+		ProductDAO dao = ProductDAO.getInstance();
 		
-		List<productDTO> list = dao.getProductList();
+		List<ProductDTO> list = dao.getProductList();
 		
 		request.setAttribute("productList", list);
-		
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("seller/sellProInput.jsp");
+		forward.setPath("seller/sellProList.jsp");
 		
 		
 		return forward;
 		
 	}
+
 }

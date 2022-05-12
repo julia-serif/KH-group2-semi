@@ -22,7 +22,7 @@
 	
 	<div align="center">
 	   <hr width="65%" color="gray">
-	      <h3>Seller Product 전체 리스트 페이지</h3>
+	      <h3>판매상품 목로</h3>
 	   <hr width="65%" color="gray">
 	   <br>
 	   
@@ -30,7 +30,7 @@
 	      <tr bgcolor="lightgray">
 	         <th>제품번호</th> <th>카테고리 코드</th> <th>제품이름</th>
 	         <th>이 미 지</th> <th>제품 가격</th> <th>수 량</th>
-	         <th>제 조 사</th> <th>제품 입고일</th> <th>수 정&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;삭 제
+	         <th>제 조 사</th> <th>제품 입고일</th> <th>수 정</th> <th>삭 제</th>
 	      </tr>
 	      
 	      <c:set var="list" value="${productList }" />
@@ -40,14 +40,17 @@
 	               <td> ${dto.getPno() } </td>
 	               <td> ${dto.getPcode() } </td>
 	               <td> ${dto.getPname() } </td>
+	               <td> <img src="<%=request.getContextPath() %>/pimg/${dto.getPimage() }"
+	               					width="70" height="50"> </td>
 	               <td> ${dto.getPrice() } 원 </td>
 	               <td> ${dto.getPqty() } </td>
 	               <td> ${dto.getPcompany() } </td>
 	               <td> ${dto.getPinputdate().substring(0, 10) } </td>
 	               <td>
-	                  <a href="<%=request.getContextPath() %>/seller_product_update.do?pnum=${dto.getPno() }">수 정</a>
-	                     &nbsp;&nbsp;|&nbsp;&nbsp;
-	                  <a href="<%=request.getContextPath() %>/seller_product_delete.do?pnum=${dto.getPno() }">삭 제</a>
+	                  <a href="<%=request.getContextPath() %>/seller_product_update.do?pno=${dto.getPno() }">수 정</a>
+	               </td>
+	               <td>
+	                  <a href="<%=request.getContextPath() %>/seller_product_delete.do?pno=${dto.getPno() }">삭 제</a>
 	               </td>
 	            </tr>
 	         </c:forEach>

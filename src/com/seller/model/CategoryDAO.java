@@ -53,7 +53,7 @@ public class CategoryDAO {
 					(DataSource)ctx.lookup("java:comp/env/jdbc/myoracle");
 			
 			// 3단계 : DataSource 객체를 이용하여 커넥션 객체를 하나 가져온다.
-			con = ds.getConnection();
+			con =ds.getConnection();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -92,9 +92,9 @@ public class CategoryDAO {
 		
 		int result = 0, count = 0;
 		
-		
+		openConn();
 		try {
-			openConn();
+			
 			
 			sql = "select max(category_no) from ks_category";
 			
