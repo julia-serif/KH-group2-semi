@@ -18,6 +18,7 @@
 			<tr>
 				<th>주문 번호</th>
 				<th>상품주문번호</th>
+				<th>상품번호</th>
 				<th>상품명</th>
 				<th>주문 수량</th>
 				<th>주문 금액</th>
@@ -34,7 +35,7 @@
 			</c:if>
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="6" align="center">목록이 없습니다.</td>
+					<td colspan="7" align="center">목록이 없습니다.</td>
 				</tr>
 			</c:if>
 		</table>
