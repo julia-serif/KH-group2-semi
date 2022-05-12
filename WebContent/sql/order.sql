@@ -37,9 +37,9 @@ create or replace view view_sales_performance
 as
 select seller_id, ks_order.order_no, product_order_no,
 product_no, pname, product_quantity, product_price, order_date
-from ks_order, ks_product_order, shop_product
+from ks_order, ks_product_order, ks_product
 where ks_order.order_no = ks_product_order.order_no
-and ks_product_order.product_no = shop_product.pnum;
+and ks_product_order.product_no = ks_product.pno;
 
 
 insert into shop_user values(user_seq.nextval,'seller1','1234','김판매',27,'010-1311-2341'
