@@ -99,6 +99,7 @@ public class SalesPerformanceDAO {
 				dto.setOrder_no(rs.getString("order_no"));
 				dto.setProduct_order_no(rs.getInt("product_order_no"));
 				dto.setProduct_no(rs.getInt("product_no"));
+				dto.setPname(rs.getString("pname"));
 				dto.setProduct_quantity(rs.getInt("product_quantity"));
 				dto.setProduct_price(rs.getInt("product_price"));
 				dto.setOrder_date(rs.getString("order_date"));

@@ -36,9 +36,10 @@ from ks_order inner join ks_product_order on ks_order.order_no = ks_product_orde
 create or replace view view_sales_performance
 as
 select seller_id, ks_order.order_no, product_order_no,
-product_no, product_quantity, product_price, order_date
-from ks_order inner join ks_product_order on ks_order.order_no = ks_product_order.order_no;
---product_no는 추후에 상품쪽 테이블과 join해 상품이름으로 변경해야 함
+product_no, pname, product_quantity, product_price, order_date
+from ks_order, ks_product_order, shop_product
+where ks_order.order_no = ks_product_order.order_no
+and ks_product_order.product_no = shop_product.pnum;
 
 
 insert into shop_user values(user_seq.nextval,'seller1','1234','김판매',27,'010-1311-2341'
