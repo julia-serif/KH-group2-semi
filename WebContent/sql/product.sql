@@ -9,7 +9,8 @@ CREATE TABLE ks_product(
   	pspec varchar2(30),                   -- 상품 스펙
   	pcontents varchar2(1000),             -- 상품 설명
   	point number(6) default 0,            -- 상품 포인트
-  	pinputdate date                       -- 상품 입고일
+  	pinputdate date,                      -- 상품 입고일
+   pseller varchar2(20)
 );
 
 create table ks_category(
@@ -27,4 +28,4 @@ CREATE TABLE ks_cart(
  	cart_price number(8) not null,          -- 상품 가격
  	cart_pspec varchar2(20) not null,       -- 상품 스펙
  	cart_pimage varchar2(500)               -- 상품 이미지
-)
+);
