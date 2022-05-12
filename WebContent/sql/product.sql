@@ -10,7 +10,7 @@ CREATE TABLE ks_product(
   	pcontents varchar2(1000),             -- 상품 설명
   	point number(6) default 0,            -- 상품 포인트
   	pinputdate date,                      -- 상품 입고일
-   pseller varchar2(20)
+   	pseller varchar2(20)                  -- 상품 판매자
 );
 
 create table ks_category(
