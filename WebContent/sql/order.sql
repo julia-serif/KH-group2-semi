@@ -44,3 +44,12 @@ and ks_product_order.product_no = ks_product.pno;
 
 insert into shop_user values(user_seq.nextval,'seller1','1234','김판매',27,'010-1311-2341'
 ,'kim@naver.com','서울시 마포구',0,'판매자',1,sysdate); --관리자 승인 받은 판매자, 테스트용
+
+insert into ks_product values(00100, '청바지', 01001, '모신사', 'blue.jpg', 10, 25000, '스판청바지', '신상품청바지', 250, sysdate, 'seller1');
+insert into ks_product values(00200, '블라우스', 01001, '자라', 'blu.jps', 10, 15000, '흰색블라우스', '기본아이템', '150', sysdate, 'seller1');
+
+insert into ks_order values('주문번호01', 'lee', sysdate, '이순신', '010-2354-2315', '서울시 인현동');
+insert into ks_product_order values (1, '주문번호01', 00100, 2, 25000*2, sysdate, '발송준비', 'seller1');
+insert into ks_product_order values (2, '주문번호01', 00200, 3, 15000*3, sysdate, '발송준비', 'seller1');
+
+commit;

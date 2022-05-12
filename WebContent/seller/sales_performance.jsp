@@ -30,6 +30,12 @@
 				<c:forEach items="${list }" var="dto">
 					<tr>
 						<td> ${dto.getOrder_no() } </td>
+						<td> ${dto.getProduct_order_no() } </td>
+						<td> ${dto.getProduct_no() } </td>
+						<td> ${dto.getPname() } </td>
+						<td> ${dto.getProduct_quantity() } </td>
+						<td> ${dto.getProduct_price() } </td>
+						<td> ${dto.getOrder_date() } </td>
 					</tr>
 				</c:forEach>
 			</c:if>

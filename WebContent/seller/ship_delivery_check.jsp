@@ -33,6 +33,14 @@
 				<c:forEach items="${list }" var="dto">
 					<tr>
 						<td> ${dto.getOrder_no() } </td>
+						<td> ${dto.getProduct_order_no() } </td>
+						<td> ${dto.getProduct_no() } </td>
+						<td> ${dto.getProduct_quantity() } </td>
+						<td> ${dto.getProduct_price() } </td>
+						<td> ${dto.getUser_id() } </td>
+						<td> ${dto.getAddress() } </td>
+						<td> ${dto.getOrder_date() } </td>
+						<td> ${dto.getOrder_status() } </td>
 					</tr>
 				</c:forEach>
 			</c:if>
