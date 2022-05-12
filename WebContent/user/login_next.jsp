@@ -11,7 +11,7 @@
 </head>
 <body>
 
- 	<jsp:include page="include/top_main.jsp"/>
+ 	<jsp:include page="../include/top.jsp"/>
 
  <main class="mt-3">
  	 <div class="container">
@@ -47,6 +47,6 @@
 	 </div>
 	 </div>
 	 </main>
-	<select></select>
-</body>
-</html>
+	
+	</body>
+	</html>

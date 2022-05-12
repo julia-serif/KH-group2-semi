@@ -30,8 +30,8 @@
  	 	<table class="top_line col-12">
  	 	 	<tr>
  	 	 	 	<td colspan="5" align="right">
- 	 	 	 	<a href="<%=request.getContextPath()%>/login.do">로그인</a>
- 	 	 	 	<a href="<%=request.getContextPath()%>/#">회원가입</a>
+ 	 	 	 	<a href="view/sign_in.jsp">로그인</a>
+ 	 	 	 	<a href="<%=request.getContextPath()%>/sign_in_ok.do">회원가입</a>
  	 	 	   <div class="dropdown">
  	 	 	 	  	<button class="dropbtn">
  	 	 	 	  	 <span class="drop_icon"></span>
@@ -39,7 +39,7 @@
  	 	 	 	  	</button>
  	 	 	 	  	<div class="dropdown_content">
  	 	 	 	  	  <a href="<%=request.getContextPath()%>/ask.do">자주묻는 질문</a>
- 	 	 	 	  	  <a href="<%=request.getContextPath()%>/">상품 문의</a>
+ 	 	 	 	  	  <a href="<%=request.getContextPath()%>/user_product_view.do">상품 문의</a>
  	 	 	 	  	</div>
  	 	 	    </div>
  	 	 	  </td>	 	 	 	

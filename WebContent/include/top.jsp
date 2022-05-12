@@ -19,10 +19,10 @@
 <body>
 <!-- 로그인 후 -->
  <div class="container">
- 	<c:set var="dto" value="${userid }"/>
+ 	<c:set var="dto" value="${user_id }"/>
  	<input type="hidden" name="userid" value="${userid }"> 
  	<input type="hidden" name="userpwd" value="${userpwd }"> 
- 	<input type="hidden" name="username" value="${username }"> 
+ 	<input type="hidden" name="username" value="${user_name }"> 
  	<input type="hidden" name="userage" value="${userage }"> 
  	<input type="hidden" name="userphone" value="${userphone }"> 
  	<input type="hidden" name="user_mileage" value="${user_mileage }"> 
@@ -30,9 +30,9 @@
  	 	<table class="top_line col-12">
  	 	 	<tr>
  	 	 	 	<td colspan="5" align="right">
- 	 	 	 	<a href="#">${username }님 </a>
+ 	 	 	 	<a href="#">${user_name }님 </a>
  	 	 	 	<a href="<%=request.getContextPath()%>/logout.do">로그아웃</a>
- 	 	 	 	<a href="<%=request.getContextPath()%>/#">회원가입</a>
+ 	 	 	 	<a href="<%=request.getContextPath()%>/sign_in_ok.do">회원가입</a>
  	 	 	   <div class="dropdown">
  	 	 	 	  	<button class="dropbtn">
  	 	 	 	  	 <span class="drop_icon"></span>
@@ -40,7 +40,7 @@
  	 	 	 	  	</button>
  	 	 	 	  	<div class="dropdown_content">
  	 	 	 	  	  <a href="<%=request.getContextPath()%>/ask.do">자주묻는 질문</a>
- 	 	 	 	  	  <a href="<%=request.getContextPath()%>/">상품 문의</a>
+ 	 	 	 	  	  <a href="<%=request.getContextPath()%>/user_product_view.do">상품 문의</a>
  	 	 	 	  	</div>
  	 	 	    </div>
  	 	 	  </td>	 	 	 	

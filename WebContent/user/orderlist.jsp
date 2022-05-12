@@ -57,7 +57,7 @@
  	 	       <div class="td_detaol">
  	 	        "2022-05-10"
  	 	        <span class="btn_bg btn_w81_2">
- 	 	         <a href="#" id=>주문상세보기</a>
+ 	 	         <a href="<%=request.getContextPath() %>/">주문상세보기</a>
  	 	        </span>
  	 	       </div>
  	 	      </td>
