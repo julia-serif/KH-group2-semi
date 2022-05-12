@@ -4,7 +4,7 @@ public class ProductDTO {
 
 	private int pno;
 	private String pname;
-	private String pcode;
+	private String pcode;	//카테고리
 	private String pcompany;
 	private String pimage;
 	private int pqty;

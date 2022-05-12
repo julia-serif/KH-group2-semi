@@ -115,6 +115,8 @@ public class ProductDAO {
 			
 			pstmt.setString(2, dto.getPname());
 			
+			pstmt.setString(3, dto.getPcode());
+			
 			pstmt.setString(4, dto.getPcompany());
 			
 			pstmt.setString(5, dto.getPimage());
@@ -151,8 +153,7 @@ public class ProductDAO {
 		try {
 			openConn();
 			
-			sql = "select * from ks_product "
-					+ " order by pno desc";
+			sql = "select * from ks_product order by pno desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -163,6 +164,8 @@ public class ProductDAO {
 				ProductDTO dto = new ProductDTO();
 				
 				dto.setPno(rs.getInt("pno"));
+				
+				dto.setPcode(rs.getString("pcode"));
 				
 				dto.setPname(rs.getString("pname"));
 				
@@ -205,8 +208,7 @@ public class ProductDAO {
 		try {
 			openConn();
 			
-			sql = "select * from ks_product "
-					+ " where pno = ?";
+			sql = "select * from ks_product where pno = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			

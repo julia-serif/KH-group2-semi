@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.productDAO;
-import com.shop.model.productDTO;
+import com.seller.model.CategoryDAO;
+import com.seller.model.CategoryDTO;
 
-public class SellProductInputAction implements Action {
+public class SellProInputAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 카테고리 코드 전체 리스트를 DB에서 조회하여
 		// 상품 등록 폼 페이지(view page)로 이동시키는 비지니스 로직.
 		
-		productDAO dao = productDAO.getInstance();
+		CategoryDAO dao = CategoryDAO.getInstance();
 		
-		List<productDTO> list = dao.getProductList();
+		List<CategoryDTO> list = dao.getCategoryList();
 		
-		request.setAttribute("productList", list);
+		request.setAttribute("categoryList", list);
 		
 		
 		ActionForward forward = new ActionForward();
@@ -35,4 +35,5 @@ public class SellProductInputAction implements Action {
 		return forward;
 		
 	}
+
 }

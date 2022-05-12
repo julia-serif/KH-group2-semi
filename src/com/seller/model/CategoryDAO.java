@@ -138,8 +138,7 @@ public class CategoryDAO {
 		try {
 			openConn();
 			
-			sql = "select * from ks_category "
-					+ " order by category_no desc";
+			sql = "select * from ks_category order by category_no desc";
 			
 			pstmt = con.prepareStatement(sql);
 			

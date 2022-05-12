@@ -1,3 +1,6 @@
+<%@page import="com.seller.model.CategoryDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.seller.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -15,30 +18,31 @@
 	
 	<div align="center">
 	   <hr width="65%" color="gray">
-	      <h3>상품 등록 폼 페이지</h3>
+	      <h3>쇼핑몰 판매자 상품 등록</h3>
 	   <hr width="65%" color="gray">
 	   <br>
 	   
 	   <form method="post" enctype="multipart/form-data"
-	      action="<%=request.getContextPath() %>/sell_product_input_ok.do">
+	      action="<%=request.getContextPath() %>/sell_pro_input_ok.do">
 	   
 	      <table border="1" cellspacing="0" width="400">
 	         <c:set var="list" value="${categoryList }" />
 	         <tr>
 	            <th>카테고리 코드</th>
 	            <td>
-	               <select name="ks_category">
+	               <select name="p_code">
 	                  <c:if test="${empty list }">
-	                     <option value="">카테고리</option>
+	                     <option value="">카테고리 없음</option>
 	                  </c:if>
-	                  
+	                 
 	                  <c:if test="${!empty list }">
 	                     <c:forEach items="${list }" var="dto">
-	                        <option value="${dto.getPcode() }">
-	                        	${dto.getCategory_name() } [${dto.getPcode() }]</option>
-	                     </c:forEach>
+	                      <option value="${dto.getCategory_code() }">
+	                        	${dto.getCategory_name() } [${dto.getCategory_code() }]</option>
+	                    
+	                    </c:forEach>
 	                  </c:if>
-	               </select>
+	              </select>
 	            </td>
 	         </tr>
 	         
@@ -46,7 +50,7 @@
 	            <th>상품명</th>
 	            <td> <input name="p_name"> </td>
 	         </tr>
-	         
+
 	         <tr>
 	            <th>상품제조사</th>
 	            <td> <input name="p_company"> </td>
