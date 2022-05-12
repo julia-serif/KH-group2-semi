@@ -15,3 +15,21 @@ create table qna_board (
 	references ks_product(pno)
 );
 
+
+--만들었지만 jsp에서 처리
+CREATE TABLE customer_ask(
+ 	cs_no number(10) PRIMARY KEY,          -- 번호
+ 	cs_writer varchar2(100) not null,      -- 작성자
+ 	cs_title varchar2(500) not null,       -- 제목
+ 	cs_cont varchar2(1000),                -- 내용
+ 	cs_image varchar2(100),                -- 이미지
+ 	cs_date date,                          -- 작성일
+ 	cs_update date                         -- 수정일
+);
+
+
+CREATE TABLE customer_qna(
+ 	qna_no number(10) PRIMARY KEY,         -- 번호
+ 	qna_title varchar2(500),               -- 제목
+ 	qna_cont varchar2(1000)                -- 내용
+);
