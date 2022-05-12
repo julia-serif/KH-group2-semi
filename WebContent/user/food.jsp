@@ -8,7 +8,7 @@
 <%
  	Ks_CategoryDAO dao = Ks_CategoryDAO.getInstance();
     List<Ks_CategoryDTO> list =  dao.getCategoryList();
- 	request.setAttribute("categoryList", list);
+ 	request.setAttribute("category_List", list);
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@
  
  	<div id="total">
  	 	<div id="side">
- 	 	 	<c:set var="list" value="${categoryList}"/>
+ 	 	 	<c:set var="list" value="${category_List}"/>
  	 	 	<h3>카테고리</h3>
  	 	 	<c:if test="${!empty list }">
  	 	 	 <c:forEach items="${list }" var="dto">
@@ -62,7 +62,7 @@
     	    </div> 
     	</a>	
    		 <div class="btn-group" role="group">
- 			<a href="<%=request.getContextPath() %>/">
+ 			<a href="<%=request.getContextPath() %>/user_cart_add.do">
  			<button type="button" class="btn btn-sm btn-outline-primary">장바구니 담기</button></a>
   			<a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno()}">
   			<button type="button" class="btn btn-sm btn-outline-primary">주문하기</button></a>

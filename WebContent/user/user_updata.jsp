@@ -19,14 +19,15 @@
 <div class="container">
   <div class="row">
  	<div class="col-12 md mt-4" class="top_user">
- 	<c:set var="dto" value="${userid }"/>
- 	 <h2>${username }님 회원 정보 </h2><hr width="100%" color="pink">
+ 	<c:set var="dto" value="${user_id }"/>
+ 	 <c:if test="${!empty dto }">
+ 	 <h2>${user_name }님 회원 정보 </h2><hr width="100%" color="pink">
  	 <div class="user">
- 	   <p>아이디 <input name="userid" value="${userid }">
-                   이 름 <input name="username" value="${username }">
+ 	   <p>아이디 <input name="userid" value="${user_id }">
+                   이 름 <input name="username" value="${user_name }">
  	   </p>
  	   <hr width="100%" color="pink">
- 	   <p>-${username }님의 회원정보입니다.</p>
+ 	   <p>-${user_name }님의 회원정보입니다.</p>
  	   <table class="table table-bordered" class="usertable">
  	    <tr>
  	     <th>이  메  일</th>
@@ -55,6 +56,7 @@
  	    </tr>
  	   </table>
  	 </div>
+ 	 </c:if>
  	</div>
 </div>
 </div>

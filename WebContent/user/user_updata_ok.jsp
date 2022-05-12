@@ -21,18 +21,18 @@
  	<div class="col-12 md mt-4">
  	  <c:set var="dto" value="${userupdate }"></c:set>
  	 	<form method="post" action="<%=request.getContextPath() %>/user_updata.do">
- 	 	<h2>${username }님 회원 정보 수정</h2>
+ 	 	<h2>${user_name }님 회원 정보 수정</h2>
  	 	<hr width="100%" color="pink">
  	 	<input type="hidden" name="dbpwd" value="${userpwd}">
  	 	<table class="table table-bordered" class="mt-4">
  	 	 	<tr>
  	 	 	 	<th>아이디</th>
- 	 	 	 	<td><input name="userid" value="${userid }" readonly></td>
+ 	 	 	 	<td><input name="userid" value="${user_id }" readonly></td>
  	 	 	</tr>
  	 	 	
  	 	 	<tr>
  	 	 	 	<th>이  름</th>
- 	 	 	 	<td><input name="username" value="${username }" readonly></td>
+ 	 	 	 	<td><input name="username" value="${user_name }" readonly></td>
  	 	 	</tr>
  	 	 	
  	 	 	<tr>

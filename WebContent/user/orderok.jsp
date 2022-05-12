@@ -49,7 +49,7 @@
 </div>
  </div>
       
-      <input type="hidden" name="userid" value="${userid }">
+      <input type="hidden" name="userid" value="${user_id }">
       <input type="hidden" name="payNo" value="${dto.getPno() }">     
       <input type="hidden" name="cartPspec" value="${dto.getPspec() }">
       <input type="hidden" name="cartPimage" value="${dto.getPimage() }">
