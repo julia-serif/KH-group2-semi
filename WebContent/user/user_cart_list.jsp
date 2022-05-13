@@ -34,7 +34,6 @@ $(document).ready(function(){
 
 	$(".hidden_cart_checkbox").on("click", partCheck);
 	
-	//수량 +- 버튼
 	$(".amtBtn").on("click", qtyBtn);
 	
 	$("input[name='checkedDelete']").on("click", checkedDelete);
