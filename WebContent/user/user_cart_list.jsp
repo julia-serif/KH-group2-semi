@@ -13,8 +13,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 
-/* 테스트입니다 */
-
 $(document).ready(function(){
 	
    // 여러 ajax에서 동일하게 사용되는 속성 설정
