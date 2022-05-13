@@ -12,7 +12,7 @@
 		<h1>판매자 페이지</h1>
 		<a href="<%=request.getContextPath() %>/seller_order_manage.do">주문 관리</a>
 		&nbsp;&nbsp;&nbsp;
-		<a>상품 관리</a>
+		<a href="<%=request.getContextPath() %>/seller_product_manage.do">상품 관리</a>
 	</div>
 
 </body>
