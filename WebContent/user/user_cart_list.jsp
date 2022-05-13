@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 
-/* 테스트입니다 */
+
 
 $(document).ready(function(){
 	
@@ -25,77 +25,39 @@ $(document).ready(function(){
    });
 
 	
+	//종합정보(가격,배송비,포인트 등)
 	setTotalInfo();
-	
-	$(".hidden_cart_checkbox").on("click", setTotalInfo);
-	
-	$(".all_cart_checkbox").on("click", allCheck);
-	
-	$(".hidden_cart_checkbox").on("click", partCheck);
 
+	$(".hidden_cart_checkbox").on("click", setTotalInfo);
+
+	$(".all_cart_checkbox").on("click", allCheck);
+
+	$(".hidden_cart_checkbox").on("click", partCheck);
+	
+	//수량 +- 버튼
 	$(".amtBtn").on("click", qtyBtn);
 	
 	$("input[name='checkedDelete']").on("click", checkedDelete);
-	
-	$("input[name='ChangeAmtBtn']").on("click", ChangeAmtBtn);
+
 	
 	
 });
 
-/* 수량 변경 ajax */
-function ChangeAmtBtn(){
-		
-		
-		let qty = parseInt($(this).parent().prevAll("input[name='quantity']").val());
-		
-		var cartNum = $(this).next().val();
-		
-		var userId = $(this).siblings("input[name=userId]").val();
-	
-		$.ajax({
-			url : "<c:url value='/user_Cart_QtyChange.do'/>",
-			datatype : "json",			
-			data : {
-				aJaxCartQty : qty,
-				aJaxCartNum : cartNum,
-				aJaxUserId : userId
-			},
-			success : function(data){
-				
-				if(data>0){
-					
-					alert('변경되었습니다.');
-				
-				}else if (data == 0){
-					
-					alert('수량은 1개 이상 선택해주세요.');
-					location.replace("<c:url value='/user_cart_list.do'/>");
-					
-				}else {
-					alert('재고 수량보다 많은 수량을 입력하셨습니다.');
-					location.replace("<c:url value='/user_cart_list.do'/>");
-				}
-			},
-			error : function(){
-				alert('통신 오류 발생');
-			}
-		
-		});	
-		
-}
+
 
 /* 결제 */
 function goBuy(){
 		 
-	
+	/* 현재문서. form(name) . action  */
 	document.frm.action = "<%=request.getContextPath() %>/user_order.do";
 	
+	/* user_cart_add.do로 폼을 전달함 */
 	document.frm.submit();
 	
 }
 
 
-/* 선택 상품 삭제 버튼 클릭시  */
+/* 선택 상품 삭제 버튼 클릭시 */
 function checkedDelete() {
 	
  	var checkBoxArr = new Array;
@@ -104,7 +66,7 @@ function checkedDelete() {
 	
 	for(let i=0; i<checkList.length; i++){   
 		
-		if(checkList[i].checked){   
+		if(checkList[i].checked){    
 			
 			checkBoxArr.push(checkList[i].value);
 			
@@ -117,7 +79,7 @@ function checkedDelete() {
 		
 		alert("선택된 상품이 없습니다.");
 	
-	}else{ //상품(체크박스)이 선택되어있으면
+	}else{ 
 		
 		if(confirm("정말 삭제하시겠습니까?")){
 		
@@ -127,7 +89,7 @@ function checkedDelete() {
 				datatype : "json",			
 				traditional : true,			
 				data : {
-					//checkBoxArr의 값을 보냄
+					
 					string : checkBoxArr
 				},
 				success : function(data){
@@ -156,6 +118,7 @@ function checkedDelete() {
 		}; //confirm문 end
 	}//else문 end
 
+
 }
 
 //수량 +- 버튼
@@ -165,18 +128,70 @@ function qtyBtn(){
 	   
 	   $(this).val() === "+"? $(this).parent().prev().val( nowAmt +1)
 			   						:  $(this).parent().prev().val( nowAmt -1);
+	 
+		
+		var changeAmt = parseInt($(this).parent().prev().val());
+		
+		var cartNum = parseInt($(this).parent().next().find("input[name=amtCartNum]").val());
+		
+		var userId = $(this).parent().next().find("input[name=userId]").val();
+		
+		var price = parseInt($(this).parent().next().find("input[name=price]").val()); 	
+			console.log(price);
+			
+		var toPrice = price * changeAmt;
+			console.log(toPrice);	
+		
+		var point = price * changeAmt * 0.01;
+			console.log(point);	
+		
+			var index = parseInt(cartNum - 1)
 	
+		
+		$.ajax({
+			url : "<c:url value='/user_Cart_QtyChange.do'/>", 
+			datatype : "json",			
+			data : {
+				aJaxCartQty : changeAmt,
+				aJaxCartNum : cartNum,
+				aJaxUserId : userId
+			},
+			success : function(data){
+				
+				if(data>0){
+					
+					
+					 setTotalInfo();
+					
+				}else if (data == 0){
+					
+					alert('수량은 1개 이상 선택해주세요.');
+					location.replace("<c:url value='/user_cart_list.do'/>");
+					
+				}else {
+					alert('재고 수량보다 많은 수량을 입력하셨습니다.');
+					location.replace("<c:url value='/user_cart_list.do'/>");
+				}
+			},
+			error : function(){
+				alert('통신 오류 발생');
+			}
+			
+			
+			
+		});	
+	   
+		
 		
 }
 
 
-
+/* 제품 체크박스*/
 function partCheck(){
 	
-	/* 제품 체크박스 */
+	
 	const checkBox = document.querySelectorAll('input[name="checkBox"]');
 	
-	/* 선택된 제품 체크박스 */
 	const checkedBox = document.querySelectorAll('input[name="checkBox"]:checked');
 	
 	if(checkedBox.length === checkBox.length){
@@ -190,7 +205,7 @@ function partCheck(){
 }
 
 
-
+/* 전체선택 체크박스 */
 function allCheck(){
 	
 	if( $(".all_cart_checkbox").is(':checked') ){
@@ -202,6 +217,7 @@ function allCheck(){
 	
 	setTotalInfo();
 	
+
 	
 }
 
@@ -216,8 +232,7 @@ function setTotalInfo() {
 	
 	
 	$(".cart_info_td").each(function(index, element) {
-	
-		
+
 		if($(element).find(".hidden_cart_checkbox").is(":checked") === true){
 			
 			//총 가격	
@@ -226,10 +241,37 @@ function setTotalInfo() {
 			totalCount += parseInt($(element).find(".quantity").val());
 			//총 포인트
 			totalPoint +=  parseInt($(element).find(".hidden_cart_point").val());
-	
+			
+			
+			
 		}	
 	});
 	
+
+	var row = $("input[name=checkNum]");
+	console.log(row);
+	var cNum = [];  	//카트번호
+	var cQty = [];		//수량
+	var cPrice = [];	//가격
+	
+	var rowPrice = [];
+	var rowPoint = [];
+	
+ 	for(var i=0; i<row.length; i++){
+		
+		cNum.push($("input[name=checkNum]")[i].value);
+		cQty.push($("input[name=quantity]")[i].value);
+		cPrice.push($("input[name=price]")[i].value);
+		
+
+		rowPrice[i] = cQty[i] * cPrice[i];
+		rowPoint[i] = cQty[i] * cPrice[i] * 0.01;
+		
+		$(".sPoint").eq(i).text(rowPoint[i].toLocaleString());
+		$(".sPrice").eq(i).text(rowPrice[i].toLocaleString());
+		
+	}  
+
 	//배송비
 	if(totalPrice >= 50000){
 		shippingPrice = 0;
@@ -242,7 +284,6 @@ function setTotalInfo() {
 	//전체금액
 	allTotalPrice = totalPrice + shippingPrice; 
 	
-	/* 세자리 콤마 Javascript Number 객체의 toLocaleString() */
 	// 총 가격
 	$(".totalPrice_span").text(totalPrice.toLocaleString());
 	// 총 갯수
@@ -253,7 +294,6 @@ function setTotalInfo() {
 	$(".shippingPrice_span").text(shippingPrice);	
 	// 최종 가격(총 가격 + 배송비)
 	$(".allTotalPrice_span").text(allTotalPrice.toLocaleString());
-	
 
 	
 }
@@ -261,6 +301,43 @@ function setTotalInfo() {
 
 </script>
 <style>
+
+.selectButton {
+	
+	cursor: pointer;
+	
+}
+
+#sButton{
+	margin-top: 5px;
+}
+
+.amtBtn {
+	
+	cursor: pointer;
+	
+}
+
+#minBtn{
+	
+	position: relative;
+	left:-91px;
+	
+	
+}
+
+#plusBtn{
+	
+	position: relative;
+	left:27px;
+	
+}
+
+
+#qtyInput{
+	position: relative;
+	left:27px;
+}
 
 #cTable {
 	
@@ -343,7 +420,7 @@ function setTotalInfo() {
 						
 					</td>
 					
-				
+					
 					<td class="center" style="border-left: 0px; border-right: 0px;" >${fn:length(list) - status.index }</td>
 					
 					<td class="center" style="border-left: 0px; border-right: 0px;">
@@ -356,27 +433,29 @@ function setTotalInfo() {
 					</td>
 					
 					
-					<td class="center" align="center">
-						<input type="text" name="quantity" value="${amount }" style="width:50px; text-align:center;" >
+					<td class="center" align="center" id="qtyTd">
+						<input type="text" id="qtyInput" name="quantity" readonly="readonly" value="${amount }" style="width:50px; text-align:center;" >
+						<span>
+							<input type="button" id="plusBtn" class="amtBtn" name="plus_btn" value="+">
+							<input type="button" id="minBtn" class="amtBtn" name="minus_btn" value="-">
+						</span>
 						<div>
-							<input type="button" class="amtBtn" name="plus_btn" value="+">
-							<input type="button" class="amtBtn" name="minus_btn" value="-">
-						</div>
-						<div>
-							<input type="button" name="ChangeAmtBtn" value="변경">
+							<!-- <input type="button" name="ChangeAmtBtn" value="변경" class="selectButton" id="sButton"> -->
 							<input type="hidden" name="amtCartNum" value="${dto.getCart_num() }">
 							<%-- sesseion.setAttribute로 설정한  ("userId", dto.getUser_id()); 를 가져옴 --%>
-							<input type="hidden" name="userId" value="${userId }">
+							<input type="hidden" name="userId" value="${user_id }">
 							<input type="hidden" name="price" value="${dto.getCart_price() }" >
 						</div>
 					</td>
 					
 					<td class="center">
 						
-						<fmt:formatNumber value="${price * amount  * 0.01 }" />원
+						<%-- <fmt:formatNumber value="${price * amount  * 0.01 }" />원 --%>
+						<span class="sPoint"></span>원
 					</td>
 					<td class="center">
-						<fmt:formatNumber value="${price * amount }"/>원
+						 <%-- <fmt:formatNumber value="${price * amount }"/>원  --%>
+						<span class="sPrice"></span>원
 					</td>
 					
 					<td class="center">
@@ -407,7 +486,7 @@ function setTotalInfo() {
 	<table style="border: 0; width: 1000px; margin-top: 20px;" align="center">
 		<tr>
 			<td align="left">
-				<input type="button" name = "checkedDelete" value ="선택 상품 삭제">
+				<input type="button" class="selectButton" name = "checkedDelete" value ="선택 상품 삭제">
 			</td>
 		</tr>
 	</table>
@@ -421,7 +500,9 @@ function setTotalInfo() {
 			</colgroup> 
 			<tr>
 				<td rowspan="5">
+					<a href="https://www.apple.com/">
 					<img src="<%=request.getContextPath() %>/uploadFile/img.jpg" height="180px" width="620px" style="padding: 0px; margin: 0;">
+					</a>
 				</td>
 				<td align="right">
 					<b>총 상품가격 :</b>
