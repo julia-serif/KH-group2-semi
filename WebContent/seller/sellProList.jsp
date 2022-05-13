@@ -16,14 +16,14 @@
 	}
 
 </style>
+
 </head>
 <body>
 
+	<jsp:include page="../include/sell_top.jsp" />
 	
 	<div align="center">
-	   <hr width="65%" color="gray">
-	      <h3>판매품목 리스트</h3>
-	   <hr width="65%" color="gray">
+	      <h3>판매상품 리스트</h3>
 	   <br>
 	   
 	   <table border="1" cellspacing="0" width="65%">
@@ -58,7 +58,7 @@
 	      <c:if test="${empty list }">
 	         <tr>
 	            <td colspan="9" align="center">
-	               <h3>검색된 제품 리스트가 없습니다</h3>
+	               <h3>검색된 상품 리스트가 없습니다</h3>
 	            </td>
 	         </tr>
 	      </c:if>

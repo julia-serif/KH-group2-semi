@@ -11,6 +11,8 @@
 </head>
 <body>
 
+	<jsp:include page="../include/sell_top.jsp" />
+	
 	<div align="center">
 	   <hr width="65%" color="gray">
 	      <h3>판매상품 내용 수정</h3>

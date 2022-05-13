@@ -12,14 +12,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+	
 <body>
-
+<jsp:include page="../include/sell_top.jsp" />
 
 	
 	<div align="center">
-	   <hr width="65%" color="gray">
 	      <h3>쇼핑몰 판매자 상품 등록</h3>
-	   <hr width="65%" color="gray">
 	   <br>
 	   
 	   <form method="post" enctype="multipart/form-data"

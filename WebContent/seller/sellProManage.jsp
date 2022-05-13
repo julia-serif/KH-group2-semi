@@ -16,21 +16,11 @@
 </style>
 </head>
 <body>
-
+	<jsp:include page="../include/sell_top.jsp" />
 	<div align="center">
-	
-	   <ul>
-	      
-	      <li> <a href="<%=request.getContextPath() %>/sell_cart_input.do">카테고리 등록</a>
-	      
-	      <li> <a href="<%=request.getContextPath() %>/sell_cart_list.do">카테고리 목록</a>
-	         
-	      <li> <a href="<%=request.getContextPath() %>/sell_pro_list.do">판매 상품 목록</a>
 
-	      <li> <a href="<%=request.getContextPath() %>/sell_pro_input.do">판매 상품 등록</a>
-	   
-	   </ul>
-	
+		<h2>환영합니다.</h2>
+		<h2>${sessionScope.user_name}님 판매관리 페이지 입니다.</h2>
 	</div>
 	
 </body>

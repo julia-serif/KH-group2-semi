@@ -27,12 +27,13 @@
 
 </script>
 </head>
+
 <body>
 	
+	<jsp:include page="../include/sell_top.jsp" />
+	
 	<div align="center">
-	   <hr width="65%" color="marmoon">
 	      <h3>카테고리 테이블 전체 리스트 페이지</h3>
-	   <hr width="65%" color="marmoon">
 	   <br>
 	   
 	   <table border="1" cellspacing="0" width="500">
