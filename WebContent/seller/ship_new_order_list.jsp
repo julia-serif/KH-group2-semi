@@ -52,7 +52,9 @@
 				</c:if>
 			</table>
 			<br>
-			<input type="submit" value="발송">
+			<c:if test="${!empty list }">
+				<input type="submit" value="발송">
+			</c:if>
 		</form>
 	</div>
 
