@@ -18,7 +18,7 @@ public class SellProUpdateAction implements Action {
 		// DB에서 조회하여 수정 폼 페이지(view page)로 이동시키는 비지니스 로직.
 		
 		int product_num = 
-				Integer.parseInt(request.getParameter("pnum").trim());
+				Integer.parseInt(request.getParameter("pno").trim());
 		
 		ProductDAO dao = ProductDAO.getInstance();
 		
@@ -30,7 +30,7 @@ public class SellProUpdateAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("admin/admin_product_update.jsp");
+		forward.setPath("seller/sellProUpdate.jsp");
 		
 		
 		return forward;

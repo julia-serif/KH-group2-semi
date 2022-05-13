@@ -29,8 +29,6 @@
 
 	      <li> <a href="<%=request.getContextPath() %>/sell_pro_input.do">판매 상품 등록</a>
 	   
-	      <li> <a href="<%=request.getContextPath() %>/sell_pro_ques.do">상품 문의 관리</a>
-	   
 	   </ul>
 	
 	</div>

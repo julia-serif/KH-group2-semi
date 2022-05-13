@@ -13,27 +13,27 @@
 
 	<div align="center">
 	   <hr width="65%" color="gray">
-	      <h3>SHOP_PRODUCTS 테이블 제품 수정 폼 페이지</h3>
+	      <h3>판매상품 내용 수정</h3>
 	   <hr width="65%" color="gray">
 	   <br>
 	   
 	   <form method="post" enctype="multipart/form-data"
-	      action="<%=request.getContextPath() %>/sell_product_update_ok.do">
+	      action="<%=request.getContextPath() %>/sell_pro_update_ok.do">
 	   	  
 	      <c:set var="dto" value="${productCont }" />
 	      
-	      <input type="hidden" name="p_num" value="${dto.getPnum() }">
+	      <input type="hidden" name="p_no" value="${dto.getPno() }">
 	      
 	      <table border="1" cellspacing="0" width="600">
 	         <tr>
 	            <th>카테고리 코드</th>
-	            <td> <input name="p_category"
-	            			value="${dto.getPcategory_fk() }" readonly> 
+	            <td> <input name="p_code"
+	            			value="${dto.getPcode() }" readonly> 
 	            </td>
 	         </tr>
 	         
 	         <tr>
-	            <th>제품명</th>
+	            <th>상품명</th>
 	         	<td> <input name="p_name"
 	         	            value="${dto.getPname() }" readonly>
 	         	</td>
@@ -49,7 +49,7 @@
 	         <tr>
 	            <th>제품 이미지</th>
 	            <td>
-	               <img src="<%=request.getContextPath() %>/upload/${dto.getPimage() }"
+	               <img src="<%=request.getContextPath() %>/pimg/${dto.getPimage() }"
 	               			width="100" height="80">
 	               <input type="file" name="p_image_new">
 	               <%-- 이미지를 수정하지 않고 그대로 제품수정 버튼을 누를 경우

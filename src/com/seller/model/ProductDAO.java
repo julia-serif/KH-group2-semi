@@ -221,6 +221,8 @@ public class ProductDAO {
 				
 				dto.setPname(rs.getString("pname"));
 				
+				dto.setPcode(rs.getString("pcode"));
+				
 				dto.setPcompany(rs.getString("pcompany"));
 				
 				dto.setPimage(rs.getString("pimage"));
@@ -261,7 +263,7 @@ public class ProductDAO {
 			sql = "update ks_product set pimage = ?, "
 					+ " pqty = ?, price = ?, pspec = ?, "
 					+ " pcontents = ?, point = ? "
-					+ " where pnum = ?";
+					+ " where pno = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			

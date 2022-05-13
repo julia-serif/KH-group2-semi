@@ -18,7 +18,7 @@ public class SellProDeleteAction implements Action {
 		// DB에서 삭제하는 비지니스 로직.
 		
 		int product_num = 
-				Integer.parseInt(request.getParameter("pnum").trim());
+				Integer.parseInt(request.getParameter("pno").trim());
 		
 		ProductDAO dao = ProductDAO.getInstance();
 		

@@ -13,7 +13,7 @@ import com.shop.controller.ActionForward;
 import com.seller.model.ProductDAO;
 import com.seller.model.ProductDTO;
 
-public class SellPropdateOkAction implements Action {
+public class SellProUpdateOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -22,7 +22,7 @@ public class SellPropdateOkAction implements Action {
 		
 		// 첨부파일이 저장될 위치(경로)를 설정.
 		String saveFolder = 
-				"C:\\Users\\nsims\\git\\KH-group2-semi\\WebContent\\pimg";
+				"C:\\NCS\\workspace(jsp)\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\KH-group2-semi\\pimg";
 		
 		// 첨부파일 용량(크기) 제한 - 파일 업로드 최대 크기
 		int fileSize = 10 * 1024 * 1024;  // 10MB
@@ -96,7 +96,7 @@ public class SellPropdateOkAction implements Action {
 			
 			forward.setRedirect(true);
 			
-			forward.setPath("admin_product_list.do");
+			forward.setPath("sellProList.do");
 			
 		}else {
 			out.println("<script>");

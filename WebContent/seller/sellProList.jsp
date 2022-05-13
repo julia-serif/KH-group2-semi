@@ -47,9 +47,9 @@
 	               <td> ${dto.getPcompany() } </td>
 	               <td> ${dto.getPinputdate().substring(0, 10) } </td>
 	               <td>
-	                  <a href="<%=request.getContextPath() %>/seller_product_update.do?pno=${dto.getPno() }">수 정</a>
+	                  <a href="<%=request.getContextPath() %>/sell_pro_update.do?pno=${dto.getPno() }">수 정</a>
 	                     &nbsp;&nbsp;|&nbsp;&nbsp;
-	                  <a href="<%=request.getContextPath() %>/seller_product_delete.do?pno=${dto.getPno() }">삭 제</a>
+	                  <a href="<%=request.getContextPath() %>/sell_pro_delete.do?pno=${dto.getPno() }">삭 제</a>
 	               </td>
 	            </tr>
 	         </c:forEach>
