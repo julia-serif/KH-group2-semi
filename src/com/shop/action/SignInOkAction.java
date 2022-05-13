@@ -36,7 +36,13 @@ public class SignInOkAction implements Action {
 			UserDTO dto = dao.getuser(user_id);
 			session.setAttribute("user_id", dto.getUser_id());
 			session.setAttribute("user_name", dto.getUser_name());
-
+			session.setAttribute("userpwd", dto.getUser_pwd());
+			session.setAttribute("userage", dto.getUser_age());
+			session.setAttribute("userphone", dto.getUser_phone());
+			session.setAttribute("useremail", dto.getUser_email());
+			session.setAttribute("user_addr", dto.getUser_addr());
+			session.setAttribute("user_mileage", dto.getUser_mileage());
+			session.setAttribute("dto", dto);
 			forward.setRedirect(false);
 			
 			if (dto.getUser_grade().equals("판매자")) {
@@ -51,7 +57,7 @@ public class SignInOkAction implements Action {
 			} else if (dto.getUser_grade().equals("관리자")) {
 				forward.setPath("admin/admin_main.jsp");
 			} else if (dto.getUser_grade().equals("구매자")) {
-				forward.setPath("view/_custommer.jsp");
+				forward.setPath("user/login_next.jsp");
 			} else {
 				out.println("<script>");
 				out.println("alert('error')");
