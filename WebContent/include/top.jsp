@@ -15,11 +15,22 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../CSS/top.css">
+<style type="text/css">
+.user a{
+text-decoration: none;
+font-size: 15px;
+}
+.user a:hover {
+	color: red;
+}
+</style>
 </head>
 <body>
 <!-- 로그인 후 -->
+	<%session.getAttribute("dto");%>
  <div class="container">
- 	<c:set var="dto" value="${userid }"/>
+ 
+ 	<c:set var="dto" value="${dto }"/>
  	<input type="hidden" name="userid" value="${userid }"> 
  	<input type="hidden" name="userpwd" value="${userpwd }"> 
  	<input type="hidden" name="username" value="${username }"> 
@@ -30,9 +41,11 @@
  	 	<table class="top_line col-12">
  	 	 	<tr>
  	 	 	 	<td colspan="5" align="right">
- 	 	 	 	<a href="#">${username }님 </a>
- 	 	 	 	<a href="<%=request.getContextPath()%>/logout.do">로그아웃</a>
- 	 	 	 	<a href="<%=request.getContextPath()%>/#">회원가입</a>
+ 	 	 	 	&nbsp;&nbsp;
+ 	 	 	 	<span class="user">
+ 	 	 	 	${dto.getUser_name()}님&nbsp;
+ 	 	 	 	<a href="<%=request.getContextPath()%>/admin_logout.do">로그아웃</a>&nbsp;
+ 	 	 	 	</span>
  	 	 	   <div class="dropdown">
  	 	 	 	  	<button class="dropbtn">
  	 	 	 	  	 <span class="drop_icon"></span>
