@@ -96,7 +96,7 @@ public class SellProUpdateOkAction implements Action {
 			
 			forward.setRedirect(true);
 			
-			forward.setPath("sellProList.do");
+			forward.setPath("sell_pro_list.do");
 			
 		}else {
 			out.println("<script>");
