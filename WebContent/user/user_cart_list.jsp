@@ -118,7 +118,7 @@ function checkedDelete() {
 
 }
 
-//수량 +- 버튼
+//수량 +-버튼
 function qtyBtn(){
 	
 	  var nowAmt = parseInt($(this).parent().prev().val());
