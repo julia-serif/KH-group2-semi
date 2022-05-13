@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>쇼핑몰</title>
 
-<link rel="stylesheet" href="./css/home.css">
+<link rel="stylesheet" href="./CSS/home.css">
 </head>
 
 <body>
