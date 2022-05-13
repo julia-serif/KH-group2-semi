@@ -8,8 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>소비자 마일리지 변경 페이지</title>
-<link rel="stylesheet" href="./css/admin.css">
-<link href="./css/admin_sidebar.css" rel="stylesheet">
+<link rel="stylesheet" href="./CSS/admin.css">
+<link href="./CSS/admin_sidebar.css" rel="stylesheet">
 
 </head>
 <body>
