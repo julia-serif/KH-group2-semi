@@ -9,8 +9,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="js/paging.js"></script>
+<script type="text/javascript">
+
+	function goCart() {
+		
+		document.frm.action="<%=request.getContextPath() %>/user_cart_add.do";
+		
+		document.frm.submit();
+	}
+	
+	function goOrder() {
+		
+		document.frm.action="<%=request.getContextPath() %>/user_order.do";
+		
+		document.frm.submit();
+	}
+
+</script>
+<link rel="stylesheet" href="CSS/product_cont.css" type="text/css">
 <style type="text/css">
 
 	#bbs_list {
@@ -32,7 +48,6 @@
 	
 
 </style>
-<link rel="stylesheet" href="css/product_cont.css" type="text/css">
 </head>
 <body>
 	
@@ -99,14 +114,14 @@
 								
 								<tr>
 									<td align="left">
-										<a href="#">
+										<a href="javascript:goCart()">
 											<img src="<%=request.getContextPath() %>/uploadfile/1.PNG"
 												border="0">
 										</a>								
 									</td>
 								
 									<td align="left">
-										<a href="#">
+										<a href="javascript:goOrder()">
 											<img src="<%=request.getContextPath() %>/uploadfile/2.PNG"
 												border="0">
 										</a>								

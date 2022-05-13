@@ -20,7 +20,7 @@ public class SellerProductInputAction implements Action {
 		
 		ProductDAO dao = ProductDAO.getInstance();
 		
-		List<ProductDTO> list = dao.getProductList();
+		List<ProductDTO> list = dao.getProductList1();
 		
 		request.setAttribute("productList", list);
 		

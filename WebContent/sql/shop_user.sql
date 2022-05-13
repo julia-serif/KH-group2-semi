@@ -35,4 +35,3 @@ insert into shop_user values(user_seq.nextval,'lee','1234','이순신',37,'010-3
 select *from shop_user;
 
 commit;
-

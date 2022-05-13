@@ -33,7 +33,6 @@
 	
 	.btn-group .button:hover {
 	  background-color: #3e8e41;
-	  clear: both;
 	}
 
 </style>
@@ -89,7 +88,7 @@
 				</tr>
 				
 				
-				<tr class="btn-group">
+				<tr class="btn-group" style="clear: both">
 					<td colspan="2" align="right">
 						<input type="reset" value="다시작성" class="button">&nbsp;&nbsp;&nbsp;
 						<input type="submit" value="문의하기" class="button">

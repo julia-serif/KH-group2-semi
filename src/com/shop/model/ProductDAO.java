@@ -142,17 +142,29 @@ public class ProductDAO {
 	 } //insertProduct() end
 	
 	
-	public List<ProductDTO> getProductList() {
+	public List<ProductDTO> getProductList(int page, int rowsize) {
 		
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
+		// 해당 페이지에서 시작 번호
+		int startNo = (page * rowsize) - (rowsize - 1);
+		
+		// 해당 페이지에서 끝 번호
+		int endNo = (page * rowsize);
 		
 		try {
 			openConn();
 	         
-	         sql = "select * from ks_product order by pno desc";
-	         
-	         pstmt = con.prepareStatement(sql);
+			sql = "select * from "
+					+ " (select row_number() "
+					+ " over(order by pno desc) rnum, "
+					+ " p.* from ks_product p) "
+					+ " where rnum >= ? and rnum <= ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
 
 	         rs = pstmt.executeQuery();
 	         
@@ -171,6 +183,7 @@ public class ProductDAO {
 	            dto.setPcontents(rs.getString("pcontents"));
 	            dto.setPoint(rs.getInt("point"));
 	            dto.setPinputdate(rs.getString("pinputdate"));
+	            dto.setPseller(rs.getString("pseller"));
 	            
 	            list.add(dto);
 	            
@@ -184,6 +197,53 @@ public class ProductDAO {
 		
 		return list;
 	} //getProductList() end
+	
+	
+	public List<ProductDTO> getProductList1() {
+		
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
+				
+		try {
+			openConn();
+	         
+			sql = "select * from ks_product order by pno desc";
+			
+			pstmt = con.prepareStatement(sql);
+			
+
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	            
+	            ProductDTO dto = new ProductDTO();
+	            
+	            dto.setPno(rs.getInt("pno"));
+	            dto.setPname(rs.getString("pname"));
+	            dto.setPcode(rs.getString("pcode"));
+	            dto.setPcompany(rs.getString("pcompany"));
+	            dto.setPimage(rs.getString("pimage"));
+	            dto.setPqty(rs.getInt("pqty"));
+	            dto.setPrice(rs.getInt("price"));
+	            dto.setPspec(rs.getString("pspec"));
+	            dto.setPcontents(rs.getString("pcontents"));
+	            dto.setPoint(rs.getInt("point"));
+	            dto.setPinputdate(rs.getString("pinputdate"));
+	            dto.setPseller(rs.getString("pseller"));
+	            
+	            list.add(dto);
+	            
+	         }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}
+	
+	
 	
 	public ProductDTO productContent(int num) {
 		

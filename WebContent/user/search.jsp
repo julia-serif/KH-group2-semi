@@ -47,7 +47,7 @@
  	 	  <c:forEach items="${search }" var="dto">
  	 	 <div class="col-lg-4 col-md-5">
  	 	  <div class="card" style="width: 18rem;">
-  			<img src="<%=request.getContextPath() %>/image/${dto.getPimage()}" class="card-img-top">
+  			<img src="<%=request.getContextPath() %>/upload/${dto.getPimage()}" class="card-img-top">
   			<div class="card-body">
     		<h5 class="card-name">${dto.getPname() }</h5>
     		<p class="card-cont">${dto.getPcontents() }</p>

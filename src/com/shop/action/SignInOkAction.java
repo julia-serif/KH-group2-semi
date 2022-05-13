@@ -51,7 +51,7 @@ public class SignInOkAction implements Action {
 			} else if (dto.getUser_grade().equals("관리자")) {
 				forward.setPath("admin/admin_main.jsp");
 			} else if (dto.getUser_grade().equals("구매자")) {
-				forward.setPath("view/_custommer.jsp");
+				forward.setPath("coupang_main.jsp");
 			} else {
 				out.println("<script>");
 				out.println("alert('error')");

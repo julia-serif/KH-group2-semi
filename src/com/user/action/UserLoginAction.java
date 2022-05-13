@@ -44,7 +44,7 @@ public class UserLoginAction implements Action {
 			session.setAttribute("user_mileage", dto.getUser_mileage());
 		
 			forward.setRedirect(true);
-			forward.setPath("usermain.do");
+			forward.setPath("user_main.do");
 			
 		}else if(check == -1) {
 			// 비밀번호가 틀린경우
