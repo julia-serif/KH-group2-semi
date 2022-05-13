@@ -47,11 +47,9 @@ $(document).ready(function(){
 
 /* 결제 */
 function goBuy(){
-		 
-	/* 현재문서. form(name) . action  */
+	
 	document.frm.action = "<%=request.getContextPath() %>/user_order.do";
 	
-	/* user_cart_add.do로 폼을 전달함 */
 	document.frm.submit();
 	
 }
