@@ -9,12 +9,12 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="./css/admin_sidebar.css" rel="stylesheet">
+<link href="./CSS/admin_sidebar.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="./css/admin.css">
+<link rel="stylesheet" href="./CSS/admin.css">
 </head>
 <body>
 

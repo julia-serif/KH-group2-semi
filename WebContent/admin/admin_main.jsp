@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <title>관리자 페이지</title>
-<link href="./css/admin_sidebar.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/admin.css">
+<link href="./CSS/admin_sidebar.css" rel="stylesheet">
+<link rel="stylesheet" href="./CSS/admin.css">
 </head>
 <body>
 	<%@ include file="admin_main_sidebar.jsp"%>
