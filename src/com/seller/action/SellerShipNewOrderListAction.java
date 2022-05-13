@@ -21,7 +21,7 @@ public class SellerShipNewOrderListAction implements Action {
 		
 		ProductOrderDAO dao = ProductOrderDAO.getInstance();
 		
-		List<ProductOrderDTO> list = dao.getProductList(user_id);
+		List<ProductOrderDTO> list = dao.getNewOrderList(user_id);
 		
 		request.setAttribute("productList", list);
 		

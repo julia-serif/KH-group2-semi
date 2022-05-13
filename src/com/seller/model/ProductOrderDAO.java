@@ -11,6 +11,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.google.common.base.Joiner;
+import com.google.common.collect.Iterables;
+
 public class ProductOrderDAO {
 	
 	Connection con = null;             // DB 연결하는 객체.
@@ -116,5 +119,82 @@ public class ProductOrderDAO {
 		}
 		
 		return list;
+	}
+	
+	
+	public List<ProductOrderDTO> getNewOrderList(String seller_id) {
+		
+		List<ProductOrderDTO> list = new ArrayList<ProductOrderDTO>();
+		
+		try {
+			openConn();
+			
+			sql = "select * from view_product_order_list where seller_id = ?"
+					+ " and order_status = ?"
+					+ " order by order_no desc, product_order_no desc";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, seller_id);
+			pstmt.setString(2, "발송준비");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductOrderDTO dto = new ProductOrderDTO();
+				
+				dto.setSeller_id(rs.getString("seller_id"));
+				dto.setOrder_no(rs.getString("order_no"));
+				dto.setProduct_order_no(rs.getInt("product_order_no"));
+				dto.setProduct_no(rs.getInt("product_no"));
+				dto.setProduct_quantity(rs.getInt("product_quantity"));
+				dto.setProduct_price(rs.getInt("product_price"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setAddress(rs.getString("address"));
+				dto.setOrder_date(rs.getString("order_date"));
+				dto.setOrder_status(rs.getString("order_status"));
+				
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
+	
+	public static String getLineOfQs(int num) {
+		  // Joiner and Iterables from the Guava library
+		  return Joiner.on(", ").join(Iterables.limit(Iterables.cycle("?"), num));
+		}	// https://code-examples.net/ko/q/788997
+
+	public int updateDeliveryStatus(String seller_id, int[] checked_pons) {
+		
+		int check = 0;
+		
+		try {
+			openConn();
+			
+			sql = "update ks_product_order"
+					+ " set order_status = '배송시작'"
+					+ " where seller_id = ? and"
+					+ " product_order_no in (" +
+						      getLineOfQs(checked_pons.length) + ")";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, seller_id);
+			for(int i=0; i<checked_pons.length; i++) {
+				pstmt.setInt(i+2, checked_pons[i]);
+			}
+			check = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return check;
 	}
 }

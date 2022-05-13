@@ -41,7 +41,7 @@
 							<td> ${dto.getUser_id() } </td>
 							<td> ${dto.getAddress() } </td>
 							<td> ${dto.getOrder_date() } </td>
-							<td> <input type="checkbox" value="${dto.getProduct_order_no() }"> </td>
+							<td> <input type="checkbox" name="checked_pons" value="${dto.getProduct_order_no() }"> </td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -52,7 +52,7 @@
 				</c:if>
 			</table>
 			<br>
-			<input type="submit">
+			<input type="submit" value="발송">
 		</form>
 	</div>
 
