@@ -22,6 +22,7 @@ create table ks_product_order(
 	product_price number(10) not null,						--주문 금액	
 	expected_date date,										--수령 예상 날짜
 	order_status varchar2(30) not null,						--배송 상태
+	--발송준비/배송시작/배송중/도착예정/배송완료
 	seller_id varchar2(20) references shop_user(user_id)	--판매자
 );
 
