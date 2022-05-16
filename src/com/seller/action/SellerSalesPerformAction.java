@@ -6,8 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.seller.model.SalesPerformanceDAO;
-import com.seller.model.SalesPerformanceDTO;
+import com.seller.model.ViewSalesPerformanceDAO;
+import com.seller.model.ViewSalesPerformanceDTO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
 
@@ -19,9 +19,9 @@ public class SellerSalesPerformAction implements Action {
 
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		
-		SalesPerformanceDAO dao = SalesPerformanceDAO.getInstance();
+		ViewSalesPerformanceDAO dao = ViewSalesPerformanceDAO.getInstance();
 		
-		List<SalesPerformanceDTO> list = dao.getProductList(user_id);
+		List<ViewSalesPerformanceDTO> list = dao.getProductList(user_id);
 		
 		request.setAttribute("productList", list);
 		

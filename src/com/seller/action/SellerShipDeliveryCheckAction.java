@@ -6,8 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.seller.model.ProductOrderDAO;
-import com.seller.model.ProductOrderDTO;
+import com.seller.model.ViewProductOrderDAO;
+import com.seller.model.ViewProductOrderDTO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
 
@@ -19,9 +19,9 @@ public class SellerShipDeliveryCheckAction implements Action {
 
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		
-		ProductOrderDAO dao = ProductOrderDAO.getInstance();
+		ViewProductOrderDAO dao = ViewProductOrderDAO.getInstance();
 		
-		List<ProductOrderDTO> list = dao.getProductList(user_id);
+		List<ViewProductOrderDTO> list = dao.getProductList(user_id);
 		
 		request.setAttribute("productList", list);
 		

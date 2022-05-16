@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 
-public class ProductOrderDAO {
+public class ViewProductOrderDAO {
 	
 	Connection con = null;             // DB 연결하는 객체.
 	PreparedStatement pstmt = null;    // DB에 SQL문을 전송하는 객체.
@@ -24,14 +24,14 @@ public class ProductOrderDAO {
 	
 	
 	// DAO 객체를 싱글톤 방식으로 생성
-	private static ProductOrderDAO instance = null;
+	private static ViewProductOrderDAO instance = null;
 	
-	private ProductOrderDAO() {   }
+	private ViewProductOrderDAO() {   }
 		
-	public static ProductOrderDAO getInstance() {
+	public static ViewProductOrderDAO getInstance() {
 		
 		if(instance == null) {
-			instance = new ProductOrderDAO();
+			instance = new ViewProductOrderDAO();
 		}
 		return instance;
 		
@@ -81,9 +81,9 @@ public class ProductOrderDAO {
 		
 	}  // closeConn() 메서드 end
 	
-	public List<ProductOrderDTO> getProductList(String seller_id) {
+	public List<ViewProductOrderDTO> getProductList(String seller_id) {
 		
-		List<ProductOrderDTO> list = new ArrayList<ProductOrderDTO>();
+		List<ViewProductOrderDTO> list = new ArrayList<ViewProductOrderDTO>();
 		
 		try {
 			openConn();
@@ -96,7 +96,7 @@ public class ProductOrderDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				ProductOrderDTO dto = new ProductOrderDTO();
+				ViewProductOrderDTO dto = new ViewProductOrderDTO();
 				
 				dto.setSeller_id(rs.getString("seller_id"));
 				dto.setOrder_no(rs.getString("order_no"));
@@ -122,9 +122,9 @@ public class ProductOrderDAO {
 	}
 	
 	
-	public List<ProductOrderDTO> getNewOrderList(String seller_id) {
+	public List<ViewProductOrderDTO> getNewOrderList(String seller_id) {
 		
-		List<ProductOrderDTO> list = new ArrayList<ProductOrderDTO>();
+		List<ViewProductOrderDTO> list = new ArrayList<ViewProductOrderDTO>();
 		
 		try {
 			openConn();
@@ -139,7 +139,7 @@ public class ProductOrderDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				ProductOrderDTO dto = new ProductOrderDTO();
+				ViewProductOrderDTO dto = new ViewProductOrderDTO();
 				
 				dto.setSeller_id(rs.getString("seller_id"));
 				dto.setOrder_no(rs.getString("order_no"));

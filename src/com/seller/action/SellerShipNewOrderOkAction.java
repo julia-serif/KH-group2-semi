@@ -7,8 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.seller.model.ProductOrderDAO;
-import com.seller.model.ProductOrderDTO;
+import com.seller.model.ViewProductOrderDAO;
+import com.seller.model.ViewProductOrderDTO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
 
@@ -18,7 +18,7 @@ public class SellerShipNewOrderOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// checkbox에 체크한 상품주문번호에 해당하는 주문들을 배송처리하는 비지니스 로직.
 		String user_id = (String) request.getSession().getAttribute("user_id");
-		ProductOrderDAO dao = ProductOrderDAO.getInstance();
+		ViewProductOrderDAO dao = ViewProductOrderDAO.getInstance();
 		
 		
 		//checkbox를 체크한 상품주문번호들을 getParameterValues로 가져온다.

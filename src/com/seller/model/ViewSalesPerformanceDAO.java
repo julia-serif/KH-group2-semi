@@ -11,7 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class SalesPerformanceDAO {
+public class ViewSalesPerformanceDAO {
 	
 	Connection con = null;             // DB 연결하는 객체.
 	PreparedStatement pstmt = null;    // DB에 SQL문을 전송하는 객체.
@@ -21,14 +21,14 @@ public class SalesPerformanceDAO {
 	
 	
 	// DAO 객체를 싱글톤 방식으로 생성
-	private static SalesPerformanceDAO instance = null;
+	private static ViewSalesPerformanceDAO instance = null;
 	
-	private SalesPerformanceDAO() {   }
+	private ViewSalesPerformanceDAO() {   }
 		
-	public static SalesPerformanceDAO getInstance() {
+	public static ViewSalesPerformanceDAO getInstance() {
 		
 		if(instance == null) {
-			instance = new SalesPerformanceDAO();
+			instance = new ViewSalesPerformanceDAO();
 		}
 		return instance;
 		
@@ -78,9 +78,9 @@ public class SalesPerformanceDAO {
 		
 	}  // closeConn() 메서드 end
 	
-	public List<SalesPerformanceDTO> getProductList(String seller_id) {
+	public List<ViewSalesPerformanceDTO> getProductList(String seller_id) {
 		
-		List<SalesPerformanceDTO> list = new ArrayList<SalesPerformanceDTO>();
+		List<ViewSalesPerformanceDTO> list = new ArrayList<ViewSalesPerformanceDTO>();
 		
 		try {
 			openConn();
@@ -93,7 +93,7 @@ public class SalesPerformanceDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				SalesPerformanceDTO dto = new SalesPerformanceDTO();
+				ViewSalesPerformanceDTO dto = new ViewSalesPerformanceDTO();
 				
 				dto.setSeller_id(rs.getString("seller_id"));
 				dto.setOrder_no(rs.getString("order_no"));
