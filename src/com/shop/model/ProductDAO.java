@@ -200,7 +200,7 @@ public class ProductDAO {
 	} //getProductList() end
 	
 	
-	public List<ProductDTO> getProductList1() {
+	public List<ProductDTO> getProductList1(String id) {
 		
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
@@ -208,10 +208,11 @@ public class ProductDAO {
 		try {
 			openConn();
 	         
-			sql = "select * from ks_product order by pno desc";
+			sql = "select * from ks_product where pseller = ? order by pno desc";
 			
 			pstmt = con.prepareStatement(sql);
 			
+			pstmt.setString(1, id);
 
 	         rs = pstmt.executeQuery();
 	         
