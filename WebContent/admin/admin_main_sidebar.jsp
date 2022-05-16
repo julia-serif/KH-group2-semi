@@ -60,21 +60,10 @@
 					<div class="caret"></div>
 			</a>
 				<ul id="menu-collapse-3" class="collapse">
-					<li><a href="<%=request.getContextPath()%>/admin_buy_list.do">
-							구매 내역 </a></li>
 					<li><a href="<%=request.getContextPath()%>/admin_sell_list.do">
-							판매 내역 </a></li>
+							전체 판매 내역 </a></li>
 				</ul></li>
 
-			<li><a href="javascript:void(0)" data-toggle="collapse"
-				data-target="#menu-collapse-4"> 고객센터
-					<div class="caret"></div>
-			</a>
-
-				<ul id="menu-collapse-4" class="collapse">
-					<li><a href="javascript:void(0)" data-toggle="collapse"
-						data-target="#menu-collapse-4"> 답변 관리 </a></li>
-				</ul></li>
 
 		</ul>
 	</div>
