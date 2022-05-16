@@ -68,7 +68,7 @@ font-size: 15px;
  	 	 	 	  	<div class="dropdown_content">
  	 	 	 	  	  <a href="<%=request.getContextPath()%>/food.do">식품</a>
  	 	 	 	  	  <a href="<%=request.getContextPath()%>/#">악기</a>
- 	 	 	 	  	  <a href="<%=request.getContextPath()%>/#">도서</a>
+ 	 	 	 	  	  <a href="<%=request.getContextPath()%>/user_main.do">도서</a>
  	 	 	 	  	</div>
  	 	 	    </div>
  	 	 	 	</td>
