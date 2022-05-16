@@ -57,7 +57,7 @@ public class SellProInputOkAction implements Action {
 		
 		int p_point = Integer.parseInt(multi.getParameter("p_point").trim());
 		
-
+		String p_seller = multi.getParameter("userId").trim();
 		
 		ProductDTO dto = new ProductDTO();
 		
@@ -79,6 +79,8 @@ public class SellProInputOkAction implements Action {
 		dto.setPcontents(p_content);
 		
 		dto.setPoint(p_point);
+		
+		dto.setPseller(p_seller);
 		
 		
 		
