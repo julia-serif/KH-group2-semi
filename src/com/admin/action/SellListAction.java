@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import com.seller.model.ProductOrderDAO;
-import com.seller.model.ProductOrderDTO;
+
+import com.seller.model.SalesPerformanceDAO;
+import com.seller.model.SalesPerformanceDTO;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
 
@@ -17,9 +18,9 @@ public class SellListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		ProductOrderDAO dao=ProductOrderDAO.getInstance();
+		SalesPerformanceDAO dao=SalesPerformanceDAO.getInstance();
 		
-		List<ProductOrderDTO> list =dao.getAllList();
+		List<SalesPerformanceDTO> list =dao.getAllList();
 		
 		request.setAttribute("List", list);
 		ActionForward forward = new ActionForward();
