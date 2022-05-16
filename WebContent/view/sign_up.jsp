@@ -61,7 +61,7 @@ font-size: 17px;
 				data: {id: $("#user_id").val()},
 				success: function(data){
 					$("#id_check").html(data);//innerhtml과 비슷 글자 넣기
-					 $("#user_id").val('').focus();
+					 $("#user_id").focus();
 				},
 				error: function(data){
 					alert("통신 오류");

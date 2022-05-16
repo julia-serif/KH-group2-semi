@@ -28,6 +28,7 @@
 				<th>주문번호</th>
 				<th>상품주문번호</th>
 				<th>상품번호</th>
+				<th>제품 금액</th>
 				<th>수량</th>
 				<th>구매자 아이디</th>
 				<th>총 금액</th>
@@ -43,9 +44,10 @@
 						<td>${dto.getOrder_no() }</td>
 						<td>${dto.getProduct_order_no() }</td>
 						<td>${dto.getProduct_no() }</td>
+						<td>${dto.getProduct_price() }</td>
 						<td>${dto.getProduct_quantity() }</td>
 						<td>${dto.getUser_id() }</td>
-						<td>${dto.getProduct_price() }</td>
+						<td>${dto.getProduct_price()*dto.getProduct_quantity()  }</td>
 						<td>${dto.getOrder_date() }</td>
 						<td>${dto.getOrder_status() }</td>
 					</tr>
@@ -67,7 +69,7 @@
 	   	     if(list.size() != 0) { 
 	   	    	 for(int i=0; i<list.size(); i++) {
 	   	    		 ProductOrderDTO dto = list.get(i);
-	   	    			sum=sum+dto.getProduct_price();
+	   	    			sum=sum+dto.getProduct_price()*dto.getProduct_quantity();
 	   	    	 }
 	   	     }
 	   	   %>
