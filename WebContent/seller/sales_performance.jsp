@@ -7,13 +7,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매 실적 관리</title>
+<title>판매 실적 확인</title>
 </head>
 <body>
+	<jsp:include page="../include/seller_top.jsp" />
 	<jsp:include page="../include/seller_order_manage_top.jsp" />
 	
 	<div align="center">
-		<h3>판매 실적 관리</h3>
+		<h3>판매 실적 확인</h3>
 		<table border="1" cellspacing="0" width="800">
 			<tr>
 				<th>주문 번호</th>

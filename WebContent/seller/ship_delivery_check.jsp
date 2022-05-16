@@ -10,11 +10,12 @@
 <title>배송 상태 확인</title>
 </head>
 <body>
+	<jsp:include page="../include/seller_top.jsp" />
 	<jsp:include page="../include/seller_order_manage_top.jsp" />
 	<jsp:include page="../include/seller_ship_manage_top2.jsp" />
 	
 	<div align="center">
-		<br>
+		<h4>배송 상태 확인</h4>
 		<table border="1" cellspacing="0" width="800">
 			<tr>
 				<th>주문번호</th>

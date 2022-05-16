@@ -10,11 +10,12 @@
 <title>신규 주문 확인</title>
 </head>
 <body>
+	<jsp:include page="../include/seller_top.jsp" />
 	<jsp:include page="../include/seller_order_manage_top.jsp" />
 	<jsp:include page="../include/seller_ship_manage_top2.jsp" />
 	
 	<div align="center">
-		<br>
+		<h4>신규 주문 확인</h4>
 		<form action="<%=request.getContextPath() %>/seller_ship_new_order_ok.do" method="post">
 			<table border="1" cellspacing="0" width="800">
 				<tr>

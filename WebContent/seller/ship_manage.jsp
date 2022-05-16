@@ -37,6 +37,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="../include/seller_top.jsp" />
 	<jsp:include page="../include/seller_order_manage_top.jsp" />
 	<jsp:include page="../include/seller_ship_manage_top2.jsp" />
 	

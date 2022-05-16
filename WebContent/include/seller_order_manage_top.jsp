@@ -31,14 +31,8 @@
 <body>
 
 	<div align="center">
-		<hr width="65%">
-		<h2>${sessionScope.user_name}님 주문 관리 페이지</h2>
-		
+		<h2>주문 관리</h2>
 		<ul id="seller_navigation">
-			<li>
-				<a href="<%=request.getContextPath() %>/sell_home.do"
-				 id="subtitle">[판매자 홈으로]</a>
-			</li>
 			<li>
 				<a href="<%=request.getContextPath()%>/seller_ship_manage.do"
 				 id="subtitle">[배송 관리]</a>
@@ -46,10 +40,6 @@
 			<li>
 				<a href="<%=request.getContextPath()%>/seller_sales_perform.do"
 				 id="subtitle">[판매 실적 확인]</a>
-			</li>
-			<li>
-				<a href="<%=request.getContextPath()%>/admin_logout.do"
-				 id="subtitle" style="font-weight : normal;">로그아웃</a>
 			</li>
 		</ul>
 		

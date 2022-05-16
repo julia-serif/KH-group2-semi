@@ -5,22 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>판매자 홈</title>
-<style type="text/css">
-
-	a {
-		text-decoration: none;
-		font-weight : bold;
-	}
-	
-</style>
 </head>
 <body>
+	
+	<jsp:include page="../include/seller_top.jsp" />
 
 	<div align="center">
-		<h1>판매자 페이지</h1>
-		<a href="<%=request.getContextPath() %>/seller_order_manage.do">[주문 관리]</a>
-		&nbsp;&nbsp;&nbsp;
-		<a href="<%=request.getContextPath() %>/seller_product_manage.do">[상품 관리]</a>
+		<h3>판매자 페이지 홈 화면입니다.</h3>
 	</div>
 
 </body>

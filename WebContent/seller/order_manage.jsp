@@ -10,7 +10,7 @@
 <title>주문 관리 페이지</title>
 </head>
 <body>
-
+	<jsp:include page="../include/seller_top.jsp" />
 	<jsp:include page="../include/seller_order_manage_top.jsp" />
 
 </body>
