@@ -18,7 +18,7 @@
 		<h2>판매자 가입 승인 대기 목록</h2>
 		<br>
 		<br>
-		<table border="1" cellspacing="0" width="80%">
+		<table border="1" cellspacing="0" width="100%">
 			<tr>
 				<th>이름</th>
 				<th>아이디</th>
