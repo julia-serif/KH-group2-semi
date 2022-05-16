@@ -24,6 +24,8 @@
 	   
 	   <form method="post" enctype="multipart/form-data"
 	      action="<%=request.getContextPath() %>/sell_pro_input_ok.do">
+		   
+		<input type="hidden" name="userId" value="${user_id }">
 	   
 	      <table border="1" cellspacing="0" width="400">
 	         <c:set var="list" value="${categoryList }" />
