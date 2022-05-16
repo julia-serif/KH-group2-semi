@@ -19,7 +19,7 @@
  <c:set var="dto" value="${orderOk }"/>
  <c:if test="${!empty dto }">
    <form method="post" name="frm">
-      <input type="hidden" name="user_id" value="${user_id}">
+       <input type="hidden" name="userId"value="${user_id}">
       <input type="hidden" name="p_num" value="${dto.getPno()}">     
       <input type="hidden" name="p_spec" value="${dto.getPspec()}">
       <input type="hidden" name="p_image" value="${dto.getPimage()}">

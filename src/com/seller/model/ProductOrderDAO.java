@@ -91,16 +91,14 @@ public class ProductOrderDAO {
 			while(rs.next()) {
 				ProductOrderDTO dto = new ProductOrderDTO();
 				
-				dto.setSeller_id(rs.getString("seller_id"));
-				dto.setOrder_no(rs.getString("order_no"));
 				dto.setProduct_order_no(rs.getInt("product_order_no"));
+				dto.setOrder_no(rs.getString("order_no"));		
 				dto.setProduct_no(rs.getInt("product_no"));
 				dto.setProduct_quantity(rs.getInt("product_quantity"));
 				dto.setProduct_price(rs.getInt("product_price"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setAddress(rs.getString("address"));
-				dto.setOrder_date(rs.getString("order_date"));
+				dto.setExpected_date(rs.getString("expected_date"));
 				dto.setOrder_status(rs.getString("order_status"));
+				dto.setSeller_id(rs.getString("seller_id"));
 				
 				list.add(dto);
 			}

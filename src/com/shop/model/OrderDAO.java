@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -145,5 +147,55 @@ public class OrderDAO {
 		
 		return result;
 	}
+	
+	// 유저에 해당하는 내용 가져오기
+	public List<OrderJoinProductDTO> getOrderJoin(String id){
+		
+		List<OrderJoinProductDTO> list = new ArrayList<OrderJoinProductDTO>();		
+		
+		try {
+
+			openConn();
+			
+			sql = "select ks.order_no,user_id,order_date,recipient,"
+					+ "recipient_phone,address,product_quantity,"
+					+ "product_price,expected_date,order_status "
+					+ "from ks_order ks join ks_product_order kpo "
+					+ "on ks.order_no = kpo.order_no where ks.user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrderJoinProductDTO dto = new OrderJoinProductDTO();
+				
+				dto.setOrder_no(rs.getString("order_no"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setOrder_date(rs.getString("order_date"));
+				dto.setRecipient(rs.getString("recipient"));
+				dto.setRecipient_phone(rs.getString("recipient_phone"));
+				dto.setAddress(rs.getString("address"));
+				dto.setProduct_quantity(rs.getInt("product_quantity"));
+				dto.setProduct_price(rs.getInt("product_price"));
+				dto.setExpected_date(rs.getString("expected_date"));
+				dto.setOrder_status(rs.getString("order_status"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+		
+	} // getOrderJoin() 메서드 end
+	
+	
 	
 }

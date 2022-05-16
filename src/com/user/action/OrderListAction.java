@@ -15,7 +15,6 @@ import com.shop.controller.ActionForward;
 import com.shop.model.CartDAO;
 import com.shop.model.CartDTO;
 import com.shop.model.OrderDAO;
-import com.shop.model.OrderDTO;
 import com.shop.model.OrderJoinProductDTO;
 
 public class OrderListAction implements Action {
@@ -30,7 +29,7 @@ public class OrderListAction implements Action {
 		
 		OrderDAO dao = OrderDAO.getInstance();
 		
-		List<OrderJoinProductDTO> dto =  dao.getOrderList(userid);
+		List<OrderJoinProductDTO> dto =  dao.getOrderJoin(userid);
 				
 		request.setAttribute("cartlist", dto);
 				

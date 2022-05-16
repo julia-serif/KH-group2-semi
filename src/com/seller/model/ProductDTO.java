@@ -13,6 +13,7 @@ public class ProductDTO {
 	private String pcontents;
 	private int point;
 	private String pinputdate;
+	private String pseller;
 	
 	public int getPno() {
 		return pno;
@@ -81,6 +82,5 @@ public class ProductDTO {
 		this.pinputdate = pinputdate;
 	}
 	
-
 	
 }
