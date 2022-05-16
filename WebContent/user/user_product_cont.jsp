@@ -74,7 +74,6 @@
 							<input type="hidden" name="p_name" value="${dto.getPname() }">
 							<input type="hidden" name="p_spec" value="${dto.getPspec() }">
 							<input type="hidden" name="p_iamge" value="${dto.getPimage() }">
-							<input type="hidden" name="userId" value="${dto.getPname() }">
 							<input type="hidden" name="p_seller" value="${dto.getPseller() }">
 							<input type="hidden" name="p_price" value="${dto.getPrice() }">
 							<input type="hidden" name="p_price" value="${dto.getPrice() }">
