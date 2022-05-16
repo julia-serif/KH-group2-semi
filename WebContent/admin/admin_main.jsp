@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +19,7 @@
 		<h4>전체 회원 목록</h4>
 		<br>
 		<br>
-		<table border="1" cellspacing="0" width="90%">
+		<table border="1" cellspacing="0" width="100%">
 			<tr>
 				<th>유저 번호</th>
 				<th>아이디</th>
@@ -44,7 +46,7 @@
 						<td>${dto.getUser_phone() }</td>
 						<td>${dto.getUser_email() }</td>
 						<td>${dto.getUser_addr() }</td>
-						<td>${dto.getUser_mileage() }</td>
+						<td><fmt:formatNumber value="${dto.getUser_mileage() }"/>원</td>
 						<td>${dto.getUser_grade() }</td>
 						<td>${dto.getUser_level() }</td>
 						<td>${dto.getUser_date().substring(0, 10) }</td>
@@ -55,7 +57,7 @@
 			<c:if test="${empty list }">
 				<tr>
 					<td colspan="12" align="center">
-						<h3>검색된 게시물이 없습니다.....${dto.getuser }</h3>
+						<h3>판매 내역이 없습니다......</h3>
 					</td>
 				</tr>
 			</c:if>
