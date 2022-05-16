@@ -197,4 +197,76 @@ public class ViewProductOrderDAO {
 		
 		return check;
 	}
+	public List<ViewProductOrderDTO> getAllList() {
+		
+		List<ViewProductOrderDTO> list = new ArrayList<ViewProductOrderDTO>();
+		
+		try {
+			openConn();
+			
+			sql = "select * from view_product_order_list order by order_status, order_no desc, product_order_no desc";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ViewProductOrderDTO dto = new ViewProductOrderDTO();
+				
+				dto.setSeller_id(rs.getString("seller_id"));
+				dto.setOrder_no(rs.getString("order_no"));
+				dto.setProduct_order_no(rs.getInt("product_order_no"));
+				dto.setProduct_no(rs.getInt("product_no"));
+				dto.setProduct_quantity(rs.getInt("product_quantity"));
+				dto.setProduct_price(rs.getInt("product_price"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setAddress(rs.getString("address"));
+				dto.setOrder_date(rs.getString("order_date"));
+				dto.setOrder_status(rs.getString("order_status"));
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
+public List<ViewProductOrderDTO> getSelectMonth(String date) {
+	
+	List<ViewProductOrderDTO> list = new ArrayList<ViewProductOrderDTO>();
+	
+	try {
+		openConn();
+		
+		sql = "select * from view_product_order_list where EXTRACT(MONTH FROM order_date)=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1,date);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			ViewProductOrderDTO dto = new ViewProductOrderDTO();
+			
+			dto.setSeller_id(rs.getString("seller_id"));
+			dto.setOrder_no(rs.getString("order_no"));
+			dto.setProduct_order_no(rs.getInt("product_order_no"));
+			dto.setProduct_no(rs.getInt("product_no"));
+			dto.setProduct_quantity(rs.getInt("product_quantity"));
+			dto.setProduct_price(rs.getInt("product_price"));
+			dto.setUser_id(rs.getString("user_id"));
+			dto.setAddress(rs.getString("address"));
+			dto.setOrder_date(rs.getString("order_date"));
+			dto.setOrder_status(rs.getString("order_status"));
+			list.add(dto);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		closeConn(rs, pstmt, con);
+	}
+	
+	return list;
+}
 }
