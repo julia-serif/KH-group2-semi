@@ -9,8 +9,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="js/paging.js"></script>
+<script type="text/javascript">
+
+	function goCart() {
+		
+		document.frm.action="<%=request.getContextPath() %>/user_cart_add.do";
+		
+		document.frm.submit();
+	}
+	
+	function goOrder() {
+		
+		document.frm.action="<%=request.getContextPath() %>/user_order.do";
+		
+		document.frm.submit();
+	}
+
+</script>
+<link rel="stylesheet" href="CSS/product_cont.css" type="text/css">
 <style type="text/css">
 
 	#bbs_list {
@@ -32,7 +48,6 @@
 	
 
 </style>
-<link rel="stylesheet" href="css/product_cont.css" type="text/css">
 </head>
 <body>
 	
@@ -56,13 +71,26 @@
 					
 					<td>
 						<form method="post" name="form">
+							<input type="hidden" name="p_name" value="${dto.getPname() }">
+							<input type="hidden" name="p_spec" value="${dto.getPspec() }">
+							<input type="hidden" name="p_iamge" value="${dto.getPimage() }">
+							<input type="hidden" name="userId" value="${dto.getPname() }">
+							<input type="hidden" name="p_seller" value="${dto.getPseller() }">
+							<input type="hidden" name="p_price" value="${dto.getPrice() }">
+							<input type="hidden" name="p_price" value="${dto.getPrice() }">
+							<input type="hidden" name="p_num" value="${dto.getPno() }">
+							<input type="hidden" name="userId" value="${userId }">
 							<table border="0" cellspacing="0">
 								<tr>
-									<td>${dto.getPcompany() }</td>
+									<td>
+										<h3>${dto.getPcompany() }</h3> 
+									</td>
 								</tr>
 								
 								<tr>
-									<td>${dto.getPname() }</td>
+									<td>
+										<h2>${dto.getPname() }</h2>
+									</td>
 								</tr>
 								
 								<tr>
@@ -70,7 +98,9 @@
 								</tr>
 								
 								<tr>
-									<td>${dto.getPrice() } 원</td>
+									<td>
+										<fmt:formatNumber value="${dto.getPrice() }"/>원
+									</td>
 								</tr>
 								
 								<tr>
@@ -99,14 +129,14 @@
 								
 								<tr>
 									<td align="left">
-										<a href="#">
+										<a href="javascript:goCart()">
 											<img src="<%=request.getContextPath() %>/uploadfile/1.PNG"
 												border="0">
 										</a>								
 									</td>
 								
 									<td align="left">
-										<a href="#">
+										<a href="javascript:goOrder()">
 											<img src="<%=request.getContextPath() %>/uploadfile/2.PNG"
 												border="0">
 										</a>								
@@ -194,14 +224,6 @@
                 <div>
                     <p>배송을 시작한 상품이 고객님들께 도착하는 시간은 약 2~3일 </p>
                     <p>정도 소요됩니다. </p>
-                </div>
-            </li>
-            <li>
-                <input type="checkbox" id="qna_4">
-                <label for="qna_4">FAQ4</label>
-                <div>
-                    <p>질문4</p>
-                   
                 </div>
             </li>
         </ul>

@@ -18,7 +18,7 @@ public class UserMainAction implements Action {
 		// 제품 전체 리스트를 DB에서 조회하여
 		// view page로 이동시키는 비지니스 로직.
 		// 페이징 처리 작업 진행
-		int rowsize = 6;			
+		int rowsize = 10;			
 		int block = 5;				
 		int totalRecord = 0;		
 		int allPage = 0;			
@@ -52,7 +52,7 @@ public class UserMainAction implements Action {
 			endBlock = allPage;
 		}
 		
-		List<ProductDTO> list = dao.getProductList();
+		List<ProductDTO> list = dao.getProductList(page, rowsize);
 				
 		request.setAttribute("page", page);
 		request.setAttribute("rowsize", rowsize);

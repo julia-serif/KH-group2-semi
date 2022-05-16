@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
+import com.shop.model.ProductDAO;
+import com.shop.model.ProductDTO;
 import com.shop.model.UserDAO;
 import com.shop.model.UserDTO;
 
@@ -25,6 +27,7 @@ public class SignInOkAction implements Action {
 		int check = dao.userCheck(user_id, user_pwd);// 아이디 검사
 
 		List<UserDTO> list = dao.getUserList(); // 관리자 메인 페이지에서 가입된 전체 유저 리스트를 출력하기 위한 메서드
+		
 		request.setAttribute("List", list);
 
 		ActionForward forward = new ActionForward();
