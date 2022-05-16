@@ -22,7 +22,7 @@ public class UserCartListAction implements Action {
 		HttpSession session = request.getSession();
 		
 		//object 타입이므로 넘겨줌
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("user_id");
 		
 		CartDAO dao = CartDAO.getInstance();
 		
