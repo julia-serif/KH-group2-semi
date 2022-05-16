@@ -19,9 +19,9 @@
 
 </head>
 <body>
+	<jsp:include page="../include/seller_top.jsp" />
+	<jsp:include page="../include/sell_pro_manage.jsp" />
 
-	<jsp:include page="../include/sell_top.jsp" />
-	
 	<div align="center">
 	      <h3>판매상품 리스트</h3>
 	   <br>

@@ -29,8 +29,8 @@
 </head>
 
 <body>
-	
-	<jsp:include page="../include/sell_top.jsp" />
+	<jsp:include page="../include/seller_top.jsp" />
+	<jsp:include page="../include/sell_pro_manage.jsp" />
 	
 	<div align="center">
 	      <h3>카테고리 테이블 전체 리스트 페이지</h3>

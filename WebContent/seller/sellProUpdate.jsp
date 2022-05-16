@@ -10,8 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<jsp:include page="../include/sell_top.jsp" />
+	<jsp:include page="../include/seller_top.jsp" />
+	<jsp:include page="../include/sell_pro_manage.jsp" />
 	
 	<div align="center">
 	   <hr width="65%" color="gray">
