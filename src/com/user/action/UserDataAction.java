@@ -16,8 +16,10 @@ public class UserDataAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// get방식으로 넘어온 아이디에 해당하는 유저의 정보를 가져오는 비즈니스 로직
-				
-		String userid = request.getParameter("userid");
+		
+		HttpSession session = request.getSession();
+		
+		String userid = (String)request.getAttribute("user_id");
 		
 		Shop_UserDAO dao = Shop_UserDAO.getInstance();
 		

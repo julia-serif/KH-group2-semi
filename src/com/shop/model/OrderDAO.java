@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -145,5 +147,48 @@ public class OrderDAO {
 		
 		return result;
 	}
+	
+	
+	// 유저아이디에 해당하는 리스트를 뽑아오는 메서드
+	public OrderDTO getOrderList(String id) {
+		
+		OrderDTO dto = new OrderDTO();
+		
+		try {
+
+			openConn();
+			
+			sql = "select kso.order_no,kso.order_date,kso.recipient,"
+					+ "kpo.product_quantity,kpo.product_price,"
+					+ "kpo.expected_date,kpo.order_status "
+					+ "from ks_order kso join ks_product_order kpo "
+					+ "on kso.order_no = kpo.order_no "
+					+ "where kso.user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setOrder_no(rs.getString("order_no"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setOrder_date(rs.getString("order_date"));
+				dto.setRecipient(rs.getString("recipient"));
+				dto.setRecipient_phone(rs.getString("recipient_phone"));
+				dto.setAddress(rs.getString("address"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+		
+	} // getOrderList() 메서드 end
 	
 }

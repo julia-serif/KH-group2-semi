@@ -11,13 +11,37 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="CSS/top.css">
 <link rel="stylesheet" href="CSS/category.css">
+
 </head>
 <body>
 
  	<jsp:include page="../include/top.jsp"/>
  <c:set var="dto" value="${orderOk }"/>
  <c:if test="${!empty dto }">
-  <main class="mt-3">
+   <form method="post" name="frm">
+      <input type="hidden" name="user_id" value="${user_id}">
+      <input type="hidden" name="p_num" value="${dto.getPno()}">     
+      <input type="hidden" name="p_spec" value="${dto.getPspec()}">
+      <input type="hidden" name="p_image" value="${dto.getPimage()}">
+      <input type="hidden" name="p_name" value="${dto.getPname()}">
+      <input type="hidden" name="p_seller" value="${dto.getPcompany()}">      
+ 
+ <script type="text/javascript">
+
+ 	function goCart() {
+		document.frm.action="<%=request.getContextPath()%>/user_cart_add.do?p_num${dto.getPno()}";
+		
+		document.frm.submit();
+	}
+ 	
+ 	function goPay() {
+		document.frm.action="<%=request.getContextPath()%>/payment.do?p_num${dto.getPno()}";
+		
+		document.frm.submit();
+	}
+</script>
+ 
+  <main class="mt-3">  
  	 <div class="container">
  	   <div class="row">
  	    <div class="col-md-5">
@@ -48,16 +72,11 @@
   </button>
 </div>
  </div>
-      
-      <input type="hidden" name="userid" value="${user_id }">
-      <input type="hidden" name="payNo" value="${dto.getPno() }">     
-      <input type="hidden" name="cartPspec" value="${dto.getPspec() }">
-      <input type="hidden" name="cartPimage" value="${dto.getPimage() }">
-
+ 
  	    <div class="col-md-7">
  	     <div class="card shadow-sm">  		
   			<div class="card-body">
-    		<h4 class="card-name" name="pName">${dto.getPname() }</h4>
+    		<h4 class="card-name">${dto.getPname() }</h4>
     		<p class="card-cont">${dto.getPcontents() }</p>
     		<h5 class="card-price pt-3 pb-3 border-top">
     		상품 가격
@@ -70,7 +89,7 @@
     	  </div>
     	  <div class="col-auto">
     	  <div class="input-group">
-			  <input type="number" name="cartpqty" min="1" max="50" value="1">
+			  <input type="number" name="p_qty" min="1" max="50" value="1">
 			</div>
     	  </div>
     	 </div>
@@ -78,17 +97,16 @@
     	
     	 <div class="btn-group" role="group">
    		 <div class="col-7 d-grid p-1">
- 			<a href="<%=request.getContextPath() %>/">
- 			<button type="button" class="btn btn-lg btn-dark">장바구니 담기</button></a>
+
+ 			<a href="javascript:goCart()">
+ 	  	  	 <img src="<%=request.getContextPath() %>/image/btn_buy.png" border="0"> </a>
  		</div>
- 		<div class="col-7 d-grid p-1">
- 		  <a href="<%=request.getContextPath()%>/payment.do">
-  			<button type="button" class="btn btn-lg btn-danger">주문하기</button></a>
-		</div>
+ 		
 		</div>
   		</div>
 		</div>
  	    </div>
+
  	   </div>
  	   <div class="row">
  	    <div class="col-12">
@@ -97,6 +115,7 @@
  	   </div>
  	 </div>
  	</main>
+ 	</form>
  </c:if>
 
 

@@ -15,6 +15,7 @@
 	list-style: none;
 }
 </style>
+
 </head>
 <body>
 
@@ -29,6 +30,20 @@
  	  <c:set var="list" value="${cartlist }"/>
 		<c:if test="${!empty list }">
  	 	 <c:forEach items="${list }" var="dto">
+ 	 	 <form method="post" name="frm">
+ 		
+ 	 	 <script type="text/javascript">
+			function order_detail() {
+				// 형식) window.open("파일경로명","창이름","가로폭/세로높이")
+				window.open("<%=request.getContextPath() %>/order_detail.do?order_detail=${dto.getCart_num() }","주문 상세 내역","width=500px, height=400px, top=100px, left=100px");
+			}
+			
+			function order_delete() {
+				// 형식) window.open("파일경로명","창이름","가로폭/세로높이")
+				window.open("<%=request.getContextPath() %>/order_delete.do?order_delete=${dto.getCart_num() }","주문 내역 삭제","width=350px, height=350px, top=100px, left=100px");
+			}
+		</script>
+ 	 	</form>
  	 	  <div class="b_ta_info">
  	 	   <table width="100%" border="1" class="b_table_grey">
  	 	    <colgroup>
@@ -55,27 +70,28 @@
  	 	     <tr cno="3686652494" ctype="G" column="4">
  	 	      <td class="first_cell" rowspan="1">
  	 	       <div class="td_detaol">
- 	 	        "2022-05-10"
+ 	 	        ${dto.getOrder_date() }
  	 	        <span class="btn_bg btn_w81_2">
- 	 	         <a href="<%=request.getContextPath() %>/">주문상세보기</a>
+ 	 	         <a href="javascript:order_detail()" style="text-decoration: none;">주문상세보기</a>
+ 	 	         <a href="javascript:order_delete()" style="text-decoration: none;">주문내역삭제</a>
  	 	        </span>
  	 	       </div>
  	 	      </td>
  	 	      <td>
  	 	       <div class="tit_info">
- 	 	        <p><a href="<%=request.getContextPath() %>/image/${dto.getCart_pimage()}"></a></p>
+ 	 	        <p>${dto.getProduct_no() }</p>
  	 	        <ul>
  	 	         <li><a href=""></a>${dto.getCart_pname() }</li>
- 	 	         <li class="cart">수량 : ${dto.getCart_pqty() } 개</li>
+ 	 	         <li class="cart">수량 : ${dto.getProduct_quantity() } 개</li>
  	 	         <li class="price">
-                  <strong><fmt:formatNumber value="${dto.getCart_price() }"/></strong>원
+                  <strong><fmt:formatNumber value="${dto.getProduct_price() }"/></strong>원
                  </li>
  	 	        </ul>
  	 	       </div>
  	 	      </td>
  	 	      <td cidx="3">
  	 	       <div class="td_status">
- 	 	         <span class="btn_bg2 btn_status_b1">배송완료</span>
+ 	 	         <span class="btn_bg2 btn_status_b1">${dto.getOrder_status() }</span>
  	 	       </div>
  	 	      </td>
  	 	      <td cidx="4" class="b_table_right"></td>	 	  
@@ -84,6 +100,15 @@
  	 	   </table>
  	 	  </div>
          </c:forEach>
+        </c:if>
+        <c:if test="${empty list }">
+         	<table border="1" cellspacing="0">
+         	 	<tr>
+         	 	<td>
+         	 	<h3>주문하신 상품이 없습니다.</h3>
+         	 	</td>
+         	 	</tr>
+         	</table>
         </c:if>
     </div>
   </div>

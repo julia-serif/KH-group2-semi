@@ -41,25 +41,32 @@
  <main>
  	 <div class="container">
  	  <div class="row g-4">
- 	 	 <div align="left"><h2>과일</h2></div>
+ 	 	 <div align="left"><h4>검색 결과</h4></div>
  	 	 <c:set var="search" value="${searchlist}"/>
  	 	 <c:if test="${!empty search }">
  	 	  <c:forEach items="${search }" var="dto">
- 	 	 <div class="col-lg-4 col-md-5">
- 	 	  <div class="card" style="width: 18rem;">
-  			<img src="<%=request.getContextPath() %>/image/${dto.getPimage()}" class="card-img-top">
-  			<div class="card-body">
-    		<h5 class="card-name">${dto.getPname() }</h5>
+ 	  <div class="col-lg-4 col-md-5">
+ 	 	<div class="card" style="width: 18rem;">
+ 	 	<div class="card-body">
+  		<a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno()}"
+  		        style="text-decoration: none;">
+  		   <img src="<%=request.getContextPath() %>/image/${dto.getPimage()}" class="card-img-top">  
+  			<span class="badge bg-info text-dark">${dto.getPspec() }</span>
+    		<div><h5 class="card-name">${dto.getPname() }</h5>
     		<p class="card-cont">${dto.getPcontents() }</p>
     		<p class="card-price">
     		<fmt:formatNumber value="${dto.getPrice() }"/>원</p>
-   		 <div class="btn-group" role="group">
- 			 <button type="button" class="btn btn-sm btn-outline-primary">장바구니 담기</button>
-  			 <button type="button" class="btn btn-sm btn-outline-primary">주문하기</button>
-		</div>
-  		</div>
-		</div>
-		</div>
+    		<span class="badge rounded-pill bg-warning text-dark">
+    		${dto.getPoint() } 적립
+    		</span>	 </div>   	   
+    	</a>
+    	</div>	
+   		 <div align="center">
+        <a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno() }">
+		  		<button type="button" class="btn btn-mg btn-outline-primary">주문하러가기</button> </a>
+		 </div>
+		  </div>
+		 </div>
  	 	  </c:forEach>
  	 	 </c:if>
  	 	</div>

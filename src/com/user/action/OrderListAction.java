@@ -12,8 +12,12 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_CartDAO;
-import com.shop.model.Ks_CartDTO;
+import com.shop.model.Ks_ProductDAO;
+import com.shop.model.Ks_ProductDTO;
+import com.shop.model.OrderDAO;
+import com.shop.model.OrderDTO;
+
+
 
 public class OrderListAction implements Action {
 
@@ -23,19 +27,21 @@ public class OrderListAction implements Action {
 		
         HttpSession session = request.getSession();
 		
-		String userid = (String)session.getAttribute("userid");
+		String userid = (String)session.getAttribute("user_id");
 		
-		Ks_CartDAO dao = Ks_CartDAO.getInstance();
 		
-		List<Ks_CartDTO> list = dao.getCartList(userid);
+		OrderDAO dao = OrderDAO.getInstance();
 		
-		request.setAttribute("cartlist", list);
+		OrderDTO dto =  dao.getOrderList(userid);
+		
+		request.setAttribute("cartlist", dto);
+		
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("user/orderlist.jsp");
+		forward.setPath("user/order_list.jsp");
 		
 		return forward;
 	}

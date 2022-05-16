@@ -20,7 +20,7 @@
 <!-- 로그인 후 -->
  <div class="container">
  	<c:set var="dto" value="${user_id }"/>
- 	<input type="hidden" name="userid" value="${userid }"> 
+ 	<input type="hidden" name="userid" value="${user_id }"> 
  	<input type="hidden" name="userpwd" value="${userpwd }"> 
  	<input type="hidden" name="username" value="${user_name }"> 
  	<input type="hidden" name="userage" value="${userage }"> 
@@ -40,7 +40,6 @@
  	 	 	 	  	</button>
  	 	 	 	  	<div class="dropdown_content">
  	 	 	 	  	  <a href="<%=request.getContextPath()%>/ask.do">자주묻는 질문</a>
- 	 	 	 	  	  <a href="<%=request.getContextPath()%>/user_product_view.do">상품 문의</a>
  	 	 	 	  	</div>
  	 	 	    </div>
  	 	 	  </td>	 	 	 	
@@ -60,7 +59,7 @@
  	 	 	    </div>
  	 	 	 	</td>
  	 	 	 	<td>
- 	 	 	 	<a href="<%=request.getContextPath() %>/home.do">
+ 	 	 	 	<a href="user/login_next.jsp">
  	 	 	 	<img src="image/쿠팡로고.png" width="250" height="100"></a> 
  	 	 	 	</td>
  	 	 	 	<td>
@@ -92,7 +91,7 @@
  	 	 	 	  	</div>
  	 	 	    </div>	
  	 	 	    </td>
- 	 	 	   <td><a href="<%=request.getContextPath()%>/">장바구니</a></td>
+ 	 	 	   <td><a href="<%=request.getContextPath()%>/user_cart_list.do">장바구니</a></td>
  	 	 	</tr>
  	 	 	
  	 	</table>

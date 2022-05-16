@@ -409,4 +409,221 @@ public class CartDAO {
 		
 	}
 	
+	
+	///////////////////////////////////////////////////
+		
+		
+		// 회원이 산 물건을 저장하는 메서드
+		public int getInsertCart(CartDTO dto) {
+			
+			int result = 0, count = 0;
+			
+			try {
+
+				openConn();
+				
+				sql = "select max(cart_num) from ks_cart";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1) + 1;
+				}
+				
+				sql = "insert into ks_cart values(?,?,?,?,?,?,?,?,?)";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, count);
+				pstmt.setInt(2, dto.getCart_pnum());
+				pstmt.setString(3, dto.getCart_userId());
+				pstmt.setString(4, dto.getCart_pname());
+				pstmt.setInt(5, dto.getCart_pqty());
+				pstmt.setInt(6, dto.getCart_price());
+				pstmt.setString(7, dto.getCart_pspec());
+				pstmt.setString(8, dto.getCart_pimage());
+				pstmt.setString(9, dto.getCart_seller());
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return result;
+			
+		} // getInsertCart() 메서드 end
+		
+		
+		// 아이디와 번호에 맞는 정보를 보여주는 메서드
+		public List<CartDTO> getCartPayList(String id, int no){
+			
+	     List<CartDTO> list = new ArrayList<CartDTO>();
+			
+			try {
+
+				openConn();
+				
+				sql = "select * from ks_cart where cart_userid = ? and cart_pnum = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, id);
+				pstmt.setInt(2, no);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					CartDTO dto = new CartDTO();
+					
+					dto.setCart_num(rs.getInt("cart_num"));
+					dto.setCart_pnum(rs.getInt("cart_pnum"));
+					dto.setCart_userId(rs.getString("cart_userId"));
+					dto.setCart_pname(rs.getString("cart_pname"));
+					dto.setCart_pqty(rs.getInt("cart_pqty"));
+					dto.setCart_price(rs.getInt("cart_price"));
+					dto.setCart_pspec(rs.getString("cart_pspec"));
+					dto.setCart_pimage(rs.getString("cart_pimage"));
+					dto.setCart_seller(rs.getString("cart_seller"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return list;
+			
+			
+		} // getCartPayList() 메서드 end
+		
+		
+		// 번호에 해당하는 상품의 모든 정보를 보여주는 메서드
+		public CartDTO getCartDetailList(int no) {
+			
+			CartDTO dto = new CartDTO();
+			
+			try {
+
+				openConn();
+				
+				sql = "select * from ks_cart where cart_num = ?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, no);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					dto.setCart_num(rs.getInt("cart_num"));
+					dto.setCart_pnum(rs.getInt("cart_pnum"));
+					dto.setCart_userId(rs.getString("cart_userId"));
+					dto.setCart_pname(rs.getString("cart_pname"));
+					dto.setCart_pqty(rs.getInt("cart_pqty"));
+					dto.setCart_price(rs.getInt("cart_price"));
+					dto.setCart_pspec(rs.getString("cart_pspec"));
+					dto.setCart_pimage(rs.getString("cart_pimage"));
+					dto.setCart_seller(rs.getString("cart_seller"));
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return dto;
+			
+		} // getCartDetailList() 메서드 end
+		
+		
+	// cart 테이블의 내용을 보여주는 메서드
+    public CartDTO getCartList() {
+    	
+    	CartDTO dto = new CartDTO();
+    	
+    	try {
+
+        	openConn();
+        	
+        	sql = "select * from ks_cart ";
+        	
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setCart_num(rs.getInt("cart_num"));
+				dto.setCart_pnum(rs.getInt("cart_pnum"));
+				dto.setCart_userId(rs.getString("cart_userId"));
+				dto.setCart_pname(rs.getString("cart_pname"));
+				dto.setCart_pqty(rs.getInt("cart_pqty"));
+				dto.setCart_price(rs.getInt("cart_price"));
+				dto.setCart_pspec(rs.getString("cart_pspec"));
+				dto.setCart_pimage(rs.getString("cart_pimage"));
+				dto.setCart_seller(rs.getString("cart_seller"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+    	
+    } // getCartList() 메서드 end
+	
+	
+	// 번호에 해당하는 제품 목록을 삭제하는 메서드
+    public int getCartDelete(int no) {
+    	
+    	int result = 0;
+		
+		try {
+
+			openConn();
+			
+			sql = "delete from ks_cart where cart_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+			sql = "update ks_cart set "
+					+ "cart_num = cart_num -1 where cart_num > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+    	
+    } // getCartDelete() 메서드 end
+	
+	
 }

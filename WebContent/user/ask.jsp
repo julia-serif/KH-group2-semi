@@ -17,7 +17,7 @@
 
 <div class="container">
 <div class="row">
-<div class="col-12 mt-5">
+<div class="col-10 mt-5">
 <div class="accordion " id="accordionExample">
  <h3>자주묻는 질문</h3>
  <div class="btn-group col-12 mt-3" role="group" aria-label="Basic outlined example">
