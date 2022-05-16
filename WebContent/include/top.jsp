@@ -28,7 +28,7 @@ font-size: 15px;
 <body>
 <!-- 로그인 후 -->
  <div class="container" align="center">
- 	<c:set var="dto" value="${user_id }"/>
+ 	<c:set var="dto" value="${dto }"/>
  	<input type="hidden" name="userid" value="${user_id }"> 
  	<input type="hidden" name="userpwd" value="${userpwd }"> 
  	<input type="hidden" name="username" value="${username }"> 
