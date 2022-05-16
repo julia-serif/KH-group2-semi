@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_ProductDAO;
-import com.shop.model.Ks_ProductDTO;
+import com.shop.model.ProductDAO;
+import com.shop.model.ProductDTO;
 
 public class SearchAction implements Action {
 
@@ -21,9 +21,9 @@ public class SearchAction implements Action {
 		String find_field = request.getParameter("find_field").trim();
 		String find_name = request.getParameter("find_name").trim();
 		
-		Ks_ProductDAO dao = Ks_ProductDAO.getInstance();
+		ProductDAO dao = ProductDAO.getInstance();
 		
-		List<Ks_ProductDTO> list = dao.getSearchProduct(find_field,find_name);
+		List<ProductDTO> list = dao.getSearchProduct(find_field,find_name);
 		
 		request.setAttribute("searchlist", list);
 		

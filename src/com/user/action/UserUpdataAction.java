@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Shop_UserDAO;
-import com.shop.model.Shop_UserDTO;
+import com.shop.model.UserDAO;
+import com.shop.model.UserDTO;
 
 public class UserUpdataAction implements Action {
 
@@ -27,7 +27,7 @@ public class UserUpdataAction implements Action {
 		
 		String dbpwd = request.getParameter("dbpwd").trim();
 				
-		Shop_UserDTO dto = new Shop_UserDTO();
+		UserDTO dto = new UserDTO();
 				
 		dto.setUser_id(userid);
 		dto.setUser_name(username);		
@@ -36,7 +36,7 @@ public class UserUpdataAction implements Action {
 		dto.setUser_addr(user_addr);
 		dto.setUser_pwd(userpwd);
 								
-		Shop_UserDAO dao = Shop_UserDAO.getInstance();
+		UserDAO dao = UserDAO.getInstance();
 				
 		ActionForward forward = new ActionForward();
 				

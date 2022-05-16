@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_CartDAO;
-import com.shop.model.Ks_CartDTO;
+import com.shop.model.CartDAO;
+import com.shop.model.CartDTO;
 
 public class PaymentOkAction implements Action {
 
@@ -23,9 +23,9 @@ public class PaymentOkAction implements Action {
 		String userid = (String)session.getAttribute("userid");
 		int payNo = Integer.parseInt(request.getParameter("payNo").trim());
 		
-		Ks_CartDAO dao = Ks_CartDAO.getInstance();
+		CartDAO dao = CartDAO.getInstance();
 		
-		List<Ks_CartDTO> list =  dao.getCartPayList(userid,payNo);
+		List<CartDTO> list =  dao.getCartPayList(userid,payNo);
 		
 		request.setAttribute("payok", list);
 		

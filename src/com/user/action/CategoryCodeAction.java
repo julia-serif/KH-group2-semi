@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_ProductDAO;
-import com.shop.model.Ks_ProductDTO;
+import com.shop.model.ProductDAO;
+import com.shop.model.ProductDTO;
 
 public class CategoryCodeAction implements Action {
 
@@ -20,9 +20,9 @@ public class CategoryCodeAction implements Action {
 		
 		String code = request.getParameter("code").trim();
 		
-		Ks_ProductDAO dao = Ks_ProductDAO.getInstance();
+		ProductDAO dao = ProductDAO.getInstance();
 		
-		List<Ks_ProductDTO> list =  dao.getProductCode(code);
+		List<ProductDTO> list =  dao.getProductCode(code);
 		
 		request.setAttribute("code", list);
 		

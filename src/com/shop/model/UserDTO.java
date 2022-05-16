@@ -1,6 +1,7 @@
 package com.shop.model;
 
 public class UserDTO {
+	
 	private int user_no;
 	private String user_id;
 	private String user_pwd;

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Shop_UserDAO;
-import com.shop.model.Shop_UserDTO;
+import com.shop.model.UserDAO;
+import com.shop.model.UserDTO;
 
 public class UserDataAction implements Action {
 
@@ -19,9 +19,9 @@ public class UserDataAction implements Action {
 				
 		String userid = request.getParameter("userid");
 		
-		Shop_UserDAO dao = Shop_UserDAO.getInstance();
+		UserDAO dao = UserDAO.getInstance();
 		
-		Shop_UserDTO dto = dao.getUserId(userid);
+		UserDTO dto = dao.getUserId(userid);
 		
 		request.setAttribute("userupdate", dto);
 		

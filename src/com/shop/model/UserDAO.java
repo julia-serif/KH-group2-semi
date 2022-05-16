@@ -218,7 +218,10 @@ public class UserDAO {
 		}
 		return dto;
 	}
+	
+	// 회원 리스트를 가져오는 메서드
 	public List<UserDTO> getUserList() {
+		
 		List<UserDTO> list = new ArrayList<UserDTO>();
 
 		try {
@@ -226,8 +229,10 @@ public class UserDAO {
 			sql = "select * from shop_user order by user_no";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
 			while (rs.next()) {
 				UserDTO dto = new UserDTO();
+				
 				dto.setUser_no(rs.getInt("user_no"));
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setUser_pwd(rs.getString("user_pwd"));
@@ -240,11 +245,10 @@ public class UserDAO {
 				dto.setUser_grade(rs.getString("user_grade"));
 				dto.setUser_level(rs.getInt("user_level"));
 				dto.setUser_date(rs.getString("regdate"));
+				
 				list.add(dto);
-
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeConn(rs, pstmt, con);
@@ -295,5 +299,152 @@ public class UserDAO {
 		return dto;
 		
 	}//getMember() end
+	     
+	// 회원 비밀번호 체크하는 메서드
+	public int getUserCheck(String id,String pwd) {
+		
+		int result = 0;
+		
+		try {
+
+			openConn();
+			
+			sql = "select * from shop_user where user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(pwd.equals(rs.getString("user_pwd"))) {
+					result = 1;
+				}else {
+					result = -1;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+				
+	} // getUserPwdCheck() 메서드 end
 	
+	
+	// 회원의 비밀번호를 가져오는 메서드
+	public int getUserPwd(String pwd) {
+		
+		int result = 0;
+		
+		try {
+
+			openConn();
+			
+			sql = "select * from shop_user where user_pwd = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pwd);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(pwd.equals(rs.getString("user_pwd"))) {
+					result = 1;
+				}else {
+					result = -1;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+		
+	} // getUserPwd() 메서드 end
+	
+	// 회원의 아이디를 가져오는 메서드
+	public UserDTO getUserId(String id) {
+		
+		UserDTO dto = new UserDTO();
+		
+		try {
+
+			openConn();
+			
+			sql = "select * from shop_user where user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setUser_no(rs.getInt("user_no"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_pwd(rs.getString("user_pwd"));
+				dto.setUser_name(rs.getString("user_name"));
+				dto.setUser_age(rs.getInt("user_age"));
+				dto.setUser_phone(rs.getString("user_phone"));
+				dto.setUser_email(rs.getString("user_email"));
+				dto.setUser_addr(rs.getString("user_addr"));
+				dto.setUser_mileage(rs.getInt("user_mileage"));
+				dto.setUser_grade(rs.getString("user_grade"));
+				dto.setUser_level(rs.getInt("user_level"));
+				dto.setUser_date(rs.getString("regdate"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+	} // getUserId() 메서드 end
+	
+	// 회원 정보를 수정하는 메서드
+	public int getUserData(UserDTO dto) {
+		
+		int result = 0;
+		
+		try {
+
+			openConn();
+			
+			sql = "update shop_user set "
+					+ "user_phone = ?, user_email = ?, user_addr = ? "
+					+ "where user_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getUser_phone());
+			pstmt.setString(2, dto.getUser_email());
+			pstmt.setString(3, dto.getUser_addr());
+			pstmt.setString(4, dto.getUser_id());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+		
+	} // getUserData() 메서드 end
 }

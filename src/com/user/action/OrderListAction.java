@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_CartDAO;
-import com.shop.model.Ks_CartDTO;
+import com.shop.model.CartDAO;
+import com.shop.model.CartDTO;
 
 public class OrderListAction implements Action {
 
@@ -25,9 +25,9 @@ public class OrderListAction implements Action {
 		
 		String userid = (String)session.getAttribute("userid");
 		
-		Ks_CartDAO dao = Ks_CartDAO.getInstance();
+		CartDAO dao = CartDAO.getInstance();
 		
-		List<Ks_CartDTO> list = dao.getCartList(userid);
+		List<CartDTO> list = dao.getCartList(userid);
 		
 		request.setAttribute("cartlist", list);
 		

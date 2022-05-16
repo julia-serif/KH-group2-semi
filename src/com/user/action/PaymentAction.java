@@ -9,10 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_CartDAO;
-import com.shop.model.Ks_CartDTO;
-import com.shop.model.Ks_ProductDAO;
-import com.shop.model.Ks_ProductDTO;
+import com.shop.model.CartDAO;
+import com.shop.model.CartDTO;
 
 public class PaymentAction implements Action {
 
@@ -31,7 +29,7 @@ public class PaymentAction implements Action {
 		String cartPspec = request.getParameter("cartPspec").trim();
 		String cartPimage = request.getParameter("cartPimage").trim();
 		
-		Ks_CartDTO dto = new Ks_CartDTO();
+		CartDTO dto = new CartDTO();
 		
 		dto.setCart_userId(userid);
 		dto.setCart_pname(cartPname);
@@ -41,7 +39,7 @@ public class PaymentAction implements Action {
 		dto.setCart_pspec(cartPspec);
 		dto.setCart_pimage(cartPimage);
 		
-		Ks_CartDAO dao = Ks_CartDAO.getInstance();
+		CartDAO dao = CartDAO.getInstance();
 		
 		int payok = dao.getInsertCart(dto);
 		

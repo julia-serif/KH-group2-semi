@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Shop_UserDAO;
-import com.shop.model.Shop_UserDTO;
+import com.shop.model.UserDAO;
+import com.shop.model.UserDTO;
 
 public class UserLoginAction implements Action {
 
@@ -21,7 +21,7 @@ public class UserLoginAction implements Action {
 		String user_id = request.getParameter("user_id");
 		String user_pwd = request.getParameter("user_pwd");
 		
-		Shop_UserDAO dao = Shop_UserDAO.getInstance();
+		UserDAO dao = UserDAO.getInstance();
 		
 		int check = dao.getUserCheck(user_id,user_pwd);
 		
@@ -32,7 +32,7 @@ public class UserLoginAction implements Action {
 		HttpSession session = request.getSession();
 		
 		if(check > 0) {
-			Shop_UserDTO dto = dao.getUserId(user_id);
+			UserDTO dto = dao.getUserId(user_id);
 			
 			session.setAttribute("userid", dto.getUser_id());
 			session.setAttribute("userpwd", dto.getUser_pwd());

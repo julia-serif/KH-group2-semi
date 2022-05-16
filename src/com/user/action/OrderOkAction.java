@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_ProductDAO;
-import com.shop.model.Ks_ProductDTO;
+import com.shop.model.ProductDAO;
+import com.shop.model.ProductDTO;
 
 public class OrderOkAction implements Action {
 
@@ -19,9 +19,9 @@ public class OrderOkAction implements Action {
 		
 		int order = Integer.parseInt(request.getParameter("order").trim());
 		
-		Ks_ProductDAO dao = Ks_ProductDAO.getInstance();
+		ProductDAO dao = ProductDAO.getInstance();
 		
-		Ks_ProductDTO orderOk = dao.getOrderOk(order);
+		ProductDTO orderOk = dao.getOrderOk(order);
 		
 		request.setAttribute("orderOk", orderOk);
 		
