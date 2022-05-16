@@ -4,13 +4,13 @@ CREATE TABLE ks_product(
  	pcode varchar2(10) not null,          -- 카테고리 코드
  	pcompany varchar2(100),               -- 상품 제조사
  	pimage varchar2(100),                 -- 상품 이미지
-  	pqty number(5) default 0,             -- 상품 수량
-  	price number(10) default 0,           -- 상품 가격
-  	pspec varchar2(30),                   -- 상품 스펙
-  	pcontents varchar2(1000),             -- 상품 설명
-  	point number(6) default 0,            -- 상품 포인트
-  	pinputdate date,                      -- 상품 입고일
-   	pseller varchar2(20)                  -- 상품 판매자
+  pqty number(5) default 0,             -- 상품 수량
+  price number(10) default 0,           -- 상품 가격
+  pspec varchar2(30),                   -- 상품 스펙
+  pcontents varchar2(1000),             -- 상품 설명
+  point number(6) default 0,            -- 상품 포인트
+  pinputdate date,                      -- 상품 입고일
+  pseller varchar2(20)                  -- 상품 판매자
 );
 
 create table ks_category(
@@ -20,7 +20,7 @@ create table ks_category(
 );
 
 CREATE TABLE ks_cart(
- 	cart_no number(5) primary key,          -- 카트번호
+ 	cart_num number(5) primary key,          -- 카트번호
  	cart_pnum number(5) not null,           -- 상품 제품 번호
  	cart_userId varchar2(30) not null,      -- 카트 사용자 아이디
  	cart_pname varchar2(100) not null,      -- 상품 이름
