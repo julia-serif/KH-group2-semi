@@ -10,8 +10,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.seller.model.ProductDAO;
-import com.seller.model.ProductDTO;
+import com.shop.model.ProductDAO;
+import com.shop.model.ProductDTO;
 
 public class SellProInputOkAction implements Action {
 

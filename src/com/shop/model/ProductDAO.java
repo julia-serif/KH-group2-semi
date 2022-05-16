@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.shop.model.ProductDTO;
 import com.sun.org.apache.bcel.internal.generic.DLOAD;
 
 
@@ -611,6 +612,153 @@ public class ProductDAO {
     	return dto;
     	
     } // getOrderOk() 메서드 end
+    
+    
+    
+    
+    //////
+ // 전체 상품 목록 리스트를 조회하는 메서드.
+ 	public List<ProductDTO> getProductList() {
+ 		
+ 		List<ProductDTO> list = new ArrayList<ProductDTO>();
+ 		
+ 		
+ 		try {
+ 			openConn();
+ 			
+ 			sql = "select * from ks_product order by pno desc";
+ 			
+ 			pstmt = con.prepareStatement(sql);
+ 			
+ 			rs = pstmt.executeQuery();
+ 			
+ 			while(rs.next()) {
+ 				
+ 				ProductDTO dto = new ProductDTO();
+ 				
+ 				dto.setPno(rs.getInt("pno"));
+ 				
+ 				dto.setPcode(rs.getString("pcode"));
+ 				
+ 				dto.setPname(rs.getString("pname"));
+ 				
+ 				dto.setPcompany(rs.getString("pcompany"));
+ 				
+ 				dto.setPimage(rs.getString("pimage"));
+ 				
+ 				dto.setPqty(rs.getInt("pqty"));
+ 				
+ 				dto.setPrice(rs.getInt("price"));
+ 				
+ 				dto.setPspec(rs.getString("pspec"));
+ 				
+ 				dto.setPcontents(rs.getString("pcontents"));
+ 				
+ 				dto.setPoint(rs.getInt("point"));
+ 				
+ 				dto.setPinputdate(rs.getString("pinputdate"));
+ 				
+ 				list.add(dto);
+ 				
+ 			}
+ 		} catch (SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		} finally {
+ 			closeConn(rs, pstmt, con);
+ 		}
+ 		
+ 		return list;
+ 	}  // getProductList() 메서드 end
+ 	
+ 	
+ 	
+	// 제품번호에 해당하는 제품의 정보를 수정하는 메서드.
+	public int updateProduct(ProductDTO dto) {
+		
+		int result = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "update ks_product set pimage = ?, "
+					+ " pqty = ?, price = ?, pspec = ?, "
+					+ " pcontents = ?, point = ? "
+					+ " where pno = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getPimage());
+			
+			pstmt.setInt(2, dto.getPqty());
+			
+			pstmt.setInt(3, dto.getPrice());
+			
+			pstmt.setString(4, dto.getPspec());
+			
+			pstmt.setString(5, dto.getPcontents());
+			
+			pstmt.setInt(6, dto.getPoint());
+			
+			pstmt.setInt(7, dto.getPno());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+			
+		}
+		
+		return result;
+	}  // updateProduct() 메서드 end
+	
+	// 제품번호에 해당하는 제품을 DB에서 삭제하는 메서드.
+	public int deleteProduct(int num) {
+		
+		int result = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "delete from ks_product "
+					+ " where pno = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			result = pstmt.executeUpdate();
+			
+			sql = "update ks_product set "
+					+ " pno = pno - 1 "
+					+ " where pno > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}  // deleteProduct() 메서드 end
+	
+    
+    
+    
+    
+    
 }
 
 

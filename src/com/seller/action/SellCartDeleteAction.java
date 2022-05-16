@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.seller.model.CategoryDAO;
+import com.shop.model.CategoryDAO;
 
 public class SellCartDeleteAction implements Action {
 
