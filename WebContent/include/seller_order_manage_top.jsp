@@ -36,12 +36,20 @@
 		
 		<ul id="seller_navigation">
 			<li>
+				<a href="<%=request.getContextPath() %>/sell_home.do"
+				 id="subtitle">[판매자 홈으로]</a>
+			</li>
+			<li>
 				<a href="<%=request.getContextPath()%>/seller_ship_manage.do"
 				 id="subtitle">[배송 관리]</a>
 			</li>
 			<li>
 				<a href="<%=request.getContextPath()%>/seller_sales_perform.do"
 				 id="subtitle">[판매 실적 확인]</a>
+			</li>
+			<li>
+				<a href="<%=request.getContextPath()%>/admin_logout.do"
+				 id="subtitle" style="font-weight : normal;">로그아웃</a>
 			</li>
 		</ul>
 		

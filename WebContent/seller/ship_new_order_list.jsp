@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>신규 주문 확인</title>
 </head>
 <body>
 	<jsp:include page="../include/seller_order_manage_top.jsp" />
