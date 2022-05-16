@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.seller.model.CategoryDAO;
-import com.seller.model.CategoryDTO;
+import com.shop.model.CategoryDAO;
+import com.shop.model.CategoryDTO;
 
 public class SellProInputAction implements Action {
 
