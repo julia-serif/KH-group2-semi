@@ -76,41 +76,4 @@ public class ProductOrderDAO {
 			}
 		
 	}  // closeConn() 메서드 end
-	public List<ProductOrderDTO> getAllList() {//관리자 판매자 내역에서 사용
-		
-		List<ProductOrderDTO> list = new ArrayList<ProductOrderDTO>();
-		
-		try {
-			openConn();
-			
-			sql = "select * from view_product_order_list order by order_status, order_no desc, product_order_no desc";
-			
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				ProductOrderDTO dto = new ProductOrderDTO();
-				
-				dto.setSeller_id(rs.getString("seller_id"));
-				dto.setOrder_no(rs.getString("order_no"));
-				dto.setProduct_order_no(rs.getInt("product_order_no"));
-				dto.setProduct_no(rs.getInt("product_no"));
-				dto.setProduct_quantity(rs.getInt("product_quantity"));
-				dto.setProduct_price(rs.getInt("product_price"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setAddress(rs.getString("address"));
-				dto.setOrder_date(rs.getString("order_date"));
-				dto.setOrder_status(rs.getString("order_status"));
-				
-				list.add(dto);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeConn(rs, pstmt, con);
-		}
-		
-		return list;
-	}
 }
