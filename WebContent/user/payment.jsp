@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="com.shop.depricated.Ks_CategoryDTO"%>
-<%@page import="com.shop.depricated.Ks_CategoryDAO"%>
+<%@page import="com.shop.model.CategoryDTO"%>
+<%@page import="com.shop.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

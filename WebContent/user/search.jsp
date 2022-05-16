@@ -1,13 +1,13 @@
 <%@page import="java.util.List"%>
-<%@page import="com.shop.depricated.Ks_CategoryDTO"%>
-<%@page import="com.shop.depricated.Ks_CategoryDAO"%>
+<%@page import="com.shop.model.CategoryDTO"%>
+<%@page import="com.shop.model.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
- 	Ks_CategoryDAO dao = Ks_CategoryDAO.getInstance();
-    List<Ks_CategoryDTO> list =  dao.getCategoryList();
+ 	CategoryDAO dao = CategoryDAO.getInstance();
+    List<CategoryDTO> list =  dao.getCategoryList();
  	request.setAttribute("categoryList", list);
 %>
 <!DOCTYPE html>
