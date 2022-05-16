@@ -94,7 +94,7 @@
 				
 		<c:if test="${!empty list }">
 
-				<h3>Koupang 제품 추천</h3>
+				<h3>제품 추천</h3>
 			
 			<table>
 			<tr>
@@ -136,7 +136,7 @@
 			</table>
 		
 
-				<h3>Koupang 제품 목록</h3>
+				<h3>제품 목록</h3>
 
 			<br>
 			
