@@ -13,7 +13,7 @@
 
  	<jsp:include page="../include/top.jsp"/>
 
- <main class="mt-3">
+ <main class="mt-9">
  	 <div class="container">
  	   <div class="row">
  	    <div class="col-12">

@@ -34,11 +34,6 @@
 		document.frm.submit();
 	}
  	
- 	function goPay() {
-		document.frm.action="<%=request.getContextPath()%>/payment.do?p_num${dto.getPno()}";
-		
-		document.frm.submit();
-	}
 </script>
  
   <main class="mt-3">  

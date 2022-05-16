@@ -12,10 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.Ks_ProductDAO;
-import com.shop.model.Ks_ProductDTO;
 import com.shop.model.OrderDAO;
 import com.shop.model.OrderDTO;
+import com.shop.model.OrderJoinProductDTO;
 
 
 
@@ -29,19 +28,17 @@ public class OrderListAction implements Action {
 		
 		String userid = (String)session.getAttribute("user_id");
 		
-		
 		OrderDAO dao = OrderDAO.getInstance();
 		
-		OrderDTO dto =  dao.getOrderList(userid);
-		
+		List<OrderJoinProductDTO> dto =  dao.getOrderList(userid);
+				
 		request.setAttribute("cartlist", dto);
-		
-		
+				
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("user/order_list.jsp");
+		forward.setPath("user/orderlist.jsp");
 		
 		return forward;
 	}
