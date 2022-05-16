@@ -485,4 +485,45 @@ public class CartDAO {
 		
 	} // getCartPayList() 메서드 end
 	
+	// 번호에 해당하는 상품의 모든 정보를 보여주는 메서드
+	public CartDTO getCartDetailList(int no) {
+		
+		CartDTO dto = new CartDTO();
+		
+		try {
+
+			openConn();
+			
+			sql = "select * from ks_cart where cart_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				dto.setCart_num(rs.getInt("cart_num"));
+				dto.setCart_pnum(rs.getInt("cart_pnum"));
+				dto.setCart_userId(rs.getString("cart_userId"));
+				dto.setCart_pname(rs.getString("cart_pname"));
+				dto.setCart_pqty(rs.getInt("cart_pqty"));
+				dto.setCart_price(rs.getInt("cart_price"));
+				dto.setCart_pspec(rs.getString("cart_pspec"));
+				dto.setCart_pimage(rs.getString("cart_pimage"));
+				dto.setCart_seller(rs.getString("cart_seller"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return dto;
+		
+	} // getCartDetailList() 메서드 end
+	
 }

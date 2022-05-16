@@ -19,6 +19,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="CSS/top.css">
 <link rel="stylesheet" href="CSS/category.css">
+
 </head>
 <body>
 
@@ -37,43 +38,54 @@
  	 	</div>
  	 	
  	 	<div class="line">CATEGORY</div> 
- 	 	  
+  <form method="post" name="frm"> 	  
    <main class="main">
  	 <div class="container">
  	  <div class="row g-4">
  	 	 <div align="left"><h2>전체페이지</h2></div>
- 	 	 <c:set var="code" value="${productCode}"/>
+ 	 	 <c:set var="code" value="${productCode}"/>	
  	 	 <c:if test="${!empty code }">
- 	 	  <c:forEach items="${code }" var="dto">
- 	 	 <div class="col-lg-4 col-md-5">
- 	 	<div class="card" style="width: 18rem;">
+ 	 	  <c:forEach items="${code }" var="dto">	
+ 	 	  
+ 	 	  <input type="hidden" name="p_name" value="${dto.getPname() }">
+ 	 	  <input type="hidden" name="p_spec" value="${dto.getPspec() }">
+ 	 	  <input type="hidden" name="p_image" value="${dto.getPimage() }">
+ 	 	  <input type="hidden" name="user_id" value="${user_id }">
+ 	 	  <input type="hidden" name="p_seller" value="${dto.getPcompany() }">
+ 	 	  <input type="hidden" name="p_price" value="${dto.getPrice() }">
+ 	 	  <input type="hidden" name="p_num" value="${dto.getPno()}">  
+
+
+ 	<div class="col-lg-4 col-md-2">
+ 	 <div class="card">
   		<a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno()}"
   		        style="text-decoration: none;">
   		   <img src="<%=request.getContextPath() %>/image/${dto.getPimage()}" class="card-img-top">
   			<div class="card-body">
-  			<span class="badge bg-info text-dark">${dto.getPspec() }</span>
+  			<span class="badge bg-info text-dark mb-2">${dto.getPspec() }</span>
     		<h5 class="card-name">${dto.getPname() }</h5>
     		<p class="card-cont">${dto.getPcontents() }</p>
+    	
     		<p class="card-price">
     		<fmt:formatNumber value="${dto.getPrice() }"/>원</p>
     		<span class="badge rounded-pill bg-warning text-dark">
     		${dto.getPoint() } 적립
     		</span>	 
-    	    </div> 
-    	</a>	
-   		 <div class="btn-group" role="group">
- 			<a href="<%=request.getContextPath() %>/user_cart_add.do">
- 			<button type="button" class="btn btn-sm btn-outline-primary">장바구니 담기</button></a>
-  			<a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno()}">
-  			<button type="button" class="btn btn-sm btn-outline-primary">주문하기</button></a>
+    	    </div>     	
+         </a>	
+         <div align="center">
+        <a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno() }">
+		  		<button type="button" class="btn btn-mg btn-outline-primary">주문하러가기</button> </a>
 		 </div>
 		 </div>
-  		</div>
-  		 </c:forEach>
- 	 </c:if>
+	  	</div>
+  		   </c:forEach>
+ 	     </c:if>	
 	   </div>
-	</div>
-	  </main>
- 	</div>
+      </div>
+	</main>
+	 </form>
+</div>
+ 	
 </body>
 </html>

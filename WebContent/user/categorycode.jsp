@@ -58,12 +58,10 @@
     		</span>	
     	  </div>
     	</a>
-   		 <div class="btn-group" role="group">
- 			<a href="<%=request.getContextPath() %>/">
- 			<button type="button" class="btn btn-sm btn-outline-primary">장바구니 담기</button></a>
-  			<a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno()}">
-  			<button type="button" class="btn btn-sm btn-outline-primary">주문하기</button></a>
-		</div>
+   		  <div align="center">
+          <a href="<%=request.getContextPath() %>/order_ok.do?order=${dto.getPno() }">
+		   <button type="button" class="btn btn-mg btn-outline-primary">주문하러가기</button> </a>
+		 </div>
   		</div>
 		</div>
  	 	  </c:forEach>

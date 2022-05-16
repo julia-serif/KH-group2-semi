@@ -8,31 +8,22 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.UserDAO;
-import com.shop.model.UserDTO;
 
-public class UserDataAction implements Action {
+public class LogoutAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// get방식으로 넘어온 아이디에 해당하는 유저의 정보를 가져오는 비즈니스 로직
+		// 로그아웃하는 비즈니스 로직
 		
 		HttpSession session = request.getSession();
 		
-		String userid = (String)request.getAttribute("user_id");
-		
-		UserDAO dao = UserDAO.getInstance();
-		
-		UserDTO dto = dao.getUserId(userid);
-		
-		request.setAttribute("userupdate", dto);
+		session.invalidate();
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("user/user_updata.jsp");
-		
+		forward.setPath("coupang_main.jsp");
 		
 		return forward;
 	}

@@ -14,6 +14,9 @@ import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
 import com.shop.model.CartDAO;
 import com.shop.model.CartDTO;
+import com.shop.model.OrderDAO;
+import com.shop.model.OrderDTO;
+import com.shop.model.OrderJoinProductDTO;
 
 public class OrderListAction implements Action {
 
@@ -23,14 +26,14 @@ public class OrderListAction implements Action {
 		
         HttpSession session = request.getSession();
 		
-		String userid = (String)session.getAttribute("userid");
+		String userid = (String)session.getAttribute("user_id");
 		
-		CartDAO dao = CartDAO.getInstance();
+		OrderDAO dao = OrderDAO.getInstance();
 		
-		List<CartDTO> list = dao.getCartList(userid);
-		
-		request.setAttribute("cartlist", list);
-		
+		List<OrderJoinProductDTO> dto =  dao.getOrderList(userid);
+				
+		request.setAttribute("cartlist", dto);
+				
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
