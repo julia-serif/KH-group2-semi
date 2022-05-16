@@ -22,7 +22,7 @@
 			action="<%=request.getContextPath() %>/update_user_mileage_ok.do"
 			method="post">
 			<input type="hidden" name="user_no" value="${dto.getUser_no() }">
-			<table border="1" cellspacing="0" width="80%">
+			<table border="1" cellspacing="0" width="100%">
 				<tr>
 					<th>이름</th>
 					<th>아이디</th>
