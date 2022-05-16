@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
-import com.shop.model.ProductDAO;
-import com.shop.model.ProductDTO;
 import com.shop.model.UserDAO;
 import com.shop.model.UserDTO;
 
