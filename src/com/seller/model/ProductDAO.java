@@ -131,6 +131,8 @@ public class ProductDAO {
 			
 			pstmt.setInt(10, dto.getPoint());
 			
+			pstmt.setString(11, dto.getPseller());
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
