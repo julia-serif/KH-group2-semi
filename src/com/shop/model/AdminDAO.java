@@ -60,7 +60,7 @@ public class AdminDAO {
 		List<UserDTO> list = new ArrayList<UserDTO>();
 		try {
 			openConn();
-			sql = "select * from shop_user order by user_no";
+			sql = "select * from shop_user order by user_level desc,user_no";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
