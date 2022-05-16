@@ -71,13 +71,26 @@
 					
 					<td>
 						<form method="post" name="form">
+							<input type="hidden" name="p_name" value="${dto.getPname() }">
+							<input type="hidden" name="p_spec" value="${dto.getPspec() }">
+							<input type="hidden" name="p_iamge" value="${dto.getPimage() }">
+							<input type="hidden" name="userId" value="${dto.getPname() }">
+							<input type="hidden" name="p_seller" value="${dto.getPseller() }">
+							<input type="hidden" name="p_price" value="${dto.getPrice() }">
+							<input type="hidden" name="p_price" value="${dto.getPrice() }">
+							<input type="hidden" name="p_num" value="${dto.getPno() }">
+							<input type="hidden" name="userId" value="${userId }">
 							<table border="0" cellspacing="0">
 								<tr>
-									<td>${dto.getPcompany() }</td>
+									<td>
+										<h3>${dto.getPcompany() }</h3> 
+									</td>
 								</tr>
 								
 								<tr>
-									<td>${dto.getPname() }</td>
+									<td>
+										<h2>${dto.getPname() }</h2>
+									</td>
 								</tr>
 								
 								<tr>
@@ -85,7 +98,9 @@
 								</tr>
 								
 								<tr>
-									<td>${dto.getPrice() } 원</td>
+									<td>
+										<fmt:formatNumber value="${dto.getPrice() }"/>원
+									</td>
 								</tr>
 								
 								<tr>
@@ -209,14 +224,6 @@
                 <div>
                     <p>배송을 시작한 상품이 고객님들께 도착하는 시간은 약 2~3일 </p>
                     <p>정도 소요됩니다. </p>
-                </div>
-            </li>
-            <li>
-                <input type="checkbox" id="qna_4">
-                <label for="qna_4">FAQ4</label>
-                <div>
-                    <p>질문4</p>
-                   
                 </div>
             </li>
         </ul>

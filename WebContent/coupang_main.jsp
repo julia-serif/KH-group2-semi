@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/top.css">
+<link rel="stylesheet" href="CSS/top.css">
 </head>
 <body>
 

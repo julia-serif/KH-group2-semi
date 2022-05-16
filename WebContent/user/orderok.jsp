@@ -78,7 +78,7 @@
     	
     	 <div class="btn-group" role="group">
    		 <div class="col-7 d-grid p-1">
- 			<a href="<%=request.getContextPath() %>/">
+ 			<a href="<%=request.getContextPath() %>/user_cart_add.do">
  			<button type="button" class="btn btn-lg btn-dark">장바구니 담기</button></a>
  		</div>
  		<div class="col-7 d-grid p-1">

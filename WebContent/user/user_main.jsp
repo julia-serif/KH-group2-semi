@@ -142,7 +142,7 @@
 					<c:forEach items="${list }" var="dto">
 					<c:set var="count" value="${count + 1 }"/>
 						<td align="center" width="200" height="300">
-							<a href="<%=request.getContextPath() %>/user_product_view.do?pno=${dto.getPno() }&page=${page }">
+							<a href="<%=request.getContextPath() %>/user_product_view.do?pno=${dto.getPno() }&userId=${user_id }">
 								<img src="<%=request.getContextPath() %>/upload/${dto.getPimage() }"
 									width="150" height="220" border="0">
 							</a>
