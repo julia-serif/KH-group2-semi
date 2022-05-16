@@ -18,9 +18,13 @@ public class SellProListAction implements Action {
 		// 상품 둥록 폼 페이지를 통해서 DB에 저장된 전체 상품 목록을 조회하여
 		// 상품 목록 페이지(view page)로 이동시키는 비지니스 로직.
 		
+		HttpSession session = request.getSession();
+		
+		String user_id = (String)session.getAttribute("user_id");
+		
 		ProductDAO dao = ProductDAO.getInstance();
 		
-		List<ProductDTO> list = dao.getProductList();
+		List<ProductDTO> list = dao.getProductList1(user_id);
 		
 		request.setAttribute("productList", list);
 		
