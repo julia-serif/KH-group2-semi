@@ -40,7 +40,7 @@
 				<a href="<%=request.getContextPath() %>/sell_cart_input.do" id="subtitle">[카테고리 관리]</a>
 			</li>
 			<li>
-				<a href="<%=request.getContextPath() %>/sell_pro_input.do" id="subtitle">[판매상품 목록]</a>
+				<a href="<%=request.getContextPath() %>/sell_pro_input.do" id="subtitle">[판매상품 등록]</a>
 			</li>
 			<li>
 				 <a href="<%=request.getContextPath() %>/sell_pro_list.do" id="subtitle">[판매상품 관리]</a>
