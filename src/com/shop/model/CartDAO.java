@@ -234,7 +234,7 @@ public class CartDAO {
 			
 			result = pstmt.executeUpdate();
 			
-			sql = "update ks_cart set cart_num = cart_num - 1 where cart_no > ?";
+			sql = "update ks_cart set cart_num = cart_num - 1 where cart_num > ?";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -272,7 +272,7 @@ public class CartDAO {
 				
 				res = pstmt.executeUpdate();
 				
-				sql = "update ks_cart set cart_num = cart_num - 1 where cart_no > ?";
+				sql = "update ks_cart set cart_num = cart_num - 1 where cart_num > ?";
 				
 				pstmt = con.prepareStatement(sql);
 				
